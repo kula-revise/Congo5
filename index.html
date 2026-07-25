@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build the Essay | Independent Africa: the Congo | Kula Revise</title>
+<style>
+  :root {
+    --sand: #F2E9D9; --paper: #FBF6EB; --cut: #FFFCF4; --ink: #1B2A33;
+    --copper: #B4622D; --malachite: #1F6B58; --clay: #8C4A2F; --fade: #7B7263;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background:
+      repeating-linear-gradient(90deg, rgba(27,42,51,0.028) 0 1px, transparent 1px 5px),
+      radial-gradient(ellipse at top right, rgba(180,98,45,0.10) 0%, transparent 58%),
+      radial-gradient(ellipse at bottom left, rgba(31,107,88,0.09) 0%, transparent 58%),
+      var(--sand);
+    padding: 1.6rem 1rem 3rem;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink); line-height: 1.55; -webkit-text-size-adjust: 100%;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  .top-bar { margin-bottom: 1.6rem; }
+  .top-meta { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 0.55rem; gap: 1rem; flex-wrap: wrap; }
+  .top-count { color: var(--fade); font-weight: 500; letter-spacing: 0.04em; text-transform: none; }
+  .track { height: 3px; background: rgba(27,42,51,0.12); overflow: hidden; }
+  .fill { height: 100%; background: var(--copper); transition: width 0.35s ease; width: 0%; }
+  .header-block { text-align: center; margin-bottom: 2rem; padding: 1.4rem 0 1.2rem; position: relative; }
+  .header-block::before {
+    content: ""; position: absolute; z-index: 0; top: 0; left: 50%; transform: translateX(-50%);
+    width: 260px; height: 92px; pointer-events: none;
+    background: repeating-radial-gradient(circle at 50% 100%, rgba(180,98,45,0.30) 0 2px, transparent 2px 15px);
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 92%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 92%);
+  }
+  .eyebrow { position: relative; z-index: 1; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.9rem; }
+  .masthead { position: relative; z-index: 1; font-size: clamp(2.1rem,6.4vw,3.3rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.025em; }
+  .sub { position: relative; z-index: 1; font-size: 0.98rem; color: var(--fade); margin-top: 0.6rem; }
+  .rule { width: 86px; height: 9px; margin: 1.5rem auto 0;
+    background:
+      radial-gradient(circle at 9px 4.5px, var(--copper) 0 4px, transparent 4.5px),
+      radial-gradient(circle at 43px 4.5px, var(--copper) 0 4px, transparent 4.5px),
+      radial-gradient(circle at 77px 4.5px, var(--copper) 0 4px, transparent 4.5px); }
+  .intro-box { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--malachite); padding: 1.3rem 1.5rem; margin-bottom: 1.4rem; }
+  .intro-label { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 0.55rem; }
+  .intro-text { line-height: 1.68; font-size: 1rem; }
+  .key-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 0.7rem; margin-bottom: 1.8rem; }
+  .key-item { display: flex; flex-direction: column; gap: 0.45rem; padding: 0.85rem; background: var(--paper); border: 1px solid rgba(27,42,51,0.1); }
+  .chip { display: inline-block; padding: 0.22rem 0.65rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; width: fit-content; }
+  .chip-argue { background: #E7D6C4; color: #7B3F1C; }
+  .chip-evidence { background: #D6E3DB; color: #1B5445; }
+  .chip-weigh { background: var(--ink); color: #F0E3CF; }
+  .chip-instinct { background: #EADFC9; color: var(--clay); }
+  .key-desc { font-size: 0.83rem; color: var(--fade); }
+  .card { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--copper); padding: 1.7rem 1.5rem; margin-bottom: 1.3rem; }
+  .stage-tag { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.9rem; }
+  .card h2 { font-size: 1.55rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.18; margin-bottom: 0.9rem; }
+  .card p { font-size: 1rem; line-height: 1.72; margin-bottom: 0.9rem; }
+  .card p:last-child { margin-bottom: 0; }
+  .pull { border-left: 4px solid var(--malachite); padding: 0.15rem 0 0.15rem 1rem; font-weight: 600; color: var(--ink); margin: 1.15rem 0; }
+  .scenario { background: var(--cut); border: 1px solid rgba(27,42,51,0.14); box-shadow: 6px 6px 0 rgba(180,98,45,0.16); padding: 1.25rem 1.3rem; margin: 1.15rem 0 0.9rem; font-size: 1.02rem; line-height: 1.72; }
+  .scenario-meta { padding: 0.6rem 0 0; font-size: 0.79rem; color: var(--fade); text-align: right; }
+  .source { position: relative; background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-top: 3px solid var(--malachite); box-shadow: 6px 6px 0 rgba(31,107,88,0.13); padding: 1.2rem 1.3rem; margin: 1.15rem 0 1.6rem; }
+  .source::after { content: ""; position: absolute; left: -1px; right: -1px; bottom: -8px; height: 8px;
+    background:
+      linear-gradient(-45deg, transparent 33.4%, var(--cut) 33.4% 66.6%, transparent 66.6%),
+      linear-gradient(45deg, transparent 33.4%, var(--cut) 33.4% 66.6%, transparent 66.6%);
+    background-size: 16px 16px; }
+  .source-attr { font-size: 0.8rem; color: var(--clay); font-weight: 600; margin-bottom: 0.75rem; line-height: 1.5; }
+  .source-body { font-size: 1rem; line-height: 1.72; font-family: Georgia, 'Times New Roman', serif; }
+  .source-body em { color: var(--malachite); font-style: italic; }
+  .toggle-btn { background: transparent; border: none; color: var(--copper); cursor: pointer; font-family: inherit; font-size: 0.88rem; font-weight: 600; text-decoration: underline; padding: 0.7rem 0 0; }
+  .toggle-body { display: none; margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px dashed rgba(123,114,99,0.45); font-size: 0.92rem; color: #55504a; line-height: 1.65; }
+  .toggle-body.open { display: block; }
+  .evtag { display: inline-block; margin-top: 0.95rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; padding: 0.28rem 0.6rem; }
+  .evtag.home { background: #E7D6C4; color: #7B3F1C; }
+  .evtag.ground { background: #D6E3DB; color: #1B5445; }
+  .evtag.exit { background: #E3DCCB; color: #4a4638; }
+  .imgslot { margin: 1rem 0 0.2rem; padding: 1.4rem 1rem; border: 1px dashed rgba(180,98,45,0.55); text-align: center; font-size: 0.8rem; color: var(--fade); background: rgba(255,255,255,0.4); }
+  .figure { margin: 1rem 0 0.3rem; }
+  .figure img { display: block; height: auto; border: 1px solid rgba(27,42,51,0.18); margin: 0 auto; }
+  .figure.wide img { width: 100%; max-width: 460px; }
+  .figure.portrait img { width: 100%; max-width: 320px; }
+  .figure figcaption { font-size: 0.79rem; color: var(--fade); margin-top: 0.5rem; line-height: 1.55; text-align: center; }
+
+  .q-text { font-size: 1.18rem; line-height: 1.5; font-weight: 600; margin-bottom: 1.2rem; }
+  .options { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.2rem; }
+  .option { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.05rem; background: var(--sand); border: 1px solid rgba(27,42,51,0.13); cursor: pointer; font-family: inherit; text-align: left; font-size: 0.97rem; line-height: 1.55; color: var(--ink); transition: all 0.18s; width: 100%; }
+  .option:hover:not(:disabled) { background: var(--cut); border-color: var(--copper); }
+  .option:disabled { cursor: default; }
+  .option.selected { background: var(--cut); border-color: var(--copper); border-width: 2px; padding: 0.94rem 0.99rem; }
+  .option.correct { background: #E2EDE4; border-color: var(--malachite); border-width: 2px; padding: 0.94rem 0.99rem; }
+  .option.wrong { background: #F2DDD3; border-color: var(--clay); border-width: 2px; padding: 0.94rem 0.99rem; }
+  .option.dimmed { opacity: 0.48; }
+  .opt-letter { font-weight: 800; color: var(--copper); min-width: 1.1rem; }
+  .opt-text { flex: 1; }
+  .opt-mark { font-weight: 700; font-size: 1.1rem; }
+  .explanation { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--malachite); padding: 1.15rem 1.2rem; margin-bottom: 0.3rem; }
+  .expl-label { font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 0.5rem; }
+  .expl-text { line-height: 1.68; font-size: 0.95rem; }
+  .skill-callout { background: rgba(31,107,88,0.07); border: 1px solid rgba(31,107,88,0.22); padding: 1rem 1.2rem; margin: 1.15rem 0; }
+  .skill-callout .expl-label { color: var(--malachite); }
+  .skill-list { margin: 0.5rem 0 0 0; padding-left: 1.1rem; }
+  .skill-list li { font-size: 0.94rem; line-height: 1.62; margin-bottom: 0.4rem; }
+
+  .nav { display: flex; justify-content: space-between; gap: 0.8rem; margin-top: 0.4rem; }
+  .btn-secondary { padding: 0.8rem 1.2rem; background: transparent; border: 1px solid rgba(27,42,51,0.28); color: var(--ink); font-family: inherit; font-size: 0.92rem; font-weight: 600; cursor: pointer; }
+  .btn-secondary:hover:not(:disabled) { background: var(--paper); }
+  .btn-secondary:disabled { opacity: 0.35; cursor: not-allowed; }
+  .btn-primary { padding: 0.85rem 1.5rem; background: var(--malachite); border: none; color: #F7F1E4; font-family: inherit; font-size: 0.96rem; cursor: pointer; font-weight: 700; letter-spacing: 0.01em; }
+  .btn-primary:hover:not(:disabled) { background: #164C3F; }
+  .btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
+  .btn-start { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.4rem; background: var(--ink); color: #F4EADA; border: none; cursor: pointer; font-family: inherit; text-align: left; transition: all 0.2s; }
+  .btn-start:hover { background: #12202a; transform: translateX(3px); }
+  .btn-start .st { font-size: 1.14rem; font-weight: 700; }
+  .btn-start .sa { font-size: 1.3rem; color: var(--copper); }
+  .score-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(130px,1fr)); gap: 0.9rem; margin-bottom: 1.4rem; }
+  .score-block { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); border-top: 4px solid var(--copper); padding: 1.3rem 0.8rem; text-align: center; }
+  .score-num { font-size: 2.6rem; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.03em; }
+  .score-num.red { color: var(--clay); }
+  .score-den { font-size: 1.1rem; color: var(--fade); font-weight: 500; }
+  .score-label { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fade); margin-top: 0.5rem; font-weight: 700; }
+  .grade-desc { text-align: center; margin-bottom: 1.6rem; padding: 0 0.5rem; line-height: 1.65; }
+  .breakdown { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); padding: 1.3rem; margin-bottom: 1.4rem; }
+  .breakdown-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 1rem; text-align: center; }
+  .bd-row { display: grid; grid-template-columns: 1fr 110px 46px; gap: 0.7rem; align-items: center; margin-bottom: 0.7rem; font-size: 0.88rem; }
+  .bd-name { font-weight: 600; }
+  .bd-bar { height: 9px; background: rgba(27,42,51,0.08); overflow: hidden; }
+  .bd-fill { height: 100%; background: var(--copper); transition: width 0.4s; }
+  .bd-score { color: var(--fade); text-align: right; font-weight: 700; }
+  .essaypanel { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--malachite); padding: 1.25rem 1.3rem; margin-top: 1.15rem; }
+  .essaypanel-label { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.5rem; }
+  .essaypanel-label .tick { color: var(--copper); font-size: 0.85rem; }
+  .essaypanel p { font-size: 0.94rem; line-height: 1.74; margin-bottom: 0.75rem; text-indent: 1.1rem; }
+  .essaypanel p:first-of-type { text-indent: 0; }
+  .essaypanel p:last-child { margin-bottom: 0; }
+  .finalessay { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); box-shadow: 8px 8px 0 rgba(180,98,45,0.14); padding: 1.6rem 1.5rem; margin: 1.15rem 0 1.9rem; }
+  .finalessay .fq { font-weight: 700; color: var(--clay); font-size: 1rem; margin-bottom: 1rem; line-height: 1.45; padding-bottom: 0.9rem; border-bottom: 2px solid rgba(180,98,45,0.28); }
+  .finalessay p { font-size: 0.97rem; line-height: 1.78; margin-bottom: 0.95rem; text-indent: 1.2rem; }
+  .finalessay p:first-of-type { text-indent: 0; }
+  .finalessay p:last-child { margin-bottom: 0; }
+  .qbox { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--clay); padding: 1.15rem 1.3rem; margin: 1.3rem 0 1.6rem; }
+  .qbox .qlabel { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.5rem; }
+  .qbox .qtext { font-size: 1.1rem; font-weight: 600; line-height: 1.55; }
+  .hidden { display: none !important; }
+  .footer { text-align: center; font-size: 0.79rem; color: var(--fade); margin-top: 2rem; padding-top: 1.3rem; border-top: 1px solid rgba(27,42,51,0.14); line-height: 1.65; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-bar hidden" id="top-bar">
+    <div class="top-meta"><span id="stage-name">Independent Africa: the Congo</span><span class="top-count" id="step-count">Step 1</span></div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+
+  <div id="start-screen">
+    <div class="header-block">
+      <div class="eyebrow">Kula Revise &middot; Grade 12 History &middot; The Congo</div>
+      <h1 class="masthead">Build the Essay</h1>
+      <div class="sub">The capstone &middot; Lesson 5 of 5</div>
+      <div class="rule"></div>
+    </div>
+    <div class="intro-box">
+      <div class="intro-label">Where we are</div>
+      <p class="intro-text">This is a real National Senior Certificate question, taken from Paper 1 of the May and June 2025 examination, and everything you build here is measured against the marking guidelines the Department of Basic Education issued for it. Eight decisions, and you walk away holding a complete fifty mark essay.</p>
+    </div>
+    <div class="key-row">
+      <div class="key-item"><span class="chip chip-argue">Argue</span><span class="key-desc">Take a clear line of argument</span></div>
+      <div class="key-item"><span class="chip chip-evidence">Evidence</span><span class="key-desc">Back the case with specific facts</span></div>
+      <div class="key-item"><span class="chip chip-weigh">Weigh</span><span class="key-desc">Judge it, answer 'to what extent'</span></div>
+    </div>
+    <button class="btn-start" id="begin-btn"><span class="st">Start with the argument</span><span class="sa">&rarr;</span></button>
+    <div class="footer">About 20 minutes. Eight decisions, all marked. Have a pen ready if you want to keep the finished essay.</div>
+  </div>
+
+  <div id="flow-screen" class="hidden">
+    <div class="card" id="flow-card"></div>
+    <div class="nav">
+      <button class="btn-secondary" id="back-btn">&larr; Back</button>
+      <button class="btn-primary" id="next-btn">Continue &rarr;</button>
+    </div>
+  </div>
+
+  <div id="results-screen" class="hidden">
+    <div class="header-block">
+      <div class="eyebrow">The series is complete</div>
+      <h1 class="masthead" style="font-size: clamp(1.8rem,5vw,2.8rem);">Where you stand</h1>
+      <div class="rule"></div>
+    </div>
+    <div class="score-row">
+      <div class="score-block"><div class="score-num"><span id="r-correct">0</span><span class="score-den">/<span id="r-total">0</span></span></div><div class="score-label">Argument moves</div></div>
+      <div class="score-block"><div class="score-num"><span id="r-pct">0</span><span class="score-den">%</span></div><div class="score-label">Accuracy</div></div>
+      <div class="score-block"><div class="score-num red" id="r-band">-</div><div class="score-label">Standard</div></div>
+    </div>
+    <div class="grade-desc" id="r-desc"></div>
+    <div class="breakdown"><div class="breakdown-label">By essay skill</div><div id="r-breakdown"></div></div>
+    <div class="card">
+      <div class="stage-tag">What you have</div>
+      <p>You now hold a full answer to a real examination question, built one decision at a time, with a line of argument that you can defend and a counter argument you have already answered.</p><p class="pull">The eight decisions in this capstone were all the same decision, asked eight ways: does this sentence argue, or does it only describe?</p><p>That is the whole difference between an answer in the middle bands and an answer in the top two. It is also the only thing you cannot fix in the examination room if you have not practised it beforehand.</p>
+    </div>
+    <div class="nav" style="justify-content: center;"><button class="btn-primary" id="redo-btn">&#8635; Restart lesson</button></div>
+    <div class="footer">Independent Africa, the Congo: complete. Next in this topic, the source based question on Africa in the Cold War.</div>
+  </div>
+</div>
+
+<script>
+const QUESTION = "Critically discuss the effectiveness of Mobutu Sese Seko's political and economic policies in developing the Congo after attaining independence from Belgian colonial rule in the 1960s. [50]";
+
+const ESSAY_SCREEN = {"label": "The finished essay", "heading": "Fifty marks, assembled", "intro": "Eight decisions, one essay. Every paragraph below came from a choice you made, and every body point matches a bullet in the official marking guidelines for this question.", "outro": "In the examination you would write this in your own words, in about three pages, in one hour. The shape would be exactly this: a stance in the opening paragraph, evidence that argues instead of narrating, a counter argument you answer rather than avoid, and a conclusion that judges instead of summarising."};
+
+const BANDS = [
+  {
+    "min": 85,
+    "band": "7",
+    "desc": "You chose the arguing sentence almost every time. That is a Level 6 or 7 answer on the marking matrix, and it is a habit rather than a talent. Keep the essay."
+  },
+  {
+    "min": 70,
+    "band": "6",
+    "desc": "Solid. Where you slipped, look at whether the option you chose was narrating rather than arguing, because that is where the marks go."
+  },
+  {
+    "min": 55,
+    "band": "5",
+    "desc": "You have the content and the line of argument keeps dropping. Work through the capstone again and read each option asking one question: is there a because in this sentence?"
+  },
+  {
+    "min": 0,
+    "band": "3",
+    "desc": "Go back to Lesson 1 and run the series again. The essay is built out of the four sentences you chose in the content lessons, and if those are shaky this cannot hold together."
+  }
+];
+
+const FLOW = [
+  {
+    "type": "narrative",
+    "stage": "Recognise",
+    "html": "<div class=\"stage-tag\">The real thing</div><h2>This question was actually set</h2><div class=\"qbox\"><div class=\"qlabel\">Paper 1, Section B, Question 5. May and June 2025</div><div class=\"qtext\">Critically discuss the effectiveness of Mobutu Sese Seko's political and economic policies in developing the Congo after attaining independence from Belgian colonial rule in the 1960s. [50]</div></div><p>Nothing here is invented. The question is real, the marking guidelines are the approved ones the Department of Basic Education issued to markers in June 2025, and each body point you are about to build matches a bullet on the examiner's list.</p><p>You already have the argument. You built it across four lessons. This lesson turns it into fifty marks.</p>"
+  },
+  {
+    "type": "narrative",
+    "stage": "Destabilise",
+    "html": "<div class=\"stage-tag\">Read the command word</div><h2>Critically discuss</h2><p>Two words decide the shape of your whole answer, and most candidates read past them.</p><div class=\"skill-callout\"><div class=\"expl-label\">What the marking guidelines actually ask for</div><ul class=\"skill-list\"><li>A balanced view. The guidelines say plainly that you must indicate instances where the policies were effective and instances where they were ineffective.</li><li>A stance. Balanced does not mean undecided. You must take a position and defend it with evidence.</li><li>A counter argument. Critically means you deal with the strongest case against your line before you conclude.</li></ul></div><p>An answer that only condemns Mobutu cannot reach the top bands, however much detail it contains, because it has not done what the question asked. Neither can an answer that lists good things and bad things and then refuses to decide.</p>"
+  },
+  {
+    "type": "narrative",
+    "stage": "Destabilise",
+    "html": "<div class=\"stage-tag\">The trap in the question</div><h2>What the words in the 1960s do</h2><p>The question ends with in the 1960s, and a careful candidate worries about that, because Zairianisation happened in 1973 and the collapse ran through the later 1970s. Is that content out of range?</p><p>No. The examiner's own elaboration list for this question includes Zairianisation, the reversal that followed it, the collapse of the economy and the dependence on the World Bank. The date phrase fixes when the policies were established, and the outcomes of those policies are legitimate evidence of how effective they were.</p><div class=\"skill-callout\"><div class=\"expl-label\">The safe way to write it</div><ul class=\"skill-list\"><li>Anchor each policy to its date in the 1960s where you can: the coup in 1965, the constitution and the nationalisation in 1967.</li><li>When you use later evidence, tie it back explicitly: the policy established in the 1960s produced this outcome by 1976.</li></ul></div><p>That one linking phrase protects you. It shows the examiner you know where the boundary is and why you have crossed it.</p>"
+  },
+  {
+    "type": "narrative",
+    "stage": "Act",
+    "html": "<div class=\"stage-tag\">How fifty marks are awarded</div><h2>The matrix, briefly</h2><p>Your essay is read twice. Once for content, which is whether the question has been answered with relevant evidence. Once for presentation, which is whether there is a planned, structured argument with a conclusion drawn from the evidence.</p><p>The two readings meet on a grid, and the mark comes from where they cross. This is why a candidate who knows everything about Mobutu can still land in the twenties: full content, no argument, and the grid punishes it.</p><p class=\"pull\">The top of the matrix asks for an original and well balanced line of argument, sustained and defended throughout, with an independent conclusion drawn from the evidence. Sustained is the word to notice. The line has to be visible in every paragraph, not just the first and last.</p><p>Eight decisions follow. Each one offers a sentence that argues, a sentence that only describes, and a sentence that takes a line the evidence will not support.</p>"
+  },
+  {
+    "type": "question",
+    "stage": "Act",
+    "level": "Argue",
+    "build": true,
+    "part": "Mobutu Sese Seko's policies were effective at one thing above all, and that was control. He ended the secessions, held the borders and put the country's copper into national hands. They were ineffective at developing the Congo, because each policy was finally shaped to secure his own power rather than the country's growth. This essay will argue that the order he created was real but hollow, that his economic nationalisation began well and collapsed into personal enrichment, and that the external shocks of the 1970s deepened a failure his own policies had already begun.",
+    "q": "Decision 1. Your line of argument, in the introduction.",
+    "options": [
+      "Mobutu's policies were effective at securing control and ineffective at developing the Congo, because each one was shaped to protect his power",
+      "Mobutu Sese Seko ruled the Congo from 1965 and introduced a wide range of political and economic policies during his years in power",
+      "Mobutu's policies developed the Congo successfully until the collapse in world copper prices destroyed everything that he had built"
+    ],
+    "correct": 0,
+    "explanation": "The first takes a position, names both sides of it and gives the reason in a single sentence, which is what the marking guidelines mean by a line of argument. The second announces the topic without any position at all, and an introduction like that leaves the examiner nothing to follow. The third takes a line the evidence in Lesson 4 will not support, and once your introduction commits to it every later paragraph has to contradict you."
+  },
+  {
+    "type": "question",
+    "stage": "Act",
+    "level": "Evidence",
+    "build": true,
+    "part": "Belgium left the Congo almost entirely unprepared for independence on 30 June 1960. Colonial policy had been paternalistic: Congolese people were treated as children, given no responsibility in the administration and no representation in government. At independence roughly fourteen Congolese held university degrees in a population of about fourteen million, and not one officer in the army was Congolese. Within five days the army had mutinied, and within eleven days Katanga, which supplied around half of the country's revenue, had seceded. This was the state Mobutu seized in November 1965, and it explains why his demand for total control was believed.",
+    "q": "Decision 2. The context paragraph, on what he inherited.",
+    "options": [
+      "Belgian paternalism left no trained administration, so the Congo that Mobutu seized in 1965 had already been ungovernable for five years",
+      "The Congo was a Belgian colony from 1908 and became independent on 30 June 1960, with Kasavubu as president and Lumumba as prime minister",
+      "The Congo was handed over in good order in 1960, and the disorder that followed was caused entirely by rival Congolese politicians"
+    ],
+    "correct": 0,
+    "explanation": "The first makes the context work: it states the inheritance and draws the consequence that sets up your whole judgement. The second is accurate background with no argument attached, and background that argues nothing is the commonest way candidates spend a page for two marks. The third contradicts the evidence and also destroys your concession, which is the thing that makes your later criticism credible."
+  },
+  {
+    "type": "question",
+    "stage": "Act",
+    "level": "Evidence",
+    "build": true,
+    "part": "Judged against that inheritance, his early political policies were effective. He ended the crisis of the First Republic, put down the Katangese and mercenary revolt of 1967, and issued a constitution in the same year that concentrated authority in the presidency. The country that had been breaking apart for five years stopped breaking apart, and after 1967 no secession succeeded again in his lifetime. He also secured the external support that made this possible, presenting himself to Washington as a reliable anti communist ally and receiving aid and protection in return. Measured purely by whether the state survived, the policy worked.",
+    "q": "Decision 3. The first body point, conceding what worked.",
+    "options": [
+      "His early political policies were effective in the respect that mattered most in 1965, because the state stopped breaking apart",
+      "Mobutu cut the provinces from twenty one to eight, renamed the capital Kinshasa and put down the Katangese revolt during 1967",
+      "His political policies achieved nothing worth recording, since a government that takes power in a coup can never be called effective"
+    ],
+    "correct": 0,
+    "explanation": "The first concedes with a reason, and a concession is only worth marks when it is argued rather than merely admitted. The second lists three real policies and leaves the examiner to work out what they prove. The third refuses to concede anything, which fails the balanced view the guidelines require and makes the rest of your essay read as prejudice rather than judgement."
+  },
+  {
+    "type": "question",
+    "stage": "Act",
+    "level": "Argue",
+    "build": true,
+    "part": "That order was achieved by removing everything capable of questioning him, which is why it did not develop the country. Political parties were banned, and from 1970 the Mouvement Populaire de la Revolution was the only legal party, with every citizen a member from birth. He stood unopposed in the 1970 election and was awarded over ninety eight per cent of the vote. Mobutuism was taught in schools and broadcast every evening. A state whose only organising principle is loyalty to one man has no way of correcting him, and that is precisely the failure the following decade exposed.",
+    "q": "Decision 4. The second body point, on what the order was made of.",
+    "options": [
+      "The order held because opposition was removed rather than answered, so the state could not correct its own ruler",
+      "All political parties were banned, and the MPR became the only legal party with automatic membership for every citizen from birth",
+      "One party rule followed African tradition, so it suited Congolese conditions far better than multi party democracy would have done"
+    ],
+    "correct": 0,
+    "explanation": "The first turns the evidence into the mechanism of the failure, and it plants the idea that Lesson 4 then cashes in. The second is the same evidence with the argument left out. The third repeats Mobutu's own justification as though it were your conclusion, which hands your essay to the person you are meant to be assessing."
+  },
+  {
+    "type": "question",
+    "stage": "Act",
+    "level": "Evidence",
+    "build": true,
+    "part": "His economic policies began with a genuine assertion of national control. The Bakajika Law of 1966 returned ownership of land and minerals to the state, and on 1 January 1967 the Union Miniere du Haut Katanga, the Belgian company that had financed the Katangese secession, was nationalised and replaced by the state company Gecamines. Copper made up around forty per cent of export earnings, and for the first time those earnings answered to Kinshasa rather than to Brussels. Revenue from the copper boom was directed into a ten year industrialisation plan. In principle this was what independence had promised.",
+    "q": "Decision 5. The third body point, on nationalisation.",
+    "options": [
+      "Nationalising the company that had financed Katanga's secession answered the economic and the political problem in one act",
+      "The Bakajika Law was passed in 1966, and the Union Miniere du Haut Katanga was nationalised as Gecamines in January 1967",
+      "Nationalisation was a serious error, since the copper industry had been run efficiently by its Belgian owners until that point"
+    ],
+    "correct": 0,
+    "explanation": "The first explains why the act mattered on two fronts at once, which is analysis of a policy rather than a report of it. The second gives the law and the date and stops, and the marking guidelines credit content like this while the presentation reading marks you down for having no argument. The third abandons the line you have built and defends colonial ownership, which the rest of your essay then contradicts."
+  },
+  {
+    "type": "question",
+    "stage": "Act",
+    "level": "Argue",
+    "build": true,
+    "part": "What followed showed what the control was for. Under Zairianisation, announced on 30 November 1973, roughly two thousand foreign owned businesses, farms and plantations were seized without compensation and handed to Zairian nationals who were overwhelmingly his relatives, ministers and party officials. Many were stripped of stock and abandoned rather than run, and agricultural production for export fell. Copper revenue went into prestige projects such as the power line to the southern mines, and into private accounts abroad. By 1976 the government was inviting the former owners back. Ownership had changed hands without anything being built, which is not development.",
+    "q": "Decision 6. The fourth body point, on Zairianisation.",
+    "options": [
+      "Zairianisation moved assets to loyal individuals instead of into production, so a change of owner never became development",
+      "In November 1973 about two thousand foreign owned businesses, farms and plantations were seized and handed over to Zairian nationals",
+      "Zairianisation returned the commercial economy to Zairians and was the greatest economic achievement of the entire Mobutu period"
+    ],
+    "correct": 0,
+    "explanation": "The first names what the policy actually did and draws the judgement out of it, and that phrase about a change of owner is the sharpest sentence available on this topic. The second describes the seizure without saying who received the assets, which is the fact the whole judgement rests on. The third repeats the government's claim and cannot survive the reversal of 1976."
+  },
+  {
+    "type": "narrative",
+    "stage": "Act",
+    "html": "<div class=\"stage-tag\">The step most candidates skip</div><h2>Two decisions left</h2><p>Six paragraphs down. What you have is already a solid essay, and it is not yet a top band one, because you have not dealt with the strongest argument against you.</p><p class=\"pull\">Critically discuss puts marks on the counter argument. Skipping it costs you the top two levels of the matrix no matter how good the rest is.</p><p>So write the case against your own line as strongly as you can, and then show precisely what it cannot account for.</p>"
+  },
+  {
+    "type": "question",
+    "stage": "Act",
+    "level": "Weigh",
+    "build": true,
+    "part": "It can be argued that the collapse was not his doing. The world copper price fell by more than half after April 1974, oil prices quadrupled, and the closure of the Benguela railway in 1975 cut the cheapest route from the southern mines to the sea. The economy he inherited had been built for Belgian profit rather than Congolese self sufficiency. These pressures were real and would have strained any government in Kinshasa. They do not, however, overturn the judgement. Zairianisation was announced in November 1973, months before the copper price broke, and it had to be reversed by 1976. External shocks explain why the fall was so steep. They cannot explain a state with almost no usable roads and a president whose personal fortune approached the size of the national debt.",
+    "q": "Decision 7. The counter argument.",
+    "options": [
+      "The shocks were real and severe, but they hit an economy his policies had already hollowed out, so they cannot carry the verdict",
+      "Copper prices halved after 1974, oil prices quadrupled and the Benguela railway closed in 1975, which badly damaged the economy of Zaire",
+      "The collapse was caused by world prices and by the colonial economy he inherited, so his own policies cannot fairly be blamed for any of it"
+    ],
+    "correct": 0,
+    "explanation": "The first states the counter argument at full strength and then limits it with a reason, which is exactly what the word critically is asking for. The second states the counter argument and never answers it, so you have argued the examiner out of your own conclusion. The third surrenders the essay in its second last paragraph, and no conclusion can recover from that."
+  },
+  {
+    "type": "question",
+    "stage": "Act",
+    "level": "Weigh",
+    "build": true,
+    "part": "Mobutu's policies must therefore be judged effective in a narrow sense and ineffective in the sense this question asks about. He held the Congo together when it was coming apart, and he broke the foreign grip on its minerals. But he built a state that existed to serve him, so the wealth he recovered was captured rather than invested, and by the 1980s the country was more dependent on foreign lenders than it had been at independence. His policies developed the ruler. They did not develop the Congo.",
+    "q": "Decision 8. The conclusion.",
+    "options": [
+      "Effective at holding the country and at taking back its minerals, ineffective at developing it, because the state existed to serve him",
+      "Mobutu therefore had both successes and failures in his political and economic policies over his long period in power in the Congo",
+      "Mobutu's policies failed completely in every respect, and left the Congo in a worse condition than it had been under Belgian rule"
+    ],
+    "correct": 0,
+    "explanation": "The first judges on both sides and gives the reason that ties the whole essay together, which is what the guidelines mean by an independent conclusion drawn from the evidence. The second is the sentence that ends thousands of History essays every November: perfectly true, entirely empty, and it earns almost nothing. The third throws away every concession you made and contradicts your own third and fifth paragraphs."
+  },
+  {
+    "type": "essay",
+    "stage": "Transfer"
+  },
+  {
+    "type": "narrative",
+    "stage": "Transfer",
+    "html": "<div class=\"stage-tag\">In the examination room</div><h2>One hour, three pages</h2><div class=\"skill-callout\"><div class=\"expl-label\">How to reproduce this under pressure</div><ul class=\"skill-list\"><li>Spend five minutes planning. Write your line of argument at the top of the page and four body point headings under it. Never begin writing without it.</li><li>Start every body paragraph with the point, not the story. The evidence comes after the claim, never instead of it.</li><li>Put one linking sentence at the end of each paragraph that returns to your line of argument. That is what sustained means on the matrix.</li><li>Leave ten minutes for the counter argument and the conclusion. They carry more marks than a fifth body point would.</li><li>Watch the dates in the question. Tie later evidence back to the policy that produced it.</li></ul></div><p>You are answering three questions in three hours, and one of them is this one.</p>"
+  },
+  {
+    "type": "narrative",
+    "stage": "Transfer",
+    "html": "<div class=\"stage-tag\">Beyond the exam</div><h2>Effective at what</h2><p>The most useful question in this whole series was three words long: effective at what. Almost nothing is simply effective or ineffective. Things are effective at something, for someone, measured against a standard that somebody chose.</p><p>Mobutu's policies worked extremely well. They were just working on a different problem from the one the country needed solved.</p><p class=\"pull\">When somebody tells you a policy, a plan or a system is working, ask what it is working at, and who decided that was the measure. You will use that question for the rest of your life, and it started as a fifty mark essay.</p>"
+  }
+];
+
+const DIFF = {
+  Argue:{ label:"Argue &middot; line of argument", cls:"chip-argue" },
+  Evidence:{ label:"Evidence &middot; back it up", cls:"chip-evidence" },
+  Weigh:{ label:"Weigh &middot; to what extent", cls:"chip-weigh" }
+};
+const KIND = {
+  everyday:{ label:"Your instinct", cls:"chip-instinct" },
+  reveal:{ label:"Plot twist", cls:"chip-instinct" },
+  decision:{ label:"Your call", cls:"chip-instinct" },
+  chain:{ label:"Next link", cls:"chip-instinct" }
+};
+const LEVELS = ["Argue","Evidence","Weigh"];
+
+const state = { idx:0, answers:{}, revealed:{}, order:{} };
+const questionIds = FLOW.map((f,i)=>f.type==="question"?i:null).filter(i=>i!==null);
+const assessedIds = FLOW.map((f,i)=>(f.type==="question"&&f.level)?i:null).filter(i=>i!==null);
+const buildIds = FLOW.map((f,i)=>f.build?i:null).filter(i=>i!==null);
+const totalQ = assessedIds.length;
+
+const startScreen=document.getElementById("start-screen");
+const flowScreen=document.getElementById("flow-screen");
+const resultsScreen=document.getElementById("results-screen");
+const topBar=document.getElementById("top-bar");
+const card=document.getElementById("flow-card");
+const backBtn=document.getElementById("back-btn");
+const nextBtn=document.getElementById("next-btn");
+
+document.getElementById("begin-btn").addEventListener("click",()=>{
+  startScreen.classList.add("hidden"); flowScreen.classList.remove("hidden"); topBar.classList.remove("hidden"); render();
+});
+backBtn.addEventListener("click",()=>{ if(state.idx>0){state.idx--;render();} });
+nextBtn.addEventListener("click",()=>{ if(state.idx<FLOW.length-1){state.idx++;render();} else {showResults();} });
+document.getElementById("redo-btn").addEventListener("click",()=>location.reload());
+
+function render(){
+  const item=FLOW[state.idx];
+  document.getElementById("step-count").textContent=`Step ${state.idx+1} of ${FLOW.length}`;
+  document.getElementById("fill").style.width=((state.idx+1)/FLOW.length*100)+"%";
+  backBtn.disabled=state.idx===0;
+  if(item.type==="question") renderQuestion(item);
+  else if(item.type==="essay") renderEssay();
+  else if(item.type==="source") renderSource(item);
+  else renderStatic(item);
+  nextBtn.disabled = item.type==="question" ? !state.revealed[state.idx] : false;
+  nextBtn.innerHTML = state.idx===FLOW.length-1 ? "See results &rarr;" : "Continue &rarr;";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function essayParts(uptoIdx){
+  return buildIds.filter(i=>i<=uptoIdx && state.revealed[i]).map(i=>FLOW[i].part);
+}
+function renderEssay(){
+  const parts=buildIds.map(i=>FLOW[i].part);
+  card.innerHTML=`<div class="stage-tag">${ESSAY_SCREEN.label}</div><h2>${ESSAY_SCREEN.heading}</h2>
+    <p>${ESSAY_SCREEN.intro}</p>
+    <div class="finalessay"><div class="fq">${QUESTION}</div>${parts.map(p=>`<p>${p}</p>`).join("")}</div>
+    <p style="margin-top:1.1rem;font-style:italic;color:var(--fade);">${ESSAY_SCREEN.outro}</p>`;
+}
+function renderStatic(item){ card.innerHTML=item.html; bindToggles(); }
+function renderSource(item){
+  let html=item.html;
+  if(item.source){
+    const s=item.source;
+    const ev = s.evidence ? `<span class="evtag ${s.evidence.cls}">${s.evidence.label}</span>` : "";
+    html+=`<div class="source"><div class="source-attr">${s.attr}</div>
+      <div class="source-body">${s.body}</div>${ev}
+      <div><button class="toggle-btn" data-toggle>What does this actually mean?</button></div>
+      <div class="toggle-body" data-toggle-body>${s.toggle}</div></div>`;
+  }
+  card.innerHTML=html;
+  bindToggles();
+}
+function bindToggles(){
+  card.querySelectorAll("[data-toggle]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const body=btn.closest(".source").querySelector("[data-toggle-body]");
+      body.classList.toggle("open");
+      btn.textContent=body.classList.contains("open")?"Hide":"What does this actually mean?";
+    });
+  });
+}
+function renderQuestion(item){
+  const gi=state.idx;
+  if(!state.order[gi]){
+    const arr=item.options.map((_,i)=>i);
+    for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=arr[i]; arr[i]=arr[j]; arr[j]=t; }
+    state.order[gi]=arr;
+  }
+  const order=state.order[gi];
+  const revealed=state.revealed[gi];
+  const selected=state.answers[gi];
+  const tag = item.level ? DIFF[item.level] : KIND[item.kind];
+  let optsHtml="";
+  order.forEach((orig,pos)=>{
+    let cls="option"; let mark="";
+    if(revealed){
+      if(orig===item.correct){cls+=" correct"; mark='<span class="opt-mark">&#10003;</span>';}
+      else if(orig===selected){cls+=" wrong"; mark='<span class="opt-mark">&#10007;</span>';}
+      else cls+=" dimmed";
+    } else if(orig===selected) cls+=" selected";
+    optsHtml+=`<button class="${cls}" data-opt="${orig}" ${revealed?"disabled":""}>
+      <span class="opt-letter">${String.fromCharCode(65+pos)}</span>
+      <span class="opt-text">${item.options[orig]}</span>${mark}</button>`;
+  });
+  const explLabel = item.level ? "Why" : "What that shows";
+  let panel="";
+  if(revealed && item.build){
+    panel=`<div class="essaypanel"><div class="essaypanel-label"><span class="tick">&#10003;</span> Added to your essay</div>`
+      + essayParts(gi).map(p=>`<p>${p}</p>`).join("") + `</div>`;
+  }
+  card.innerHTML=`<div class="stage-tag"><span class="chip ${tag.cls}">${tag.label}</span></div>
+    <div class="q-text">${item.q}</div><div class="options">${optsHtml}</div>
+    ${revealed?`<div class="explanation"><div class="expl-label">${explLabel}</div><div class="expl-text">${item.explanation}</div></div>`:""}
+    ${panel}`;
+  if(!revealed){
+    card.querySelectorAll("[data-opt]").forEach(b=>{
+      b.addEventListener("click",()=>{ state.answers[gi]=parseInt(b.dataset.opt); state.revealed[gi]=true; render(); });
+    });
+  }
+}
+function showResults(){
+  flowScreen.classList.add("hidden"); topBar.classList.add("hidden"); resultsScreen.classList.remove("hidden");
+  let correct=0;
+  assessedIds.forEach(i=>{ if(state.answers[i]===FLOW[i].correct) correct++; });
+  const pct=totalQ?Math.round((correct/totalQ)*100):0;
+  let band="-",desc="";
+  for(const b of BANDS){ if(pct>=b.min){ band=b.band; desc=b.desc; break; } }
+  document.getElementById("r-correct").textContent=correct;
+  document.getElementById("r-total").textContent=totalQ;
+  document.getElementById("r-pct").textContent=pct;
+  document.getElementById("r-band").textContent=band;
+  document.getElementById("r-desc").textContent=desc;
+  const bd=document.getElementById("r-breakdown"); bd.innerHTML="";
+  LEVELS.forEach(level=>{
+    const ids=assessedIds.filter(i=>FLOW[i].level===level);
+    const got=ids.filter(i=>state.answers[i]===FLOW[i].correct).length;
+    const p=ids.length?Math.round(got/ids.length*100):0;
+    bd.innerHTML+=`<div class="bd-row"><div class="bd-name">${level}</div>
+      <div class="bd-bar"><div class="bd-fill" style="width:${p}%"></div></div>
+      <div class="bd-score">${got}/${ids.length}</div></div>`;
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
