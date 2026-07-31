@@ -5,9 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Build the Essay | Independent Africa: the Congo | Kula Revise</title>
 <style>
+  /* Ore Seam identity. Two accents split by job.
+     Accent one (copper): navigation, progress, emphasis, option letters, primary button, story date.
+     Accent two (malachite): anything the learner earned. correct answers, running summary,
+     breakdown bars, Weigh and Apply chips, key facts, the last story line. */
   :root {
     --sand: #F2E9D9; --paper: #FBF6EB; --cut: #FFFCF4; --ink: #1B2A33;
-    --copper: #B4622D; --malachite: #1F6B58; --clay: #8C4A2F; --fade: #7B7263;
+    --a1: #B4622D;         /* copper, accent one */
+    --a2: #1F6B58;         /* malachite, accent two */
+    --clay: #8C4A2F; --fade: #7B7263;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -18,246 +26,272 @@
       radial-gradient(ellipse at bottom left, rgba(31,107,88,0.09) 0%, transparent 58%),
       var(--sand);
     padding: 1.6rem 1rem 3rem;
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    color: var(--ink); line-height: 1.55; -webkit-text-size-adjust: 100%;
+    font-family: var(--serif);
+    color: var(--ink); line-height: 1.6; -webkit-text-size-adjust: 100%;
+    -webkit-user-select: none; user-select: none;
   }
   .container { max-width: 720px; margin: 0 auto; }
   .top-bar { margin-bottom: 1.6rem; }
-  .top-meta { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 0.55rem; gap: 1rem; flex-wrap: wrap; }
+  .top-meta { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--a2); font-weight: 700; margin-bottom: 0.55rem; gap: 1rem; flex-wrap: wrap; }
   .top-count { color: var(--fade); font-weight: 500; letter-spacing: 0.04em; text-transform: none; }
   .track { height: 3px; background: rgba(27,42,51,0.12); overflow: hidden; }
-  .fill { height: 100%; background: var(--copper); transition: width 0.35s ease; width: 0%; }
-  .header-block { text-align: center; margin-bottom: 2rem; padding: 1.4rem 0 1.2rem; position: relative; }
-  .header-block::before {
-    content: ""; position: absolute; z-index: 0; top: 0; left: 50%; transform: translateX(-50%);
-    width: 260px; height: 92px; pointer-events: none;
-    background: repeating-radial-gradient(circle at 50% 100%, rgba(180,98,45,0.30) 0 2px, transparent 2px 15px);
-    mask-image: linear-gradient(to bottom, #000 0%, transparent 92%);
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 92%);
-  }
-  .eyebrow { position: relative; z-index: 1; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.9rem; }
-  .masthead { position: relative; z-index: 1; font-size: clamp(2.1rem,6.4vw,3.3rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.025em; }
-  .sub { position: relative; z-index: 1; font-size: 0.98rem; color: var(--fade); margin-top: 0.6rem; }
-  .rule { width: 86px; height: 9px; margin: 1.5rem auto 0;
+  .fill { height: 100%; background: var(--a1); transition: width 0.35s ease; width: 0%; }
+
+  /* Cover */
+  .cover { text-align: center; padding: 1.2rem 0 1rem; }
+  .cover-eyebrow { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 1.4rem; }
+  .cover-title { font-size: clamp(2.3rem,7vw,3.6rem); font-weight: 800; line-height: 1.03; letter-spacing: -0.025em; margin-bottom: 1.3rem; }
+  .flourish { width: 92px; height: 9px; margin: 0 auto 1.6rem;
     background:
-      radial-gradient(circle at 9px 4.5px, var(--copper) 0 4px, transparent 4.5px),
-      radial-gradient(circle at 43px 4.5px, var(--copper) 0 4px, transparent 4.5px),
-      radial-gradient(circle at 77px 4.5px, var(--copper) 0 4px, transparent 4.5px); }
-  .intro-box { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--malachite); padding: 1.3rem 1.5rem; margin-bottom: 1.4rem; }
-  .intro-label { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 0.55rem; }
-  .intro-text { line-height: 1.68; font-size: 1rem; }
-  .key-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 0.7rem; margin-bottom: 1.8rem; }
-  .key-item { display: flex; flex-direction: column; gap: 0.45rem; padding: 0.85rem; background: var(--paper); border: 1px solid rgba(27,42,51,0.1); }
-  .chip { display: inline-block; padding: 0.22rem 0.65rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; width: fit-content; }
-  .chip-argue { background: #E7D6C4; color: #7B3F1C; }
-  .chip-evidence { background: #D6E3DB; color: #1B5445; }
-  .chip-weigh { background: var(--ink); color: #F0E3CF; }
-  .chip-instinct { background: #EADFC9; color: var(--clay); }
-  .key-desc { font-size: 0.83rem; color: var(--fade); }
-  .card { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--copper); padding: 1.7rem 1.5rem; margin-bottom: 1.3rem; }
-  .stage-tag { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.9rem; }
-  .card h2 { font-size: 1.55rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.18; margin-bottom: 0.9rem; }
-  .card p { font-size: 1rem; line-height: 1.72; margin-bottom: 0.9rem; }
+      radial-gradient(circle at 9px 4.5px, var(--a1) 0 4px, transparent 4.5px),
+      radial-gradient(circle at 46px 4.5px, var(--a1) 0 4px, transparent 4.5px),
+      radial-gradient(circle at 83px 4.5px, var(--a1) 0 4px, transparent 4.5px); }
+  .cover-line { font-size: 1.16rem; line-height: 1.7; color: #4a463f; font-style: italic; max-width: 30rem; margin: 0 auto 2rem; min-height: 5.5rem; }
+  .cover-line span { opacity: 0; transition: opacity 0.5s ease; }
+  .cover-line span.vis { opacity: 1; }
+  .cover-time { font-family: var(--sans); font-size: 0.8rem; color: var(--fade); margin-top: 1.4rem; letter-spacing: 0.02em; }
+  .btn-begin { font-family: var(--sans); display: inline-flex; align-items: center; gap: 0.8rem; padding: 1.05rem 2.2rem; background: var(--ink); color: #F4EADA; border: none; cursor: pointer; font-size: 1.12rem; font-weight: 700; }
+  .btn-begin:hover { background: #12202a; }
+  .btn-begin .sa { color: var(--a1); font-size: 1.3rem; }
+  .skip-link { display: block; margin: 1.6rem auto 0; background: transparent; border: none; color: var(--fade); font-family: var(--sans); font-size: 0.84rem; cursor: pointer; text-decoration: underline; }
+
+  /* Story hook */
+  .story { padding: 0.6rem 0 0.4rem; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; }
+  .story-num { font-family: var(--serif); font-size: clamp(2.6rem,9vw,4rem); font-weight: 800; color: var(--a1); line-height: 1; letter-spacing: -0.02em; }
+  .story-unit { font-family: var(--sans); font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fade); font-weight: 700; margin-top: 0.5rem; }
+  .story-rule { width: 100%; height: 1px; background: rgba(27,42,51,0.22); margin: 1.4rem 0 1.6rem; }
+  .story-line { font-size: 1.24rem; line-height: 1.66; margin-bottom: 1.05rem; opacity: 0; transform: translateY(6px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .story-line.vis { opacity: 1; transform: translateY(0); }
+  .story-line.last { color: var(--a2); font-style: italic; font-weight: 600; }
+
+  /* Content cards */
+  .card { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--a1); padding: 1.7rem 1.5rem; margin-bottom: 1.3rem; }
+  .stage-tag { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.9rem; }
+  .card h2 { font-family: var(--sans); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.9rem; }
+  .card p { font-size: 1.04rem; line-height: 1.74; margin-bottom: 0.9rem; }
   .card p:last-child { margin-bottom: 0; }
-  .pull { border-left: 4px solid var(--malachite); padding: 0.15rem 0 0.15rem 1rem; font-weight: 600; color: var(--ink); margin: 1.15rem 0; }
-  .scenario { background: var(--cut); border: 1px solid rgba(27,42,51,0.14); box-shadow: 6px 6px 0 rgba(180,98,45,0.16); padding: 1.25rem 1.3rem; margin: 1.15rem 0 0.9rem; font-size: 1.02rem; line-height: 1.72; }
-  .scenario-meta { padding: 0.6rem 0 0; font-size: 0.79rem; color: var(--fade); text-align: right; }
-  .source { position: relative; background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-top: 3px solid var(--malachite); box-shadow: 6px 6px 0 rgba(31,107,88,0.13); padding: 1.2rem 1.3rem; margin: 1.15rem 0 1.6rem; }
-  .source::after { content: ""; position: absolute; left: -1px; right: -1px; bottom: -8px; height: 8px;
-    background:
-      linear-gradient(-45deg, transparent 33.4%, var(--cut) 33.4% 66.6%, transparent 66.6%),
-      linear-gradient(45deg, transparent 33.4%, var(--cut) 33.4% 66.6%, transparent 66.6%);
-    background-size: 16px 16px; }
-  .source-attr { font-size: 0.8rem; color: var(--clay); font-weight: 600; margin-bottom: 0.75rem; line-height: 1.5; }
-  .source-body { font-size: 1rem; line-height: 1.72; font-family: Georgia, 'Times New Roman', serif; }
-  .source-body em { color: var(--malachite); font-style: italic; }
-  .toggle-btn { background: transparent; border: none; color: var(--copper); cursor: pointer; font-family: inherit; font-size: 0.88rem; font-weight: 600; text-decoration: underline; padding: 0.7rem 0 0; }
-  .toggle-body { display: none; margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px dashed rgba(123,114,99,0.45); font-size: 0.92rem; color: #55504a; line-height: 1.65; }
-  .toggle-body.open { display: block; }
-  .evtag { display: inline-block; margin-top: 0.95rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; padding: 0.28rem 0.6rem; }
-  .evtag.home { background: #E7D6C4; color: #7B3F1C; }
-  .evtag.ground { background: #D6E3DB; color: #1B5445; }
-  .evtag.exit { background: #E3DCCB; color: #4a4638; }
-  .imgslot { margin: 1rem 0 0.2rem; padding: 1.4rem 1rem; border: 1px dashed rgba(180,98,45,0.55); text-align: center; font-size: 0.8rem; color: var(--fade); background: rgba(255,255,255,0.4); }
+  .key { color: var(--a2); font-weight: 700; }        /* one emphasis colour, body face kept */
+  .card strong { color: var(--a2); font-weight: 700; }
+  .pull { border-left: 4px solid var(--a2); padding: 0.15rem 0 0.15rem 1rem; font-weight: 600; color: var(--ink); margin: 1.15rem 0; font-style: italic; }
   .figure { margin: 1rem 0 0.3rem; }
   .figure img { display: block; height: auto; border: 1px solid rgba(27,42,51,0.18); margin: 0 auto; }
   .figure.wide img { width: 100%; max-width: 460px; }
   .figure.portrait img { width: 100%; max-width: 320px; }
-  .figure figcaption { font-size: 0.79rem; color: var(--fade); margin-top: 0.5rem; line-height: 1.55; text-align: center; }
+  .figure figcaption { font-family: var(--serif); font-size: 0.82rem; color: var(--fade); margin-top: 0.5rem; line-height: 1.55; text-align: center; }
 
-  .q-text { font-size: 1.18rem; line-height: 1.5; font-weight: 600; margin-bottom: 1.2rem; }
+  /* Carousel */
+  .car-wrap { margin: 0.4rem 0 0; }
+  .car-prompt { font-family: var(--sans); font-size: 0.82rem; color: var(--a2); font-weight: 700; margin-bottom: 0.8rem; }
+  .car-frame { background: var(--cut); border: 1px solid rgba(27,42,51,0.14); border-top: 3px solid var(--a1); padding: 1.4rem 1.35rem; min-height: 8.5rem; display: flex; align-items: center; }
+  .car-card { font-size: 1.06rem; line-height: 1.7; width: 100%; }
+  .car-card .cc-lead { font-family: var(--sans); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--clay); display: block; margin-bottom: 0.5rem; }
+  .car-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 0.9rem; gap: 1rem; }
+  .car-dots { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .car-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(27,42,51,0.2); }
+  .car-dot.read { background: var(--a2); }
+  .car-dot.here { outline: 2px solid var(--a1); outline-offset: 2px; }
+  .car-count { font-family: var(--sans); font-size: 0.78rem; color: var(--fade); font-weight: 600; }
+  .car-btns { display: flex; gap: 0.5rem; }
+  .car-btn { font-family: var(--sans); width: 2.4rem; height: 2.4rem; background: var(--paper); border: 1px solid rgba(27,42,51,0.28); color: var(--ink); font-size: 1.1rem; cursor: pointer; }
+  .car-btn:disabled { opacity: 0.32; cursor: not-allowed; }
+
+  /* Stat strip */
+  .stat-strip { display: grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap: 0.8rem; margin: 0.5rem 0 0.2rem; }
+  .stat { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-top: 3px solid var(--a2); padding: 1.1rem 0.7rem; text-align: center; }
+  .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 800; color: var(--a2); line-height: 1; letter-spacing: -0.02em; }
+  .stat-label { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--fade); margin-top: 0.5rem; line-height: 1.4; }
+
+  /* Key terms + memory boxes (collapsed) */
+  /* Key terms strip: label + individual expandable chips */
+  .kt { margin-top: 1.3rem; }
+  .kt-label { font-family: var(--sans); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--a1); padding-top: 0.85rem; border-top: 1px dashed rgba(123,114,99,0.4); }
+  .kt-row { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 0.85rem; }
+  .kt-term { border: 1px solid rgba(27,42,51,0.24); background: transparent; }
+  .kt-term summary { font-family: var(--sans); font-size: 0.92rem; font-weight: 600; color: var(--ink); cursor: pointer; list-style: none; padding: 0.55rem 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .kt-term summary::-webkit-details-marker { display: none; }
+  .kt-term summary::after { content: "+"; color: var(--a1); font-weight: 800; font-size: 1.05rem; }
+  .kt-term[open] { display: block; width: 100%; }
+  .kt-term[open] summary::after { content: "\2212"; }
+  .kt-def { font-size: 0.94rem; line-height: 1.62; color: #55504a; padding: 0 0.85rem 0.75rem; }
+
+  /* Remember box (collapsed) */
+  .remember { margin-top: 0.9rem; border-top: 1px dashed rgba(123,114,99,0.4); padding-top: 0.7rem; }
+  .remember summary { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; color: var(--a1); cursor: pointer; list-style: none; }
+  .remember summary::-webkit-details-marker { display: none; }
+  .remember summary::before { content: "+ "; font-weight: 800; }
+  .remember[open] summary::before { content: "\2212 "; }
+  .remember .disc-body { font-size: 0.96rem; line-height: 1.68; color: #4a463f; margin-top: 0.6rem; background: rgba(31,107,88,0.06); border-left: 3px solid var(--a2); padding: 0.7rem 0.9rem; }
+
+  /* Sources */
+  .source { position: relative; background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-top: 3px solid var(--a2); box-shadow: 6px 6px 0 rgba(31,107,88,0.13); padding: 1.2rem 1.3rem; margin: 1.15rem 0 1.6rem; }
+  .source-attr { font-family: var(--sans); font-size: 0.8rem; color: var(--clay); font-weight: 600; margin-bottom: 0.75rem; line-height: 1.5; }
+  .source-body { font-size: 1.02rem; line-height: 1.74; }
+  .source-body em { color: var(--a2); font-style: italic; }
+  .toggle-btn { font-family: var(--sans); background: transparent; border: none; color: var(--a1); cursor: pointer; font-size: 0.88rem; font-weight: 600; text-decoration: underline; padding: 0.7rem 0 0; }
+  .toggle-body { display: none; margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px dashed rgba(123,114,99,0.45); font-size: 0.94rem; color: #55504a; line-height: 1.66; }
+  .toggle-body.open { display: block; }
+
+  /* Questions */
+  .q-text { font-size: 1.16rem; line-height: 1.5; font-weight: 600; margin-bottom: 1.2rem; }
   .options { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.2rem; }
-  .option { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.05rem; background: var(--sand); border: 1px solid rgba(27,42,51,0.13); cursor: pointer; font-family: inherit; text-align: left; font-size: 0.97rem; line-height: 1.55; color: var(--ink); transition: all 0.18s; width: 100%; }
-  .option:hover:not(:disabled) { background: var(--cut); border-color: var(--copper); }
+  .option { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.05rem; background: var(--sand); border: 1px solid rgba(27,42,51,0.13); cursor: pointer; font-family: var(--serif); text-align: left; font-size: 0.99rem; line-height: 1.55; color: var(--ink); width: 100%; }
+  .option:hover:not(:disabled) { background: var(--cut); border-color: var(--a1); }
   .option:disabled { cursor: default; }
-  .option.selected { background: var(--cut); border-color: var(--copper); border-width: 2px; padding: 0.94rem 0.99rem; }
-  .option.correct { background: #E2EDE4; border-color: var(--malachite); border-width: 2px; padding: 0.94rem 0.99rem; }
+  .option.selected { background: var(--cut); border-color: var(--a1); border-width: 2px; padding: 0.94rem 0.99rem; }
+  .option.correct { background: #E2EDE4; border-color: var(--a2); border-width: 2px; padding: 0.94rem 0.99rem; }
   .option.wrong { background: #F2DDD3; border-color: var(--clay); border-width: 2px; padding: 0.94rem 0.99rem; }
-  .option.dimmed { opacity: 0.48; }
-  .opt-letter { font-weight: 800; color: var(--copper); min-width: 1.1rem; }
+  .option.dimmed { opacity: 0.46; }
+  .opt-letter { font-family: var(--serif); font-weight: 800; color: var(--a1); min-width: 1.1rem; }
   .opt-text { flex: 1; }
   .opt-mark { font-weight: 700; font-size: 1.1rem; }
-  .explanation { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--malachite); padding: 1.15rem 1.2rem; margin-bottom: 0.3rem; }
-  .expl-label { font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 0.5rem; }
-  .expl-text { line-height: 1.68; font-size: 0.95rem; }
-  .skill-callout { background: rgba(31,107,88,0.07); border: 1px solid rgba(31,107,88,0.22); padding: 1rem 1.2rem; margin: 1.15rem 0; }
-  .skill-callout .expl-label { color: var(--malachite); }
-  .skill-list { margin: 0.5rem 0 0 0; padding-left: 1.1rem; }
-  .skill-list li { font-size: 0.94rem; line-height: 1.62; margin-bottom: 0.4rem; }
+  .explanation { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--a2); padding: 1.15rem 1.2rem; }
+  .expl-label { font-family: var(--sans); font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--a2); font-weight: 700; margin-bottom: 0.5rem; }
+  .expl-text { line-height: 1.7; font-size: 0.96rem; }
+  .chip { display: inline-block; font-family: var(--sans); padding: 0.22rem 0.65rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .chip-argue { background: #E7D6C4; color: #7B3F1C; }
+  .chip-evidence { background: #E7D6C4; color: #7B3F1C; }
+  .chip-weigh { background: var(--a2); color: #F0E3CF; }
+  .chip-instinct { background: #EADFC9; color: var(--clay); }
+  .q-meta { margin-bottom: 0.9rem; }
 
-  .nav { display: flex; justify-content: space-between; gap: 0.8rem; margin-top: 0.4rem; }
-  .btn-secondary { padding: 0.8rem 1.2rem; background: transparent; border: 1px solid rgba(27,42,51,0.28); color: var(--ink); font-family: inherit; font-size: 0.92rem; font-weight: 600; cursor: pointer; }
+  /* order + sort interactions */
+  .inter { margin: 0.4rem 0 1rem; }
+  .inter-pool { display: flex; flex-direction: column; gap: 0.5rem; }
+  .inter-item { font-family: var(--serif); text-align: left; padding: 0.85rem 1rem; background: var(--sand); border: 1px solid rgba(27,42,51,0.16); cursor: pointer; font-size: 0.97rem; line-height: 1.5; color: var(--ink); display: flex; gap: 0.7rem; align-items: baseline; }
+  .inter-item:hover:not(:disabled) { border-color: var(--a1); background: var(--cut); }
+  .inter-item .rank { font-family: var(--sans); font-weight: 800; color: var(--a1); min-width: 1.4rem; }
+  .inter-placed { background: var(--cut); border-color: var(--a2); }
+  .inter-item.ok { background: #E2EDE4; border-color: var(--a2); }
+  .inter-item.no { background: #F2DDD3; border-color: var(--clay); }
+  .sort-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .sort-col { background: rgba(255,255,255,0.4); border: 1px dashed rgba(27,42,51,0.28); padding: 0.7rem; min-height: 4rem; }
+  .sort-col h4 { font-family: var(--sans); font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.6rem; text-align: center; }
+  .sort-btns { display: flex; gap: 0.4rem; margin-top: 0.5rem; }
+  .sort-place { font-family: var(--sans); flex: 1; font-size: 0.78rem; font-weight: 700; padding: 0.4rem; background: var(--paper); border: 1px solid rgba(27,42,51,0.24); cursor: pointer; color: var(--ink); }
+
+  /* Running summary */
+  .runsum { background: rgba(31,107,88,0.08); border: 1px solid rgba(31,107,88,0.28); border-left: 5px solid var(--a2); padding: 1.3rem 1.4rem; }
+  .runsum-label { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--a2); font-weight: 700; margin-bottom: 0.9rem; }
+  .runsum ol { margin: 0; padding-left: 1.3rem; }
+  .runsum li { font-size: 1.02rem; line-height: 1.66; margin-bottom: 0.7rem; color: var(--ink); }
+  .runsum li:last-child { margin-bottom: 0; }
+  .runsum li.fresh { font-weight: 700; color: var(--a2); }
+
+  /* Popup */
+  .pop-back { position: fixed; inset: 0; background: rgba(27,42,51,0.5); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 50; }
+  .pop { background: var(--paper); border-top: 5px solid var(--a2); padding: 1.6rem 1.5rem; max-width: 30rem; width: 100%; box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .pop-label { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--a2); font-weight: 700; margin-bottom: 0.8rem; }
+  .pop-text { font-size: 1.1rem; line-height: 1.6; font-weight: 600; color: var(--ink); margin-bottom: 1.3rem; }
+  .pop-btn { font-family: var(--sans); width: 100%; padding: 0.9rem; background: var(--a2); border: none; color: #F7F1E4; font-size: 0.98rem; font-weight: 700; cursor: pointer; }
+
+  /* Nav */
+  .nav { display: flex; justify-content: space-between; gap: 0.8rem; margin-top: 1rem; }
+  .btn-secondary { font-family: var(--sans); padding: 0.8rem 1.2rem; background: transparent; border: 1px solid rgba(27,42,51,0.28); color: var(--ink); font-size: 0.9rem; font-weight: 600; cursor: pointer; }
   .btn-secondary:hover:not(:disabled) { background: var(--paper); }
-  .btn-secondary:disabled { opacity: 0.35; cursor: not-allowed; }
-  .btn-primary { padding: 0.85rem 1.5rem; background: var(--malachite); border: none; color: #F7F1E4; font-family: inherit; font-size: 0.96rem; cursor: pointer; font-weight: 700; letter-spacing: 0.01em; }
+  .btn-primary { font-family: var(--sans); padding: 0.85rem 1.5rem; background: var(--a2); border: none; color: #F7F1E4; font-size: 0.95rem; cursor: pointer; font-weight: 700; }
   .btn-primary:hover:not(:disabled) { background: #164C3F; }
-  .btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
-  .btn-start { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.4rem; background: var(--ink); color: #F4EADA; border: none; cursor: pointer; font-family: inherit; text-align: left; transition: all 0.2s; }
-  .btn-start:hover { background: #12202a; transform: translateX(3px); }
-  .btn-start .st { font-size: 1.14rem; font-weight: 700; }
-  .btn-start .sa { font-size: 1.3rem; color: var(--copper); }
+  .btn-primary:disabled { opacity: 0.34; cursor: not-allowed; }
+
+  /* Results */
+  .results-head { text-align: center; margin-bottom: 1.8rem; }
+  .results-eyebrow { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.8rem; }
+  .results-title { font-family: var(--sans); font-size: clamp(1.9rem,5.5vw,2.7rem); font-weight: 800; letter-spacing: -0.02em; }
   .score-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(130px,1fr)); gap: 0.9rem; margin-bottom: 1.4rem; }
-  .score-block { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); border-top: 4px solid var(--copper); padding: 1.3rem 0.8rem; text-align: center; }
-  .score-num { font-size: 2.6rem; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.03em; }
-  .score-num.red { color: var(--clay); }
-  .score-den { font-size: 1.1rem; color: var(--fade); font-weight: 500; }
-  .score-label { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fade); margin-top: 0.5rem; font-weight: 700; }
-  .grade-desc { text-align: center; margin-bottom: 1.6rem; padding: 0 0.5rem; line-height: 1.65; }
+  .score-block { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); border-top: 4px solid var(--a1); padding: 1.3rem 0.8rem; text-align: center; }
+  .score-num { font-family: var(--serif); font-size: 2.6rem; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.03em; }
+  .score-den { font-family: var(--serif); font-size: 1.1rem; color: var(--fade); font-weight: 500; }
+  .score-word { font-family: var(--serif); font-size: 1.3rem; font-weight: 800; color: var(--a2); line-height: 2; }
+  .score-label { font-family: var(--sans); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fade); margin-top: 0.5rem; font-weight: 700; }
+  .grade-desc { text-align: center; margin-bottom: 1.6rem; padding: 0 0.5rem; line-height: 1.66; }
   .breakdown { background: var(--paper); border: 1px solid rgba(27,42,51,0.12); padding: 1.3rem; margin-bottom: 1.4rem; }
-  .breakdown-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 1rem; text-align: center; }
-  .bd-row { display: grid; grid-template-columns: 1fr 110px 46px; gap: 0.7rem; align-items: center; margin-bottom: 0.7rem; font-size: 0.88rem; }
+  .breakdown-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--a2); font-weight: 700; margin-bottom: 1rem; text-align: center; }
+  .bd-row { display: grid; grid-template-columns: 1fr 110px 46px; gap: 0.7rem; align-items: center; margin-bottom: 0.7rem; font-family: var(--serif); font-size: 0.9rem; }
   .bd-name { font-weight: 600; }
   .bd-bar { height: 9px; background: rgba(27,42,51,0.08); overflow: hidden; }
-  .bd-fill { height: 100%; background: var(--copper); transition: width 0.4s; }
+  .bd-fill { height: 100%; background: var(--a2); }
   .bd-score { color: var(--fade); text-align: right; font-weight: 700; }
-  .essaypanel { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--malachite); padding: 1.25rem 1.3rem; margin-top: 1.15rem; }
-  .essaypanel-label { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--malachite); font-weight: 700; margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.5rem; }
-  .essaypanel-label .tick { color: var(--copper); font-size: 0.85rem; }
-  .essaypanel p { font-size: 0.94rem; line-height: 1.74; margin-bottom: 0.75rem; text-indent: 1.1rem; }
-  .essaypanel p:first-of-type { text-indent: 0; }
-  .essaypanel p:last-child { margin-bottom: 0; }
-  .finalessay { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); box-shadow: 8px 8px 0 rgba(180,98,45,0.14); padding: 1.6rem 1.5rem; margin: 1.15rem 0 1.9rem; }
-  .finalessay .fq { font-weight: 700; color: var(--clay); font-size: 1rem; margin-bottom: 1rem; line-height: 1.45; padding-bottom: 0.9rem; border-bottom: 2px solid rgba(180,98,45,0.28); }
-  .finalessay p { font-size: 0.97rem; line-height: 1.78; margin-bottom: 0.95rem; text-indent: 1.2rem; }
-  .finalessay p:first-of-type { text-indent: 0; }
-  .finalessay p:last-child { margin-bottom: 0; }
-  .qbox { background: var(--cut); border: 1px solid rgba(27,42,51,0.12); border-left: 5px solid var(--clay); padding: 1.15rem 1.3rem; margin: 1.3rem 0 1.6rem; }
-  .qbox .qlabel { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.5rem; }
-  .qbox .qtext { font-size: 1.1rem; font-weight: 600; line-height: 1.55; }
+  .results-actions { display: flex; gap: 0.8rem; margin-top: 1.6rem; }
+  .results-actions button { flex: 1; }
   .hidden { display: none !important; }
-  .footer { text-align: center; font-size: 0.79rem; color: var(--fade); margin-top: 2rem; padding-top: 1.3rem; border-top: 1px solid rgba(27,42,51,0.14); line-height: 1.65; }
 </style>
 </head>
 <body>
 <div class="container">
-
   <div class="top-bar hidden" id="top-bar">
-    <div class="top-meta"><span id="stage-name">Independent Africa: the Congo</span><span class="top-count" id="step-count">Step 1</span></div>
+    <div class="top-meta"><span id="lesson-tag">Kula Revise · Grade 12 · The Congo</span><span class="top-count" id="step-count"></span></div>
     <div class="track"><div class="fill" id="fill"></div></div>
   </div>
-
-  <div id="start-screen">
-    <div class="header-block">
-      <div class="eyebrow">Kula Revise &middot; Grade 12 History &middot; The Congo</div>
-      <h1 class="masthead">Build the Essay</h1>
-      <div class="sub">The capstone &middot; Lesson 5 of 5</div>
-      <div class="rule"></div>
-    </div>
-    <div class="intro-box">
-      <div class="intro-label">Where we are</div>
-      <p class="intro-text">This is a real National Senior Certificate question, taken from Paper 1 of the May and June 2025 examination, and everything you build here is measured against the marking guidelines the Department of Basic Education issued for it. Eight decisions, and you walk away holding a complete fifty mark essay.</p>
-    </div>
-    <div class="key-row">
-      <div class="key-item"><span class="chip chip-argue">Argue</span><span class="key-desc">Take a clear line of argument</span></div>
-      <div class="key-item"><span class="chip chip-evidence">Evidence</span><span class="key-desc">Back the case with specific facts</span></div>
-      <div class="key-item"><span class="chip chip-weigh">Weigh</span><span class="key-desc">Judge it, answer 'to what extent'</span></div>
-    </div>
-    <button class="btn-start" id="begin-btn"><span class="st">Start with the argument</span><span class="sa">&rarr;</span></button>
-    <div class="footer">About 20 minutes. Eight decisions, all marked. Have a pen ready if you want to keep the finished essay.</div>
-  </div>
-
-  <div id="flow-screen" class="hidden">
-    <div class="card" id="flow-card"></div>
-    <div class="nav">
-      <button class="btn-secondary" id="back-btn">&larr; Back</button>
-      <button class="btn-primary" id="next-btn">Continue &rarr;</button>
-    </div>
-  </div>
-
-  <div id="results-screen" class="hidden">
-    <div class="header-block">
-      <div class="eyebrow">The series is complete</div>
-      <h1 class="masthead" style="font-size: clamp(1.8rem,5vw,2.8rem);">Where you stand</h1>
-      <div class="rule"></div>
-    </div>
-    <div class="score-row">
-      <div class="score-block"><div class="score-num"><span id="r-correct">0</span><span class="score-den">/<span id="r-total">0</span></span></div><div class="score-label">Argument moves</div></div>
-      <div class="score-block"><div class="score-num"><span id="r-pct">0</span><span class="score-den">%</span></div><div class="score-label">Accuracy</div></div>
-      <div class="score-block"><div class="score-num red" id="r-band">-</div><div class="score-label">Standard</div></div>
-    </div>
-    <div class="grade-desc" id="r-desc"></div>
-    <div class="breakdown"><div class="breakdown-label">By essay skill</div><div id="r-breakdown"></div></div>
-    <div class="card">
-      <div class="stage-tag">What you have</div>
-      <p>You now hold a full answer to a real examination question, built one decision at a time, with a line of argument that you can defend and a counter argument you have already answered.</p><p class="pull">The eight decisions in this capstone were all the same decision, asked eight ways: does this sentence argue, or does it only describe?</p><p>That is the whole difference between an answer in the middle bands and an answer in the top two. It is also the only thing you cannot fix in the examination room if you have not practised it beforehand.</p>
-    </div>
-    <div class="nav" style="justify-content: center;"><button class="btn-primary" id="redo-btn">&#8635; Restart lesson</button></div>
-    <div class="footer">You have built the whole essay. Now take Knowledge Check 2 to see what stuck, then write the question out under timed conditions: one hour, three pages.</div>
+  <div id="stage"></div>
+  <div class="nav hidden" id="nav">
+    <button class="btn-secondary" id="back-btn">&larr; Back</button>
+    <button class="btn-primary" id="next-btn">Continue &rarr;</button>
   </div>
 </div>
 
 <script>
-const QUESTION = "Critically discuss the effectiveness of Mobutu Sese Seko's political and economic policies in developing the Congo after attaining independence from Belgian colonial rule in the 1960s. [50]";
+const COVER = {
+  "eyebrow": "Kula Revise · Grade 12 History · The Congo",
+  "title": "Build the Skeleton",
+  "lines": [
+    "A real exam question, and the memo that marks it.",
+    "Eight decisions that build the bones of a full answer.",
+    "You bring the argument. The essay assembles itself."
+  ],
+  "begin": "Start the capstone",
+  "time": "About 20 minutes. The capstone. Have a pen ready.",
+  "skip": false
+};
 
-const ESSAY_SCREEN = {"label": "The finished essay", "heading": "Fifty marks, assembled", "intro": "Eight decisions, one essay. Every paragraph below came from a choice you made, and every body point matches a bullet in the official marking guidelines for this question.", "outro": "In the examination you would write this in your own words, in about three pages, in one hour. The shape would be exactly this: a stance in the opening paragraph, evidence that argues instead of narrating, a counter argument you answer rather than avoid, and a conclusion that judges instead of summarising."};
-
-const BANDS = [
-  {
-    "min": 85,
-    "band": "7",
-    "desc": "You chose the arguing sentence almost every time. That is a Level 6 or 7 answer on the marking matrix, and it is a habit rather than a talent. Keep the essay."
-  },
-  {
-    "min": 70,
-    "band": "6",
-    "desc": "Solid. Where you slipped, look at whether the option you chose was narrating rather than arguing, because that is where the marks go."
-  },
-  {
-    "min": 55,
-    "band": "5",
-    "desc": "You have the content and the line of argument keeps dropping. Work through the capstone again and read each option asking one question: is there a because in this sentence?"
-  },
-  {
-    "min": 0,
-    "band": "3",
-    "desc": "Go back to Lesson 1 and run the series again. The essay is built out of the four sentences you chose in the content lessons, and if those are shaky this cannot hold together."
+const RESULTS = {
+  "eyebrow": "The series is complete",
+  "title": "You built the whole thing",
+  "bands": {
+    "excellent": "Every bone in the right place. Now write the second question out on paper, under time, and the topic is finished.",
+    "strong": "A strong skeleton. Look again at any decision you missed, then write the second question out under time.",
+    "solid": "The shape is there. Reread the decisions where you slipped, then try the second question on paper.",
+    "patchy": "Some bones are out of place. Work back through Lessons 1 to 4, then rebuild the skeleton.",
+    "start": "Go back to the lessons. Each build decision here came straight from them, and they will make the choices obvious."
   }
-];
+};
 
 const FLOW = [
   {
-    "type": "narrative",
-    "stage": "Recognise",
-    "html": "<div class=\"stage-tag\">The real thing</div><h2>This question was actually set</h2><div class=\"qbox\"><div class=\"qlabel\">Paper 1, Section B, Question 5. May and June 2025</div><div class=\"qtext\">Critically discuss the effectiveness of Mobutu Sese Seko's political and economic policies in developing the Congo after attaining independence from Belgian colonial rule in the 1960s. [50]</div></div><p>Nothing here is invented. The question is real, the marking guidelines are the approved ones the Department of Basic Education issued to markers in June 2025, and each body point you are about to build matches a bullet on the examiner's list.</p><p>You already have the argument. You built it across four lessons. This lesson turns it into fifty marks.</p>"
+    "type": "content",
+    "tag": "The real thing",
+    "html": "<h2>This question was actually set</h2><div class=\"qbox\"><div class=\"qlabel\">Paper 1, Section B, Question 5. May and June 2025</div><div class=\"qtext\">Critically discuss the effectiveness of Mobutu Sese Seko's political and economic policies in developing the Congo after attaining independence from Belgian colonial rule in the 1960s. [50]</div></div><p>Nothing here is invented. The question is real, the marking guidelines are the approved ones the Department of Basic Education issued for it in June 2025, and each body point you are about to build matches a bullet on the marker's list.</p><p>You already have the argument. You built it across four lessons. This lesson turns it into fifty marks.</p>"
   },
   {
-    "type": "narrative",
-    "stage": "Destabilise",
-    "html": "<div class=\"stage-tag\">Read the command word</div><h2>Critically discuss</h2><p>Two words decide the shape of your whole answer, and most people read straight past them.</p><div class=\"skill-callout\"><div class=\"expl-label\">What the marking guidelines actually ask for</div><ul class=\"skill-list\"><li>A balanced view. The guidelines say plainly that you must indicate instances where the policies were effective and instances where they were ineffective.</li><li>A stance. Balanced does not mean undecided. You must take a position and defend it with evidence.</li><li>A counter argument. Critically means you deal with the strongest case against your line before you conclude.</li></ul></div><p>An answer that only attacks Mobutu cannot reach the top marks, no matter how much detail it packs in, because it has not done what the question asked. Neither can an answer that lists good things and bad things and then refuses to decide.</p>"
+    "type": "content",
+    "tag": "What you are building",
+    "html": "<h2>You are building the skeleton</h2><p>Over the next eight decisions you build the <strong>bones</strong> of this essay: a line of argument, a context paragraph, four body points, a counter-argument and a conclusion.</p><p>Each choice gives you a topic sentence with its evidence attached. That is the skeleton of a paragraph, not the whole of it. In the exam you would flesh each one out into three or four sentences. What you assemble here is the shape, and the shape is the hard part.</p>",
+    "terms": [
+      {
+        "term": "line of argument",
+        "def": "The single position your whole essay defends, stated up front."
+      },
+      {
+        "term": "critically discuss",
+        "def": "An instruction to weigh both sides and reach a judgement, not just describe."
+      }
+    ]
   },
   {
-    "type": "narrative",
-    "stage": "Destabilise",
-    "html": "<div class=\"stage-tag\">The trap in the question</div><h2>What the words in the 1960s do</h2><p>The question ends with in the 1960s, and if you are paying attention that should worry you, because Zairianisation happened in 1973 and the collapse ran through the later 1970s. Is that content out of range?</p><p>No. The examiner's own elaboration list for this question includes Zairianisation, the reversal that followed it, the collapse of the economy and the dependence on the World Bank. The date phrase fixes when the policies were established, and the outcomes of those policies are legitimate evidence of how effective they were.</p><div class=\"skill-callout\"><div class=\"expl-label\">The safe way to write it</div><ul class=\"skill-list\"><li>Anchor each policy to its date in the 1960s where you can: the coup in 1965, the constitution and the nationalisation in 1967.</li><li>When you use later evidence, tie it back explicitly: the policy established in the 1960s produced this outcome by 1976.</li></ul></div><p>That one linking phrase protects you. It shows the examiner you know where the boundary is and why you have crossed it.</p>"
+    "type": "content",
+    "tag": "Read the command word",
+    "html": "<h2>Critically discuss</h2><p>Two words decide the shape of your whole answer, and most people read straight past them.</p><div class=\"skill-callout\"><div class=\"expl-label\">What the memo actually ask for</div><ul class=\"skill-list\"><li>A balanced view. The guidelines say plainly that you must indicate instances where the policies were effective and instances where they were ineffective.</li><li>A stance. Balanced does not mean undecided. You must take a position and defend it with evidence.</li><li>A counter argument. Critically means you deal with the strongest case against your line before you conclude.</li></ul></div><p>An answer that only attacks Mobutu cannot reach the top marks, no matter how much detail it packs in, because it has not done what the question asked. Neither can an answer that lists good things and bad things and then refuses to decide.</p>"
   },
   {
-    "type": "narrative",
-    "stage": "Act",
-    "html": "<div class=\"stage-tag\">How fifty marks are awarded</div><h2>The matrix, briefly</h2><p>Your essay is read twice. Once for content, which is whether the question has been answered with relevant evidence. Once for presentation, which is whether there is a planned, structured argument with a conclusion drawn from the evidence.</p><p>The two readings meet on a grid, and the mark comes from where they cross. This is why someone who knows everything about Mobutu can still score in the twenties: all the facts, no argument, and the grid punishes exactly that.</p><p class=\"pull\">The top of the matrix asks for an original and well balanced line of argument, sustained and defended throughout, with an independent conclusion drawn from the evidence. Sustained is the word to notice. The line has to be visible in every paragraph, not just the first and last.</p><p>Eight decisions follow. Each one offers a sentence that argues, a sentence that only describes, and a sentence that takes a line the evidence will not support.</p>"
+    "type": "content",
+    "tag": "Read the dates carefully",
+    "html": "<div class=\"stage-tag\">Read the dates carefully</div><h2>What the words in the 1960s do</h2><p>The question ends with in the 1960s, and if you are paying attention that should worry you, because Zairianisation happened in 1973 and the collapse ran through the later 1970s. Is that content out of range?</p><p>No. The marker's own elaboration list for this question includes Zairianisation, the reversal that followed it, the collapse of the economy and the dependence on the World Bank. The date phrase fixes when the policies were established, and the outcomes of those policies are legitimate evidence of how effective they were.</p><div class=\"skill-callout\"><div class=\"expl-label\">The safe way to write it</div><ul class=\"skill-list\"><li>Anchor each policy to its date in the 1960s where you can: the coup in 1965, the constitution and the nationalisation in 1967.</li><li>When you use later evidence, tie it back explicitly: the policy established in the 1960s produced this outcome by 1976.</li></ul></div><p>That one linking phrase protects you. It shows the marker you know where the boundary is and why you have crossed it.</p>"
+  },
+  {
+    "type": "content",
+    "tag": "How fifty marks are awarded",
+    "html": "<h2>The matrix, briefly</h2><p>Your essay is read twice. Once for content, which is whether the question has been answered with relevant evidence. Once for presentation, which is whether there is a planned, structured argument with a conclusion drawn from the evidence.</p><p>The two readings meet on a grid, and the mark comes from where they cross. This is why someone who knows everything about Mobutu can still score in the twenties: all the facts, no argument, and the grid punishes exactly that.</p><p class=\"pull\">The top of the matrix asks for an original and well balanced line of argument, sustained and defended throughout, with an independent conclusion drawn from the evidence. Sustained is the word to notice. The line has to be visible in every paragraph, not just the first and last.</p><p>Eight decisions follow. Each one offers a sentence that argues, a sentence that only describes, and a sentence that takes a line the evidence will not support.</p>"
   },
   {
     "type": "question",
-    "stage": "Act",
     "level": "Argue",
     "build": true,
     "part": "Mobutu Sese Seko's policies were effective at one thing above all, and that was control. He ended the secessions, held the borders and put the country's copper into national hands. They were ineffective at developing the Congo, because each policy was finally shaped to secure his own power rather than the country's growth. This essay will argue that the order he created was real but hollow, that his economic nationalisation began well and collapsed into personal enrichment, and that the external shocks of the 1970s deepened a failure his own policies had already begun.",
@@ -268,11 +302,10 @@ const FLOW = [
       "Mobutu's policies developed the Congo successfully until the collapse in world copper prices destroyed everything that he had built"
     ],
     "correct": 0,
-    "explanation": "Option {opt0} takes a position, names both sides of it, and gives the reason, all in one sentence. That is a line of argument. Option {opt1} announces the topic with no position, which leaves the marker nothing to follow. Option {opt2} takes a line the evidence in Lesson 4 will not support. Commit to it here and every later paragraph has to contradict you."
+    "explanation": "Option {opt0} takes a position, names both sides of it and gives the reason, all in one sentence. That's a line of argument. Option {opt1} is tempting because it's a safe, accurate opening. But it announces the topic without taking any position, so there's nothing to follow."
   },
   {
     "type": "question",
-    "stage": "Act",
     "level": "Evidence",
     "build": true,
     "part": "Belgium left the Congo almost entirely unprepared for independence on 30 June 1960. Colonial policy had been paternalistic: Congolese people were treated as children, given no responsibility in the administration and no representation in government. At independence roughly fourteen Congolese held university degrees in a population of about fourteen million, and not one officer in the army was Congolese. Within five days the army had mutinied, and within eleven days Katanga, which supplied around half of the country's revenue, had seceded. This was the state Mobutu seized in November 1965, and it explains why his demand for total control was believed.",
@@ -283,11 +316,10 @@ const FLOW = [
       "The Congo was handed over in good order in 1960, and the disorder that followed was caused entirely by rival Congolese politicians"
     ],
     "correct": 0,
-    "explanation": "Option {opt0} makes the context work: it states the inheritance and draws the consequence that sets up your judgement. Option {opt1} is accurate background with no argument, and background that argues nothing spends a whole page for two marks. Option {opt2} contradicts the evidence and destroys your concession, which is the thing that makes your later criticism believable."
+    "explanation": "Option {opt0} makes the context work: it states what Mobutu inherited and draws the consequence that sets up the whole judgement. Option {opt1} is tempting because it's accurate background. But background that argues nothing spends a whole page saying very little."
   },
   {
     "type": "question",
-    "stage": "Act",
     "level": "Evidence",
     "build": true,
     "part": "Judged against that inheritance, his early political policies were effective. He ended the crisis of the First Republic, put down the Katangese and mercenary revolt of 1967, and issued a constitution in the same year that concentrated authority in the presidency. The country that had been breaking apart for five years stopped breaking apart, and after 1967 no secession succeeded again in his lifetime. He also secured the external support that made this possible, presenting himself to Washington as a reliable anti communist ally and receiving aid and protection in return. Measured purely by whether the state survived, the policy worked.",
@@ -298,11 +330,10 @@ const FLOW = [
       "His political policies achieved nothing worth recording, since a government that takes power in a coup can never be called effective"
     ],
     "correct": 0,
-    "explanation": "Option {opt0} concedes with a reason, and a concession only earns marks when you argue it, not just admit it. Option {opt1} lists three real policies and leaves the marker to work out what they prove. Option {opt2} refuses to concede anything, which fails the balanced view the guidelines want and makes the rest of your essay read as prejudice."
+    "explanation": "Option {opt0} grants what worked and gives a reason, which is what makes a concession count. Option {opt2} is tempting because it sounds tough and principled. But refusing to grant anything reads as prejudice, and it throws away the balance the question needs."
   },
   {
     "type": "question",
-    "stage": "Act",
     "level": "Argue",
     "build": true,
     "part": "That order was achieved by removing everything capable of questioning him, which is why it did not develop the country. Political parties were banned, and from 1970 the Mouvement Populaire de la Revolution was the only legal party, with every citizen a member from birth. He stood unopposed in the 1970 election and was awarded over ninety eight per cent of the vote. Mobutuism was taught in schools and broadcast every evening. A state whose only organising principle is loyalty to one man has no way of correcting him, and that is precisely the failure the following decade exposed.",
@@ -313,11 +344,10 @@ const FLOW = [
       "One party rule followed African tradition, so it suited Congolese conditions far better than multi party democracy would have done"
     ],
     "correct": 0,
-    "explanation": "Option {opt0} turns the evidence into the mechanism of the failure, and it plants the idea Lesson 4 cashes in, so it earns you argument marks. Option {opt1} is the same evidence with the argument left out. Option {opt2} repeats Mobutu's own justification as though it were your conclusion, which hands your essay to the very person you are meant to be judging."
+    "explanation": "Option {opt0} turns the evidence into the mechanism of the failure, and it plants the idea Lesson 4 pays off. Option {opt2} is tempting because it echoes Mobutu's own words. But repeating his justification as your conclusion hands the argument to the man you're supposed to be judging."
   },
   {
     "type": "question",
-    "stage": "Act",
     "level": "Evidence",
     "build": true,
     "part": "His economic policies began with a genuine assertion of national control. The Bakajika Law of 1966 returned ownership of land and minerals to the state, and on 1 January 1967 the Union Miniere du Haut Katanga, the Belgian company that had financed the Katangese secession, was nationalised and replaced by the state company Gecamines. Copper made up around forty per cent of export earnings, and for the first time those earnings answered to Kinshasa rather than to Brussels. Revenue from the copper boom was directed into a ten year industrialisation plan. In principle this was what independence had promised.",
@@ -328,11 +358,10 @@ const FLOW = [
       "Nationalisation was a serious error, since the copper industry had been run efficiently by its Belgian owners until that point"
     ],
     "correct": 0,
-    "explanation": "Option {opt0} explains why the act mattered on two fronts at once, which is analysis of a policy, not a report of it. Option {opt1} gives the law and the date and stops. You get a few marks for facts like these, but none for argument, because there is none. Option {opt2} abandons your line and defends colonial ownership, which the rest of your essay then contradicts."
+    "explanation": "Option {opt0} explains why the act mattered on two fronts at once, which is analysis of a policy rather than a report of it. Option {opt1} is tempting because it's precise, with the law and the date. But it stops at the facts and never says why they matter."
   },
   {
     "type": "question",
-    "stage": "Act",
     "level": "Argue",
     "build": true,
     "part": "What followed showed what the control was for. Under Zairianisation, announced on 30 November 1973, roughly two thousand foreign owned businesses, farms and plantations were seized without compensation and handed to Zairian nationals who were overwhelmingly his relatives, ministers and party officials. Many were stripped of stock and abandoned rather than run, and agricultural production for export fell. Copper revenue went into prestige projects such as the power line to the southern mines, and into private accounts abroad. By 1976 the government was inviting the former owners back. Ownership had changed hands without anything being built, which is not development.",
@@ -343,16 +372,15 @@ const FLOW = [
       "Zairianisation returned the commercial economy to Zairians and was the greatest economic achievement of the entire Mobutu period"
     ],
     "correct": 0,
-    "explanation": "Option {opt0} names what the policy did and draws the judgement from it. That phrase about a change of owner is your sharpest sentence on this topic. Option {opt1} describes the seizure but never says who received the assets, the fact the judgement rests on. Option {opt2} repeats the government's claim, which cannot survive the reversal of 1976, so it loses you the mark."
+    "explanation": "Option {opt0} names what the policy actually did and draws the judgement from it. That phrase about a change of owner is the sharpest line on this topic. Option {opt1} is tempting because it's accurate. But it never says who received the assets, which is the fact the whole judgement rests on."
   },
   {
-    "type": "narrative",
-    "stage": "Act",
-    "html": "<div class=\"stage-tag\">The step most people skip</div><h2>Two decisions left</h2><p>Six paragraphs down. What you have is already a solid essay, and it is not yet a top band one, because you have not dealt with the strongest argument against you.</p><p class=\"pull\">Critically discuss puts marks on the counter argument. Skipping it costs you the top two levels of the matrix no matter how good the rest is.</p><p>So write the case against your own line as strongly as you can, and then show precisely what it cannot account for.</p>"
+    "type": "content",
+    "tag": "The step most people skip",
+    "html": "<h2>Two decisions left</h2><p>Six paragraphs down. What you have is already a solid essay, and it is not yet a top band one, because you have not dealt with the strongest argument against you.</p><p class=\"pull\">Critically discuss puts marks on the counter argument. Skipping it costs you the top marks no matter how good the rest is.</p><p>So write the case against your own line as strongly as you can, and then show precisely what it cannot account for.</p>"
   },
   {
     "type": "question",
-    "stage": "Act",
     "level": "Weigh",
     "build": true,
     "part": "It can be argued that the collapse was not his doing. The world copper price fell by more than half after April 1974, oil prices quadrupled, and the closure of the Benguela railway in 1975 cut the cheapest route from the southern mines to the sea. The economy he inherited had been built for Belgian profit rather than Congolese self sufficiency. These pressures were real and would have strained any government in Kinshasa. They do not, however, overturn the judgement. Zairianisation was announced in November 1973, months before the copper price broke, and it had to be reversed by 1976. External shocks explain why the fall was so steep. They cannot explain a state with almost no usable roads and a president whose personal fortune approached the size of the national debt.",
@@ -363,11 +391,10 @@ const FLOW = [
       "The collapse was caused by world prices and by the colonial economy he inherited, so his own policies cannot fairly be blamed for any of it"
     ],
     "correct": 0,
-    "explanation": "Option {opt0} states the counter argument at full strength, then limits it with a reason, which is exactly what critically asks for. Option {opt1} states the counter argument and never answers it, so you argue the marker out of your own conclusion. Option {opt2} surrenders the essay in its second-last paragraph, and no conclusion recovers from that."
+    "explanation": "Option {opt0} states the counter argument at full strength and then limits it with a reason, which is exactly what critically means. Option {opt1} is tempting because it's a fair summary of the other side. But it raises the counter and never answers it, so you've argued yourself out of your own conclusion."
   },
   {
     "type": "question",
-    "stage": "Act",
     "level": "Weigh",
     "build": true,
     "part": "Mobutu's policies must therefore be judged effective in a narrow sense and ineffective in the sense this question asks about. He held the Congo together when it was coming apart, and he broke the foreign grip on its minerals. But he built a state that existed to serve him, so the wealth he recovered was captured rather than invested, and by the 1980s the country was more dependent on foreign lenders than it had been at independence. His policies developed the ruler. They did not develop the Congo.",
@@ -378,179 +405,511 @@ const FLOW = [
       "Mobutu's policies failed completely in every respect, and left the Congo in a worse condition than it had been under Belgian rule"
     ],
     "correct": 0,
-    "explanation": "Option {opt0} judges both sides and gives the reason that ties the essay together, which is the conclusion the guidelines want, pulled from your own evidence. Option {opt1} is the sentence that ends thousands of History essays: perfectly true, completely empty, and it earns you almost nothing. Option {opt2} throws away every concession and contradicts your own third and fifth paragraphs."
+    "explanation": "Option {opt0} judges both sides and gives the reason that ties the essay together, drawn from your own evidence. Option {opt1} is tempting because it's true and sounds like a conclusion. But a conclusion that picks no side undoes the case: it's the sentence that ends thousands of essays and settles nothing."
   },
   {
-    "type": "essay",
-    "stage": "Transfer"
+    "type": "runsum",
+    "tag": "Your essay skeleton",
+    "heading": "The whole skeleton, assembled"
   },
   {
-    "type": "narrative",
-    "stage": "Transfer",
-    "html": "<div class=\"stage-tag\">In the examination room</div><h2>One hour, three pages</h2><div class=\"skill-callout\"><div class=\"expl-label\">How to reproduce this under pressure</div><ul class=\"skill-list\"><li>Spend five minutes planning. Write your line of argument at the top of the page and four body point headings under it. Never begin writing without it.</li><li>Start every body paragraph with the point, not the story. The evidence comes after the claim, never instead of it.</li><li>Put one linking sentence at the end of each paragraph that returns to your line of argument. That is what sustained means on the matrix.</li><li>Leave ten minutes for the counter argument and the conclusion. They carry more marks than a fifth body point would.</li><li>Watch the dates in the question. Tie later evidence back to the policy that produced it.</li></ul></div><p>You are answering three questions in three hours, and one of them is this one.</p>"
+    "type": "content",
+    "tag": "What you have",
+    "html": "<h2>A skeleton, and how long it is</h2><p>You have built eight topic sentences with their evidence: a complete, defensible essay in outline. Read end to end, it runs to roughly <strong>five hundred words</strong>.</p><p>A fifty-mark answer wants closer to <strong>a thousand to twelve hundred</strong>. So this is genuinely the skeleton. In the exam you flesh each bone into a full paragraph, three or four sentences, evidence explained rather than just named. The thinking is done. The writing is what remains.</p>"
   },
   {
-    "type": "narrative",
-    "stage": "Transfer",
-    "html": "<div class=\"stage-tag\">Beyond the exam</div><h2>Effective at what</h2><p>The most useful question in this whole series was three words long: effective at what. Almost nothing is simply effective or ineffective. Things are effective at something, for someone, measured against a standard that somebody chose.</p><p>Mobutu's policies worked extremely well. They were just working on a different problem from the one the country needed solved.</p><p class=\"pull\">When somebody tells you a policy, a plan or a system is working, ask what it is working at, and who decided that was the measure. You will use that question for the rest of your life, and it started as a fifty mark essay.</p>"
+    "type": "carousel",
+    "tag": "What the lessons hold that this essay left out",
+    "heading": "Still in your toolkit",
+    "cards": [
+      {
+        "lead": "The mutiny and the secessions",
+        "body": "The exact chain of 1960: the Force Publique, Katanga, Kasai, Lumumba's murder. Detail you can pull into the context paragraph."
+      },
+      {
+        "lead": "The 1970 election",
+        "body": "The 98 per cent result with one candidate, and the four ministers executed in 1966. Evidence for how the order was held."
+      },
+      {
+        "lead": "Source B and Source D",
+        "body": "Mobutu's own justification of one-party rule, and Ngugi on the colonialism of the mind. Quotable framing for the body points."
+      },
+      {
+        "lead": "The kleptocracy figures",
+        "body": "Mobutu's fortune approaching the national debt. The single sharpest fact for the conclusion."
+      }
+    ]
+  },
+  {
+    "type": "content",
+    "tag": "One more question",
+    "html": "<h2>Now try it cold</h2><div class=\"pull\">Explain whether the policies of Mobutu Sese Seko succeeded in developing the Congo. Support your answer with relevant evidence.</div><p>This is a real question on the same content, asked a different way. Do not build it here. Plan it on paper: your line of argument at the top, four body-point headings under it, one piece of evidence for each.</p><p>If you can plan that in five minutes, the topic is yours. That is the test that matters, not remembering one answer.</p>"
+  },
+  {
+    "type": "content",
+    "tag": "Beyond the exam",
+    "html": "<h2>Effective at what</h2><p>The most useful question in this whole series was three words long: effective at what. Almost nothing is simply effective or ineffective. Things are effective at something, for someone, measured against a standard that somebody chose.</p><p>Mobutu's policies worked extremely well. They were just working on a different problem from the one the country needed solved.</p><p class=\"pull\">When somebody tells you a policy, a plan or a system is working, ask what it is working at, and who decided that was the measure. You will use that question for the rest of your life, and it started as a fifty mark essay.</p>"
   }
 ];
 
-const DIFF = {
-  Argue:{ label:"Argue &middot; line of argument", cls:"chip-argue" },
-  Evidence:{ label:"Evidence &middot; back it up", cls:"chip-evidence" },
-  Weigh:{ label:"Weigh &middot; to what extent", cls:"chip-weigh" }
+// ---- identity of the five skill/tier labels ----
+const CHIP = {
+  Argue:{cls:"chip-argue"}, Evidence:{cls:"chip-evidence"}, Weigh:{cls:"chip-weigh"},
+  instinct:{cls:"chip-instinct"}
 };
-const KIND = {
-  everyday:{ label:"Your instinct", cls:"chip-instinct" },
-  reveal:{ label:"Plot twist", cls:"chip-instinct" },
-  decision:{ label:"Your call", cls:"chip-instinct" },
-  chain:{ label:"Next link", cls:"chip-instinct" }
-};
-const LEVELS = ["Argue","Evidence","Weigh"];
+const SPINE = ["Argue","Evidence","Weigh"];
 
-const state = { idx:0, answers:{}, revealed:{}, order:{} };
-const questionIds = FLOW.map((f,i)=>f.type==="question"?i:null).filter(i=>i!==null);
-const assessedIds = FLOW.map((f,i)=>(f.type==="question"&&f.level)?i:null).filter(i=>i!==null);
+const stage = document.getElementById("stage");
+const nav = document.getElementById("nav");
+const topBar = document.getElementById("top-bar");
+const nextBtn = document.getElementById("next-btn");
+const backBtn = document.getElementById("back-btn");
+
+const state = {
+  idx: -1,                 // -1 = cover
+  answers: {},             // qIdx -> chosen content index (mcq) or serialized (interactive)
+  revealed: {},            // qIdx -> bool
+  order: {},               // qIdx -> shuffled content-index array
+  carRead: {},             // stepIdx -> Set of read card indices
+  interState: {},          // qIdx -> working state for order/sort
+  poppedBuild: {},         // qIdx -> bool (running-summary popup already shown)
+};
+
 const buildIds = FLOW.map((f,i)=>f.build?i:null).filter(i=>i!==null);
-const totalQ = assessedIds.length;
+const assessedIds = FLOW.map((f,i)=>(f.type==="question"&&f.level)?i:null).filter(i=>i!==null);
 
-const startScreen=document.getElementById("start-screen");
-const flowScreen=document.getElementById("flow-screen");
-const resultsScreen=document.getElementById("results-screen");
-const topBar=document.getElementById("top-bar");
-const card=document.getElementById("flow-card");
-const backBtn=document.getElementById("back-btn");
-const nextBtn=document.getElementById("next-btn");
-
-document.getElementById("begin-btn").addEventListener("click",()=>{
-  startScreen.classList.add("hidden"); flowScreen.classList.remove("hidden"); topBar.classList.remove("hidden"); render();
-});
-backBtn.addEventListener("click",()=>{ if(state.idx>0){state.idx--;render();} });
-nextBtn.addEventListener("click",()=>{ if(state.idx<FLOW.length-1){state.idx++;render();} else {showResults();} });
-document.getElementById("redo-btn").addEventListener("click",()=>location.reload());
-
-function render(){
-  const item=FLOW[state.idx];
-  document.getElementById("step-count").textContent=`Step ${state.idx+1} of ${FLOW.length}`;
-  document.getElementById("fill").style.width=((state.idx+1)/FLOW.length*100)+"%";
-  backBtn.disabled=state.idx===0;
-  if(item.type==="question") renderQuestion(item);
-  else if(item.type==="essay") renderEssay();
-  else if(item.type==="source") renderSource(item);
-  else renderStatic(item);
-  nextBtn.disabled = item.type==="question" ? !state.revealed[state.idx] : false;
-  nextBtn.innerHTML = state.idx===FLOW.length-1 ? "See results &rarr;" : "Continue &rarr;";
-  window.scrollTo({top:0,behavior:"smooth"});
+function esc(s){
+  return String(s).replace(/[&<>"]/g, (c, i, str) => {
+    if(c === "&"){
+      // leave a real HTML entity intact (e.g. &middot; &amp; &#8635;)
+      const rest = str.slice(i);
+      if(/^&(#\d+|#x[0-9a-fA-F]+|[a-zA-Z]+);/.test(rest)) return "&";
+    }
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];
+  });
 }
 
-function essayParts(uptoIdx){
-  return buildIds.filter(i=>i<=uptoIdx && state.revealed[i]).map(i=>FLOW[i].part);
+// {optN} -> the letter option N carries after shuffle
+function resolveOpts(text, order){
+  if(!text) return text;
+  return text.replace(/\{opt(\d+)\}/g,(m,n)=>{
+    const p = order ? order.indexOf(parseInt(n,10)) : -1;
+    return p>=0 ? String.fromCharCode(65+p) : m;
+  });
 }
-function renderEssay(){
-  const parts=buildIds.map(i=>FLOW[i].part);
-  card.innerHTML=`<div class="stage-tag">${ESSAY_SCREEN.label}</div><h2>${ESSAY_SCREEN.heading}</h2>
-    <p>${ESSAY_SCREEN.intro}</p>
-    <div class="finalessay"><div class="fq">${QUESTION}</div>${parts.map(p=>`<p>${p}</p>`).join("")}</div>
-    <p style="margin-top:1.1rem;font-style:italic;color:var(--fade);">${ESSAY_SCREEN.outro}</p>`;
+
+// ============ COVER ============
+function renderCover(){
+  topBar.classList.add("hidden");
+  nav.classList.add("hidden");
+  const lines = (COVER.lines||[]).map(l=>`<span>${esc(l)} </span>`).join("");
+  stage.innerHTML = `
+    <div class="cover">
+      <div class="cover-eyebrow">${COVER.eyebrow||""}</div>
+      <h1 class="cover-title">${esc(COVER.title||"")}</h1>
+      <div class="flourish"></div>
+      <div class="cover-line" id="cover-line">${lines}</div>
+      <button class="btn-begin" id="begin-btn">${COVER.begin||"Begin"} <span class="sa">&rarr;</span></button>
+      ${COVER.time?`<div class="cover-time">${esc(COVER.time)}</div>`:""}
+      ${COVER.skip!==false?`<button class="skip-link" id="skip-btn">Skip the opening if you have done this lesson before</button>`:""}
+    </div>`;
+  const spans = [...document.querySelectorAll("#cover-line span")];
+  spans.forEach((s,i)=>setTimeout(()=>s.classList.add("vis"), 350*(i+1)));
+  document.getElementById("begin-btn").addEventListener("click",()=>{ state.idx=0; render(); });
+  const skip = document.getElementById("skip-btn");
+  if(skip) skip.addEventListener("click",()=>{ state.idx = firstContentIdx(); render(); });
 }
-function renderStatic(item){ card.innerHTML=item.html; bindToggles(); }
-function renderSource(item){
-  let html=item.html;
-  if(item.source){
-    const s=item.source;
-    const ev = s.evidence ? `<span class="evtag ${s.evidence.cls}">${s.evidence.label}</span>` : "";
-    html+=`<div class="source"><div class="source-attr">${s.attr}</div>
-      <div class="source-body">${s.body}</div>${ev}
-      <div><button class="toggle-btn" data-toggle>What does this actually mean?</button></div>
-      <div class="toggle-body" data-toggle-body>${s.toggle}</div></div>`;
-  }
-  card.innerHTML=html;
+function firstContentIdx(){
+  const i = FLOW.findIndex(f=>f.type==="content"||f.type==="carousel"||f.type==="stat");
+  return i<0?0:i;
+}
+
+// ============ STORY HOOK ============
+function renderStory(item){
+  const lines = item.lines.map((l,i)=>{
+    const last = i===item.lines.length-1 ? " last" : "";
+    return `<div class="story-line${last}">${esc(l)}</div>`;
+  }).join("");
+  stage.innerHTML = `
+    <div class="story">
+      <div class="story-num">${esc(item.marker)}</div>
+      <div class="story-unit">${esc(item.markerLabel||"")}</div>
+      <div class="story-rule"></div>
+      ${lines}
+    </div>`;
+  const els = [...stage.querySelectorAll(".story-line")];
+  nextBtn.disabled = true;
+  els.forEach((el,i)=>setTimeout(()=>{
+    el.classList.add("vis");
+    if(i===els.length-1) nextBtn.disabled = false;
+  }, 650*(i+1)));
+}
+
+// ============ STATIC CONTENT ============
+// Key-terms strip: label + one expandable chip per term.
+function ktStrip(terms){
+  if(!terms || !terms.length) return "";
+  const chips = terms.map(t=>`<details class="kt-term"><summary>${esc(t.term)}</summary><div class="kt-def">${esc(t.def)}</div></details>`).join("");
+  return `<div class="kt"><div class="kt-label">Key terms &middot; tap to open</div><div class="kt-row">${chips}</div></div>`;
+}
+function rememberBox(text){
+  if(!text) return "";
+  return `<details class="remember"><summary>Remember it like this</summary><div class="disc-body">${text}</div></details>`;
+}
+
+function renderContent(item){
+  stage.innerHTML = `<div class="card">${item.tag?`<div class="stage-tag">${esc(item.tag)}</div>`:""}${item.html}${rememberBox(item.remember)}${ktStrip(item.terms)}</div>`;
   bindToggles();
 }
-function bindToggles(){
-  card.querySelectorAll("[data-toggle]").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      const body=btn.closest(".source").querySelector("[data-toggle-body]");
-      body.classList.toggle("open");
-      btn.textContent=body.classList.contains("open")?"Hide":"What does this actually mean?";
-    });
-  });
+
+// ============ CAROUSEL ============
+function renderCarousel(item){
+  const cards = item.cards;
+  if(!state.carRead[state.idx]) state.carRead[state.idx] = new Set([0]);
+  const read = state.carRead[state.idx];
+  const pos = state.interState[state.idx]?.pos || 0;
+  read.add(pos);
+  const c = cards[pos];
+  const body = typeof c==="string" ? c : `<span class="cc-lead">${esc(c.lead)}</span>${esc(c.body)}`;
+  const dots = cards.map((_,i)=>`<span class="car-dot ${read.has(i)?"read":""} ${i===pos?"here":""}"></span>`).join("");
+  const allRead = read.size===cards.length;
+  stage.innerHTML = `
+    <div class="card">
+      ${item.tag?`<div class="stage-tag">${esc(item.tag)}</div>`:""}
+      ${item.heading?`<h2>${esc(item.heading)}</h2>`:""}
+      <div class="car-wrap">
+        <div class="car-prompt" id="car-prompt">${allRead?`That is all ${cards.length}. Continue is unlocked.`:`Tap the arrows to read all ${cards.length}. Continue unlocks when you have.`}</div>
+        <div class="car-frame"><div class="car-card">${body}</div></div>
+        <div class="car-nav">
+          <div class="car-dots">${dots}</div>
+          <div class="car-count">${pos+1} / ${cards.length}</div>
+          <div class="car-btns">
+            <button class="car-btn" id="car-prev" ${pos===0?"disabled":""}>&larr;</button>
+            <button class="car-btn" id="car-next" ${pos===cards.length-1?"disabled":""}>&rarr;</button>
+          </div>
+        </div>
+      </div>
+      ${ktStrip(item.terms)}
+    </div>`;
+  nextBtn.disabled = !allRead;
+  const setPos=(p)=>{ state.interState[state.idx]={pos:p}; renderCarousel(item); };
+  const pv=document.getElementById("car-prev"), nx=document.getElementById("car-next");
+  if(pv) pv.addEventListener("click",()=>setPos(Math.max(0,pos-1)));
+  if(nx) nx.addEventListener("click",()=>setPos(Math.min(cards.length-1,pos+1)));
 }
+
+// ============ STAT STRIP ============
+function renderStat(item){
+  const stats = item.stats.map(s=>`<div class="stat"><div class="stat-num">${esc(s.num)}</div><div class="stat-label">${esc(s.label)}</div></div>`).join("");
+  stage.innerHTML = `
+    <div class="card">
+      ${item.tag?`<div class="stage-tag">${esc(item.tag)}</div>`:""}
+      ${item.heading?`<h2>${esc(item.heading)}</h2>`:""}
+      ${item.lead?`<p>${item.lead}</p>`:""}
+      <div class="stat-strip">${stats}</div>
+      ${ktStrip(item.terms)}
+    </div>`;
+}
+
+// ============ SOURCE ============
+function renderSource(item){
+  const s=item.source;
+  stage.innerHTML = `
+    <div class="card">
+      ${item.tag?`<div class="stage-tag">${esc(item.tag)}</div>`:""}
+      ${item.html||""}
+      <div class="source">
+        <div class="source-attr">${s.attr}</div>
+        <div class="source-body">${s.body}</div>
+        ${s.toggle?`<button class="toggle-btn" data-toggle>${s.toggleLabel||"What does this actually mean?"}</button><div class="toggle-body">${s.toggle}</div>`:""}
+      </div>
+      ${ktStrip(item.terms)}
+    </div>`;
+  bindToggles();
+}
+
+// ============ QUESTION (mcq / order / sort) ============
 function renderQuestion(item){
-  const gi=state.idx;
-  if(!state.order[gi]){
-    const arr=item.options.map((_,i)=>i);
-    for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=arr[i]; arr[i]=arr[j]; arr[j]=t; }
-    state.order[gi]=arr;
+  if(item.mode==="order") return renderOrder(item);
+  if(item.mode==="sort") return renderSort(item);
+  return renderMCQ(item);
+}
+
+function renderMCQ(item){
+  const answered = state.revealed[state.idx];
+  if(!state.order[state.idx]){
+    const a=item.options.map((_,i)=>i);
+    for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+    state.order[state.idx]=a;
   }
-  const order=state.order[gi];
-  const revealed=state.revealed[gi];
-  const selected=state.answers[gi];
-  const tag = item.level ? DIFF[item.level] : KIND[item.kind];
-  let optsHtml="";
+  const order=state.order[state.idx];
+  const chip = item.level ? `<span class="chip ${CHIP[item.level].cls}">${item.level}</span>` : `<span class="chip chip-instinct">Instinct</span>`;
+  let opts="";
   order.forEach((orig,pos)=>{
-    let cls="option"; let mark="";
-    if(revealed){
-      if(orig===item.correct){cls+=" correct"; mark='<span class="opt-mark">&#10003;</span>';}
-      else if(orig===selected){cls+=" wrong"; mark='<span class="opt-mark">&#10007;</span>';}
+    let cls="option", mark="";
+    if(answered){
+      if(orig===item.correct){ cls+=" correct"; mark=`<span class="opt-mark">&#10003;</span>`; }
+      else if(orig===state.answers[state.idx]){ cls+=" wrong"; mark=`<span class="opt-mark">&#10007;</span>`; }
       else cls+=" dimmed";
-    } else if(orig===selected) cls+=" selected";
-    optsHtml+=`<button class="${cls}" data-opt="${orig}" ${revealed?"disabled":""}>
-      <span class="opt-letter">${String.fromCharCode(65+pos)}</span>
-      <span class="opt-text">${item.options[orig]}</span>${mark}</button>`;
+    } else if(state.answers[state.idx]===orig){ cls+=" selected"; }
+    opts+=`<button class="${cls}" data-orig="${orig}" ${answered?"disabled":""}><span class="opt-letter">${String.fromCharCode(65+pos)}</span><span class="opt-text">${item.options[orig]}</span>${mark}</button>`;
   });
-  const explLabel = item.level ? "Why" : "What that shows";
-  // Resolve {optN} tokens in the explanation to the LETTER that option N carries
-  // on this learner's shuffled screen, so a reference survives the shuffle. N is
-  // the content index (the option's position in item.options), not the display slot.
-  function resolveOpts(text){
-    if(!text) return text;
-    return text.replace(/\{opt(\d+)\}/g, (m, n) => {
-      const contentIdx = parseInt(n, 10);
-      const displayPos = order.indexOf(contentIdx);
-      return displayPos >= 0 ? String.fromCharCode(65 + displayPos) : m;
-    });
+  stage.innerHTML = `
+    <div class="card">
+      <div class="q-meta">${chip}</div>
+      <div class="q-text">${item.q}</div>
+      <div class="options">${opts}</div>
+      ${answered?`<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">${resolveOpts(item.explanation, order)}</div></div>`:""}
+    </div>`;
+  if(!answered){
+    stage.querySelectorAll(".option").forEach(b=>b.addEventListener("click",()=>{
+      state.answers[state.idx]=parseInt(b.dataset.orig,10);
+      state.revealed[state.idx]=true;
+      render();
+    }));
   }
-  const explText = resolveOpts(item.explanation);
-  let panel="";
-  if(revealed && item.build){
-    panel=`<div class="essaypanel"><div class="essaypanel-label"><span class="tick">&#10003;</span> Added to your essay</div>`
-      + essayParts(gi).map(p=>`<p>${p}</p>`).join("") + `</div>`;
+  syncNav(true);
+}
+
+// order: tap to place into a numbered list, tap placed to remove; Check when all placed
+function renderOrder(item){
+  const answered = state.revealed[state.idx];
+  const st = state.interState[state.idx] || (state.interState[state.idx]={placed:[]});
+  const placed = st.placed;                       // array of content indices in chosen order
+  const remaining = item.items.map((_,i)=>i).filter(i=>!placed.includes(i));
+  let placedHtml = placed.map((ci,pos)=>{
+    let cls="inter-item inter-placed";
+    if(answered){ cls = "inter-item "+(ci===item.answer[pos]?"ok":"no"); }
+    return `<button class="${cls}" data-placed="${ci}" ${answered?"disabled":""}><span class="rank">${pos+1}</span><span>${esc(item.items[ci])}</span></button>`;
+  }).join("");
+  let poolHtml = remaining.map(ci=>`<button class="inter-item" data-pool="${ci}"><span class="rank">&bull;</span><span>${esc(item.items[ci])}</span></button>`).join("");
+  stage.innerHTML = `
+    <div class="card">
+      <div class="q-meta"><span class="chip ${item.level?CHIP[item.level].cls:"chip-instinct"}">${item.level||"Instinct"}</span></div>
+      <div class="q-text">${item.q}</div>
+      <div class="inter">
+        <div class="inter-pool" id="placed">${placedHtml||`<div style="color:var(--fade);font-size:0.9rem;padding:0.4rem 0;">Tap an event below to start putting them in order.</div>`}</div>
+        ${remaining.length?`<div style="height:1px;background:rgba(27,42,51,0.14);margin:0.9rem 0;"></div><div class="inter-pool" id="pool">${poolHtml}</div>`:""}
+      </div>
+      ${answered?`<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">${resolveOpts(item.explanation,null)}</div></div>`:""}
+    </div>`;
+  if(!answered){
+    stage.querySelectorAll("[data-pool]").forEach(b=>b.addEventListener("click",()=>{ placed.push(parseInt(b.dataset.pool,10)); renderOrder(item); }));
+    stage.querySelectorAll("[data-placed]").forEach(b=>b.addEventListener("click",()=>{ const ci=parseInt(b.dataset.placed,10); st.placed=placed.filter(x=>x!==ci); renderOrder(item); }));
   }
-  card.innerHTML=`<div class="stage-tag"><span class="chip ${tag.cls}">${tag.label}</span></div>
-    <div class="q-text">${item.q}</div><div class="options">${optsHtml}</div>
-    ${revealed?`<div class="explanation"><div class="expl-label">${explLabel}</div><div class="expl-text">${explText}</div></div>`:""}
-    ${panel}`;
-  if(!revealed){
-    card.querySelectorAll("[data-opt]").forEach(b=>{
-      b.addEventListener("click",()=>{ state.answers[gi]=parseInt(b.dataset.opt); state.revealed[gi]=true; render(); });
-    });
+  const allPlaced = placed.length===item.items.length;
+  syncNavInteractive(allPlaced, answered, ()=>{
+    state.answers[state.idx]=placed.slice();
+    state.revealed[state.idx]=true; render();
+  });
+}
+
+// sort: two columns, tap an item's column button to place, tap placed to remove
+function renderSort(item){
+  const answered = state.revealed[state.idx];
+  const st = state.interState[state.idx] || (state.interState[state.idx]={col:{}});
+  const col = st.col;                              // content index -> 0/1
+  const unplaced = item.items.map((_,i)=>i).filter(i=>!(i in col));
+  const colCards = (which)=>item.items.map((it,ci)=>{
+    if(col[ci]!==which) return "";
+    let cls="inter-item inter-placed";
+    if(answered) cls="inter-item "+(item.answer[ci]===which?"ok":"no");
+    return `<button class="${cls}" data-un="${ci}" ${answered?"disabled":""}><span>${esc(it)}</span></button>`;
+  }).join("");
+  const pool = unplaced.map(ci=>`
+    <div class="inter-item" style="flex-direction:column;align-items:stretch;cursor:default;">
+      <span>${esc(item.items[ci])}</span>
+      <div class="sort-btns">
+        <button class="sort-place" data-place="${ci}" data-col="0">${esc(item.cols[0])}</button>
+        <button class="sort-place" data-place="${ci}" data-col="1">${esc(item.cols[1])}</button>
+      </div>
+    </div>`).join("");
+  stage.innerHTML = `
+    <div class="card">
+      <div class="q-meta"><span class="chip ${item.level?CHIP[item.level].cls:"chip-instinct"}">${item.level||"Instinct"}</span></div>
+      <div class="q-text">${item.q}</div>
+      <div class="inter">
+        <div class="sort-cols">
+          <div class="sort-col"><h4>${esc(item.cols[0])}</h4>${colCards(0)}</div>
+          <div class="sort-col"><h4>${esc(item.cols[1])}</h4>${colCards(1)}</div>
+        </div>
+        ${unplaced.length?`<div style="height:1px;background:rgba(27,42,51,0.14);margin:0.9rem 0;"></div><div class="inter-pool">${pool}</div>`:""}
+      </div>
+      ${answered?`<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">${resolveOpts(item.explanation,null)}</div></div>`:""}
+    </div>`;
+  if(!answered){
+    stage.querySelectorAll("[data-place]").forEach(b=>b.addEventListener("click",()=>{ col[parseInt(b.dataset.place,10)]=parseInt(b.dataset.col,10); renderSort(item); }));
+    stage.querySelectorAll("[data-un]").forEach(b=>b.addEventListener("click",()=>{ delete col[parseInt(b.dataset.un,10)]; renderSort(item); }));
+  }
+  const allPlaced = unplaced.length===0;
+  syncNavInteractive(allPlaced, answered, ()=>{
+    state.answers[state.idx]=Object.assign({},col);
+    state.revealed[state.idx]=true; render();
+  });
+}
+
+// ============ RUNNING SUMMARY (own screen) ============
+function renderRunsum(item){
+  const parts = buildIds.filter(i=>i<=state.idx && state.revealed[i]).map(i=>FLOW[i].part);
+  const freshIdx = parts.length-1;
+  const lis = parts.map((p,i)=>`<li class="${i===freshIdx?"fresh":""}">${esc(p)}</li>`).join("");
+  stage.innerHTML = `
+    <div class="card">
+      <div class="stage-tag">${esc(item.tag||"Your running summary")}</div>
+      ${item.heading?`<h2>${esc(item.heading)}</h2>`:""}
+      ${item.html?item.html:""}
+      <div class="runsum"><div class="runsum-label">Your running summary</div><ol>${lis}</ol></div>
+    </div>`;
+}
+
+// ============ POPUP after a build question ============
+function showBuildPop(part){
+  const back=document.createElement("div");
+  back.className="pop-back";
+  back.innerHTML=`<div class="pop"><div class="pop-label">Added</div><div class="pop-text">${esc(part)}</div><button class="pop-btn" id="pop-ok">Got it</button></div>`;
+  document.body.appendChild(back);
+  document.getElementById("pop-ok").addEventListener("click",()=>back.remove());
+}
+
+// ============ NAV ============
+function syncNav(isQuestion){
+  nav.classList.remove("hidden");
+  backBtn.disabled=false;
+  backBtn.innerHTML = state.idx===0 ? "&larr; Back to the start" : "&larr; Back";
+  nextBtn.style.display="";
+  nextBtn.disabled = isQuestion ? !state.revealed[state.idx] : false;
+  nextBtn.innerHTML = state.idx===FLOW.length-1 ? "See results &rarr;" : "Continue &rarr;";
+}
+// interactive items: replace Continue with a Check button until answered
+function syncNavInteractive(canCheck, answered, onCheck){
+  nav.classList.remove("hidden");
+  backBtn.disabled=false;
+  backBtn.innerHTML = state.idx===0 ? "&larr; Back to the start" : "&larr; Back";
+  if(answered){
+    nextBtn.style.display="";
+    nextBtn.disabled=false;
+    nextBtn.innerHTML = state.idx===FLOW.length-1 ? "See results &rarr;" : "Continue &rarr;";
+    nextBtn.onclick = defaultNext;
+  } else {
+    nextBtn.style.display="";
+    nextBtn.disabled=!canCheck;
+    nextBtn.innerHTML="Check &rarr;";
+    nextBtn.onclick = ()=>{ onCheck(); };
   }
 }
+
+function defaultNext(){
+  // fire the running-summary popup when leaving a build question
+  const cur=FLOW[state.idx];
+  if(cur && cur.build && state.revealed[state.idx] && !state.poppedBuild[state.idx]){
+    state.poppedBuild[state.idx]=true;
+    showBuildPop(cur.part);
+  }
+  if(state.idx<FLOW.length-1){ state.idx++; render(); } else showResults();
+}
+
+nextBtn.onclick = defaultNext;
+backBtn.addEventListener("click",()=>{
+  if(state.idx<=0){ state.idx=-1; renderCover(); }
+  else { state.idx--; render(); }
+});
+
+// ============ RENDER DISPATCH ============
+function render(){
+  window.scrollTo({top:0,behavior:"instant"});
+  if(state.idx===-1){ renderCover(); return; }
+  topBar.classList.remove("hidden");
+  document.getElementById("step-count").textContent=`Step ${state.idx+1} of ${FLOW.length}`;
+  document.getElementById("fill").style.width=((state.idx+1)/FLOW.length*100)+"%";
+  const item=FLOW[state.idx];
+  nextBtn.onclick = defaultNext;
+  switch(item.type){
+    case "story": renderStory(item); syncNav(false); break;
+    case "carousel": renderCarousel(item); /* nav handled inside */ syncNavCarousel(); break;
+    case "stat": renderStat(item); syncNav(false); break;
+    case "source": renderSource(item); syncNav(false); break;
+    case "question": renderQuestion(item); break;
+    case "runsum": renderRunsum(item); syncNav(false); break;
+    default: renderContent(item); syncNav(false);
+  }
+}
+function syncNavCarousel(){
+  nav.classList.remove("hidden");
+  backBtn.disabled=false;
+  backBtn.innerHTML = state.idx===0 ? "&larr; Back to the start" : "&larr; Back";
+  nextBtn.style.display="";
+  nextBtn.innerHTML = state.idx===FLOW.length-1 ? "See results &rarr;" : "Continue &rarr;";
+  // disabled state already set inside renderCarousel
+}
+
+function bindToggles(){
+  stage.querySelectorAll("[data-toggle]").forEach(b=>b.addEventListener("click",()=>{
+    b.nextElementSibling.classList.toggle("open");
+  }));
+}
+
+// ============ RESULTS ============
 function showResults(){
-  flowScreen.classList.add("hidden"); topBar.classList.add("hidden"); resultsScreen.classList.remove("hidden");
+  topBar.classList.add("hidden");
+  nav.classList.add("hidden");
   let correct=0;
-  assessedIds.forEach(i=>{ if(state.answers[i]===FLOW[i].correct) correct++; });
-  const pct=totalQ?Math.round((correct/totalQ)*100):0;
-  let band="-",desc="";
-  for(const b of BANDS){ if(pct>=b.min){ band=b.band; desc=b.desc; break; } }
-  document.getElementById("r-correct").textContent=correct;
-  document.getElementById("r-total").textContent=totalQ;
-  document.getElementById("r-pct").textContent=pct;
-  document.getElementById("r-band").textContent=band;
-  document.getElementById("r-desc").textContent=desc;
-  const bd=document.getElementById("r-breakdown"); bd.innerHTML="";
-  LEVELS.forEach(level=>{
-    const ids=assessedIds.filter(i=>FLOW[i].level===level);
-    const got=ids.filter(i=>state.answers[i]===FLOW[i].correct).length;
-    const p=ids.length?Math.round(got/ids.length*100):0;
-    bd.innerHTML+=`<div class="bd-row"><div class="bd-name">${level}</div>
-      <div class="bd-bar"><div class="bd-fill" style="width:${p}%"></div></div>
-      <div class="bd-score">${got}/${ids.length}</div></div>`;
+  assessedIds.forEach(i=>{ if(isRight(i)) correct++; });
+  const total=assessedIds.length;
+  const pct = total?Math.round(correct/total*100):0;
+  let band="", desc="";
+  if(pct>=85){ band="Excellent"; desc=RESULTS.bands.excellent; }
+  else if(pct>=70){ band="Strong"; desc=RESULTS.bands.strong; }
+  else if(pct>=55){ band="Solid"; desc=RESULTS.bands.solid; }
+  else if(pct>=40){ band="Patchy"; desc=RESULTS.bands.patchy; }
+  else { band="Start again"; desc=RESULTS.bands.start; }
+  const rows=SPINE.map(sp=>{
+    const ids=assessedIds.filter(i=>FLOW[i].level===sp);
+    if(!ids.length) return "";
+    const g=ids.filter(i=>isRight(i)).length;
+    const p=Math.round(g/ids.length*100);
+    return `<div class="bd-row"><div class="bd-name">${sp}</div><div class="bd-bar"><div class="bd-fill" style="width:${p}%"></div></div><div class="bd-score">${g}/${ids.length}</div></div>`;
+  }).join("");
+  const parts=buildIds.filter(i=>state.revealed[i]).map(i=>FLOW[i].part);
+  const runsum = parts.length?`<div class="breakdown"><div class="breakdown-label">Your running summary</div><ol style="margin:0;padding-left:1.3rem;">${parts.map(p=>`<li style="font-size:0.98rem;line-height:1.62;margin-bottom:0.6rem;">${esc(p)}</li>`).join("")}</ol></div>`:"";
+  stage.innerHTML = `
+    <div class="results-head">
+      <div class="results-eyebrow">${RESULTS.eyebrow||"Lesson report"}</div>
+      <h1 class="results-title">${esc(RESULTS.title||"Where you stand")}</h1>
+    </div>
+    <div class="score-row">
+      <div class="score-block"><div class="score-num">${correct}<span class="score-den">/${total}</span></div><div class="score-label">Correct</div></div>
+      <div class="score-block"><div class="score-num">${pct}<span class="score-den">%</span></div><div class="score-label">Accuracy</div></div>
+      <div class="score-block"><div class="score-word">${band}</div><div class="score-label">Band</div></div>
+    </div>
+    <div class="grade-desc">${desc}</div>
+    <div class="breakdown"><div class="breakdown-label">By skill</div>${rows}</div>
+    ${runsum}
+    <div class="results-actions">
+      <button class="btn-secondary" id="restart-btn">Restart lesson</button>
+      <button class="btn-primary" id="finish-btn">Finish</button>
+    </div>`;
+  document.getElementById("restart-btn").addEventListener("click",()=>{
+    state.idx=-1; state.answers={}; state.revealed={}; state.order={}; state.carRead={}; state.interState={}; state.poppedBuild={};
+    renderCover();
   });
-  window.scrollTo({top:0,behavior:"smooth"});
+  document.getElementById("finish-btn").addEventListener("click",()=>{
+    const back=document.createElement("div");
+    back.className="pop-back";
+    back.innerHTML=`<div class="pop"><div class="pop-label">Lesson complete</div><div class="pop-text">Click on the arrow above to continue to the next lesson.</div><button class="pop-btn" id="fin-ok">Close</button></div>`;
+    document.body.appendChild(back);
+    document.getElementById("fin-ok").addEventListener("click",()=>back.remove());
+  });
 }
+
+function isRight(i){
+  const item=FLOW[i]; const ans=state.answers[i];
+  if(ans===undefined) return false;
+  if(item.mode==="order") return JSON.stringify(ans)===JSON.stringify(item.answer);
+  if(item.mode==="sort"){ return item.items.every((_,ci)=>ans[ci]===item.answer[ci]); }
+  return ans===item.correct;
+}
+
+renderCover();
 </script>
 </body>
 </html>
