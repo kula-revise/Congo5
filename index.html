@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build the Skeleton | Independent Africa: the Congo | Kula Revise</title>
+<title>The Congo · Build the Skeleton</title>
 <style>
+
   /* Ore Seam identity. Two accents split by job.
      Accent one (copper): navigation, progress, emphasis, option letters, primary button, story date.
      Accent two (malachite): anything the learner earned. correct answers, running summary,
@@ -12,12 +13,11 @@
   :root {
     --sand: #F2F5F8; --paper: #FCFDFE; --cut: #FFFFFF; --ink: #17212B;
     --a1: #2E6FB2;         /* copper, accent one */
-    --a2: #255E90;         /* malachite, accent two */
+    --a2: #255E90; --a2-hover: #1E4B73;         /* malachite, accent two */
     --clay: #2E6FB2; --fade: #6C7681;
     --ink-c:23,33,43; --a1-c:46,111,178; --a2-c:37,94,144; --fade-c:108,118,129;
     --opt-correct-bg:#DCEAF7; --opt-wrong-bg:#ECEEF0; --chip-argue-bg:#DEE8F3; --chip-argue-fg:#235C93;
     --on-ink:#FFFFFF; --mute1:#4A5560; --mute2:#545E68; --ink-hover:#0E1620;
-    --chip-instinct-bg:#E7EBEF; --sort-bg:rgba(255,255,255,0.4); --a2-hover:#1E5080;
     --serif: Georgia, 'Times New Roman', serif;
     --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
@@ -229,706 +229,248 @@
 #kula-mode-toggle, .mode-toggle { min-height: 44px !important; padding-top: 0.6rem !important; padding-bottom: 0.6rem !important; box-sizing: border-box !important; }
 #next-btn, #begin-btn, #kdone-btn, #kretake-btn { min-height: 44px !important; }
 /* cg-cta */
-body.dark .btn-primary, body.dark #next-btn { color: #0c0e10 !important; }
+body.dark .btn-primary, body.dark #next-btn { color: #ffffff !important; }
 body.dark .btn-primary .sa, body.dark #next-btn .sa, body.dark .btn-primary svg, body.dark #next-btn svg { color: #0c0e10 !important; fill: #0c0e10 !important; }
+
+.container{max-width:720px;margin:0 auto;padding:1.2rem 1.1rem 3rem;}
+.cap-intro{font-size:1.04rem;line-height:1.74;margin-bottom:1.1rem;}
+.yourpoint{background:var(--cut);border:1px solid rgba(var(--ink-c),0.12);border-left:4px solid var(--a2);padding:0.8rem 0.95rem;margin-bottom:1.1rem;font-family:var(--serif);font-size:1rem;line-height:1.5;}
+.yourpoint b{display:block;font-family:var(--sans);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--a2);font-weight:700;margin-bottom:0.3rem;}
+.evlist{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.2rem;}
+.evrow{display:flex;align-items:center;gap:0.85rem;padding:0.85rem 1rem;background:var(--sand);border:1px solid rgba(var(--ink-c),0.13);}
+.evrow .evtext{flex:1;font-family:var(--serif);font-size:1rem;line-height:1.55;}
+.evrow .evtext .off{display:block;font-family:var(--sans);font-size:0.78rem;color:var(--mute2);margin-top:0.2rem;}
+.evtoggle{font-family:var(--sans);font-size:0.78rem;font-weight:700;border:1px solid var(--a2);color:var(--a2);background:transparent;padding:0.4rem 0.85rem;cursor:pointer;min-height:38px;white-space:nowrap;}
+.evrow.use{border-color:var(--a1);border-width:2px;background:var(--cut);}
+.evrow.use .evtoggle{background:var(--a2);color:#F7F1E4;border-color:var(--a2);}
+.evrow.ok{border-color:var(--a2);border-width:2px;background:var(--opt-correct-bg);}
+.evrow.miss{border-color:var(--clay);border-style:dashed;border-width:2px;}
+.evrow.wrong{border-color:var(--clay);border-width:2px;background:var(--opt-wrong-bg);}
+.evtag{font-family:var(--sans);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;}
+.evtag.y{color:var(--a2);} .evtag.n{color:var(--clay);}
+.frame{border:1px solid rgba(var(--ink-c),0.14);border-left:5px solid var(--a2);background:var(--cut);padding:1.2rem 1.3rem;margin-bottom:1.2rem;}
+.frame .fp{padding:0.7rem 0 0.95rem;border-bottom:1px dashed rgba(var(--ink-c),0.2);}
+.frame .fp:last-child{border-bottom:none;padding-bottom:0;}
+.frame .frole{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--a2);font-weight:700;margin-bottom:0.3rem;}
+.frame .fts{font-family:var(--serif);font-weight:700;font-size:1.02rem;line-height:1.5;margin-bottom:0.5rem;}
+.frame .flabel{font-family:var(--sans);font-size:0.66rem;font-weight:700;color:var(--mute2);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.2rem;}
+.frame ul{margin:0.1rem 0 0.6rem;padding-left:1.15rem;}
+.frame li{font-family:var(--serif);margin-bottom:0.25rem;line-height:1.5;}
+.frame .flink{font-family:var(--serif);font-style:italic;color:var(--mute1);}
+.writeup{font-family:var(--sans);background:var(--paper);border:1px solid rgba(var(--a1-c),0.4);border-left:5px solid var(--a1);padding:1.1rem 1.2rem;}
+.writeup b{color:var(--a1);font-size:1.05rem;}
+.writeup .wsub{font-size:0.92rem;line-height:1.6;color:var(--mute1);margin-top:0.4rem;}
+.cap-prog{font-family:var(--sans);font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute2);font-weight:700;margin-bottom:0.9rem;}
+.cap-actions{display:flex;justify-content:flex-end;}
+#kula-mode-toggle{position:fixed;top:0.7rem;right:0.7rem;z-index:60;font-family:var(--sans);font-size:0.7rem;font-weight:700;letter-spacing:0.06em;background:var(--cut);color:var(--ink);border:1px solid rgba(var(--ink-c),0.2);border-radius:20px;padding:0.4rem 0.9rem;cursor:pointer;min-height:34px;}
+#kula-mode-toggle:hover{border-color:var(--a2);}
 </style>
 </head>
 <body>
-<style>#kula-mode-toggle{position:fixed;bottom:1.1rem;right:1.1rem;z-index:9999;display:inline-flex;align-items:center;gap:.45em;padding:.48rem .82rem;border-radius:999px;font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;line-height:1;background:#F4F6F8;color:#525C66;border:1px solid rgba(23,33,43,.15);box-shadow:0 2px 8px rgba(0,0,0,.10);transition:transform .15s ease,box-shadow .15s ease}#kula-mode-toggle:hover{transform:translateY(-1px)}#kula-mode-toggle svg{width:15px;height:15px;display:block;flex:0 0 auto}body.dark #kula-mode-toggle{background:#1B2026;color:#AEB8C4;border-color:rgba(220,232,244,.18)}</style><button id="kula-mode-toggle" type="button" onclick="kulaToggle()" aria-label="Switch between light and dark mode"><span id="kmt-icon"></span><span id="kmt-label"></span></button><script>(function(){var MOON="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z'/></svg>",SUN="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4.2'/><path d='M12 1.6v2M12 20.4v2M3.6 12h-2M22.4 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4'/></svg>",K="kula-theme";function paint(){var d=document.body.classList.contains("dark");var ic=document.getElementById("kmt-icon"),la=document.getElementById("kmt-label");if(ic)ic.innerHTML=d?SUN:MOON;if(la)la.textContent=d?"Light mode":"Dark mode"}window.kulaToggle=function(){document.body.classList.toggle("dark");try{localStorage.setItem(K,document.body.classList.contains("dark")?"dark":"light")}catch(e){}paint()};try{if(localStorage.getItem(K)!=="light")document.body.classList.add("dark")}catch(e){document.body.classList.add("dark")}paint();})();</script>
-<div class="container">
-  <div class="top-bar hidden" id="top-bar">
-    <div class="top-meta"><span id="lesson-tag">Kula Revise · Grade 12 · The Congo</span><span class="top-count" id="step-count"></span></div>
-    <div class="track"><div class="fill" id="fill"></div></div>
-  </div>
-  <div id="stage"></div>
-  <div class="nav hidden" id="nav">
-    <button class="btn-secondary" id="back-btn">&larr; Back</button>
-    <button class="btn-primary" id="next-btn">Continue &rarr;</button>
-  </div>
-</div>
-
+<button id="kula-mode-toggle" type="button" onclick="kulaToggle()" aria-label="Switch light or dark mode"><span id="kmt">Dark</span></button>
+<div class="container"><div id="stage"></div></div>
 <script>
-const COVER = {
-  "eyebrow": "Kula Revise · Grade 12 History · The Congo",
-  "title": "Build the Skeleton",
-  "lines": [
-    "A question at exam standard, built against the way the exam is marked.",
-    "Eight decisions that build the bones of a full answer.",
-    "You bring the argument. The essay assembles itself."
-  ],
-  "begin": "Begin",
-  "time": "About 20 minutes. Have a pen ready.",
-  "skip": false
+function kulaToggle(){var d=document.body.classList.toggle("dark");document.getElementById("kmt").textContent=d?"Light":"Dark";}
+var esc=function(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;};
+var frame={}, idx=0;
+
+var COVER={
+  eyebrow:"Kula Revise \u00b7 Grade 12 History \u00b7 The Congo",
+  title:"Build the Skeleton",
+  lines:["Fifty marks. One hour. Three pages.","You will not write the essay here.","You build its skeleton: the line, the points, the evidence, the verdict.","Then you take the frame away and write it in your own words."]
 };
 
-const RESULTS = {
-  "eyebrow": "The series is complete",
-  "title": "You built the whole thing",
-  "bands": {
-    "excellent": "Every bone in the right place. Now write the second question out on paper, under time, and the topic is finished.",
-    "strong": "A strong skeleton. Look again at any decision you missed, then write the second question out under time.",
-    "solid": "The shape is there. Reread the decisions where you slipped, then try the second question on paper.",
-    "patchy": "Some bones are out of place. Work back through Lessons 1 to 4, then rebuild the skeleton.",
-    "start": "Go back to the lessons. Each build decision here came straight from them, and they will make the choices obvious."
-  }
-};
+var STEPS=[
+  {type:'cover'},
+  {type:'pick', tag:'Introduction \u00b7 your line of argument', prog:'Line of argument',
+    h2:'Choose your line of argument',
+    intro:'Every mark in this essay hangs off one sentence: the line you argue. The question asks how effective Mobutu\u2019s policies were, so your line has to take a side on that. Pick the sentence that argues, not the one that only describes.',
+    correct:0,
+    opts:[
+      "Mobutu's policies were effective at keeping control but ineffective at developing the Congo, because each one was built to protect his power, not to grow the country.",
+      "Mobutu ruled the Congo from 1965 and brought in many political and economic policies over his years in power.",
+      "Mobutu's policies developed the Congo well, until the fall in world copper prices destroyed everything he had built."
+    ],
+    expl:"<b>The first sentence argues.</b> It takes a side (effective at one thing, not another) and says why, so the whole essay has a line to follow. The second only describes: a marker sees you telling the story, not making a case, and that caps you at middle marks. The third takes the wrong line, and the facts in this topic will go against it.",
+    save:function(s){frame.arg=s.opts[0];}},
 
-const FLOW = [
-  {
-    "type": "content",
-    "tag": "The exam question",
-    "html": "<h2>This Is Exam Standard</h2><div class=\"qbox\"><div class=\"qlabel\">Grade 12 History, Paper 1 essay. 50 marks.</div><div class=\"qtext\">Critically discuss how well Mobutu Sese Seko's political and economic policies developed the Congo after it won independence from Belgian rule in the 1960s. [50]</div></div><p>Nothing here is invented. This is a question at exam standard, and each body point you are about to build is one the official marking rewards.</p><p>You already have the argument. You built it across four lessons. This lesson turns it into fifty marks.</p>"
-  },
-  {
-    "type": "content",
-    "tag": "What you are building",
-    "html": "<h2>You are building the skeleton</h2><p>Over the next eight decisions you build the <strong>bones</strong> of this essay: a line of argument, a context paragraph, four body points, a counter-argument and a conclusion.</p><p>Each choice gives you a topic sentence with its evidence attached. That is the skeleton of a paragraph, not the whole of it. In the exam you would flesh each one out into three or four sentences. What you assemble here is the shape, and the shape is the hard part.</p>",
-    "terms": [
-      {
-        "term": "line of argument",
-        "def": "The single position your whole essay defends, stated up front."
-      },
-      {
-        "term": "critically discuss",
-        "def": "An instruction to weigh both sides and reach a judgement, not just describe."
-      }
-    ]
-  },
-  {
-    "type": "content",
-    "tag": "Read the command word",
-    "html": "<h2>Critically discuss</h2><p>Two words decide the shape of your whole answer, and most people read straight past them.</p><div class=\"skill-callout\"><div class=\"expl-label\">What the marking actually asks for</div><ul class=\"skill-list\"><li>A balanced view. The guidelines say plainly that you must indicate instances where the policies were effective and instances where they were ineffective.</li><li>A stance. Balanced does not mean undecided. You must take a position and defend it with evidence.</li><li>A counter argument. Critically means you deal with the strongest case against your line before you conclude.</li></ul></div><p>An answer that only attacks Mobutu cannot reach the top marks, no matter how much detail it packs in, because it has not done what the question asked. Neither can an answer that lists good things and bad things and then refuses to decide.</p>"
-  },
-  {
-    "type": "content",
-    "tag": "Read the dates carefully",
-    "html": "<div class=\"stage-tag\">Read the dates carefully</div><h2>What the words in the 1960s do</h2><p>The question ends with in the 1960s, and if you are paying attention that should worry you, because Zairianisation happened in 1973 and the collapse ran through the later 1970s. Is that content out of range?</p><p>No. The official answer for this question already lists Zairianisation, the reversal that followed it, the collapse of the economy and the dependence on the World Bank. The date phrase fixes when the policies were established, and the outcomes of those policies are legitimate evidence of how effective they were.</p><div class=\"skill-callout\"><div class=\"expl-label\">The safe way to write it</div><ul class=\"skill-list\"><li>Anchor each policy to its date in the 1960s where you can: the coup in 1965, the constitution and the nationalisation in 1967.</li><li>When you use later evidence, tie it back explicitly: the policy established in the 1960s produced this outcome by 1976.</li></ul></div><p>That one linking phrase does real work. It shows you know where the date boundary sits, and why you have stepped past it on purpose.</p>"
-  },
-  {
-    "type": "content",
-    "tag": "How fifty marks are awarded",
-    "html": "<h2>The matrix, briefly</h2><p>Your essay is read twice. Once for content, which is whether the question has been answered with relevant evidence. Once for presentation, which is whether there is a planned, structured argument with a conclusion drawn from the evidence.</p><p>The two readings meet on a grid, and the mark comes from where they cross. This is why someone who knows everything about Mobutu can still score in the twenties: all the facts, no argument, and the grid punishes exactly that.</p><p class=\"pull\">The top of the matrix asks for an original and well balanced line of argument, sustained and defended throughout, with an independent conclusion drawn from the evidence. Sustained is the word to notice. The line has to be visible in every paragraph, not just the first and last.</p><p>Eight decisions follow. Each one offers a sentence that argues, a sentence that only describes, and a sentence that takes a line the evidence will not support.</p>"
-  },
-  {
-    "type": "question",
-    "level": "Argue",
-    "build": true,
-    "part": "Mobutu Sese Seko's policies were effective at one thing above all, and that was control. He ended the secessions, held the borders and put the country's copper into national hands. They were ineffective at developing the Congo, because each policy was finally shaped to secure his own power rather than the country's growth. This essay will argue that the order he created was real but hollow, that his economic nationalisation began well and collapsed into personal enrichment, and that the external shocks of the 1970s deepened a failure his own policies had already begun.",
-    "q": "Decision 1. Your line of argument, in the introduction.",
-    "options": [
-      "Mobutu's policies were effective at securing control and ineffective at developing the Congo, because each one was shaped to protect his power",
-      "Mobutu Sese Seko ruled the Congo from 1965 and introduced a wide range of political and economic policies during his years in power",
-      "Mobutu's policies developed the Congo successfully until the collapse in world copper prices destroyed everything that he had built"
+  {type:'pick', tag:'Body 1 \u00b7 political policies', prog:'Body 1 of 3 \u00b7 claim',
+    h2:'Body paragraph 1: the topic sentence',
+    intro:'Your first body paragraph is about his political policies. Every paragraph opens with a claim that pushes your line forward. Pick the topic sentence that takes a clear position.',
+    correct:0,
+    opts:[
+      "On the test of control, Mobutu's political policies worked.",
+      "Mobutu made a number of political changes after taking power in 1965.",
+      "Mobutu's political policies gave ordinary people a real say in how the country was run."
     ],
-    "correct": 0,
-    "explanation": "{opt0} takes a position, names both sides of it, and gives the reason, all in one sentence. That's a line of argument. {opt1} tempts because it's a safe, accurate opening. But it announces the topic without taking a side, so there's nothing to follow."
-  },
-  {
-    "type": "question",
-    "level": "Evidence",
-    "build": true,
-    "part": "Belgium left the Congo almost entirely unprepared for independence on 30 June 1960. Colonial policy had been paternalistic: Congolese people were treated as children, given no responsibility in the administration and no representation in government. At independence roughly fourteen Congolese held university degrees in a population of about fourteen million, and not one officer in the army was Congolese. Within five days the army had mutinied, and within eleven days Katanga, which supplied around half of the country's revenue, had seceded. This was the state Mobutu seized in November 1965, and it explains why his demand for total control was believed.",
-    "q": "Decision 2. The context paragraph, on what he inherited.",
-    "options": [
-      "Belgian paternalism left no trained administration, so the Congo that Mobutu seized in 1965 had already been ungovernable for five years",
-      "The Congo was a Belgian colony from 1908 and became independent on 30 June 1960, with Kasavubu as president and Lumumba as prime minister",
-      "The Congo was handed over in good order in 1960, and the disorder that followed was caused entirely by rival Congolese politicians"
+    expl:"<b>The first takes a side you can defend.</b> The second only describes that changes happened. The third takes the wrong line: the facts show control, not a real say, so you would be arguing against your own evidence.",
+    save:function(s){frame.b1ts=s.opts[0];}},
+  {type:'evidence', tag:'Body 1 \u00b7 political policies', prog:'Body 1 of 3 \u00b7 evidence',
+    h2:'Now choose the evidence',
+    ts:"On the test of control, Mobutu's political policies worked.",
+    intro:'A claim is only worth the evidence under it. Tap Use it for the facts that back this exact point. Leave out the real facts that belong to a different paragraph.',
+    items:[
+      {t:"Ended the crisis of the First Republic", use:true},
+      {t:"Put down the Katangese and mercenary revolt, 1967", use:true},
+      {t:"The 1967 constitution put power in the president's hands", use:true},
+      {t:"No breakaway succeeded again in his lifetime", use:true},
+      {t:"The Bakajika Law (1966) returned minerals to the state", use:false, off:"economic: this belongs in the next paragraph"},
+      {t:"Zairianisation seized 2,000 businesses, 1973", use:false, off:"economic, and it fails rather than works"}
     ],
-    "correct": 0,
-    "explanation": "{opt0} makes the context do work: it states what Mobutu inherited and draws the consequence that sets up the whole judgement. {opt1} tempts because it's accurate background. But background that argues nothing spends a page saying very little."
-  },
-  {
-    "type": "question",
-    "level": "Evidence",
-    "build": true,
-    "part": "Judged against that inheritance, his early political policies were effective. He ended the crisis of the First Republic, put down the Katangese and mercenary revolt of 1967, and issued a constitution in the same year that concentrated authority in the presidency. The country that had been breaking apart for five years stopped breaking apart, and after 1967 no secession succeeded again in his lifetime. He also secured the external support that made this possible, presenting himself to Washington as a reliable anti communist ally and receiving aid and protection in return. Measured purely by whether the state survived, the policy worked.",
-    "q": "Decision 3. The first body point, conceding what worked.",
-    "options": [
-      "His early political policies were effective in the respect that mattered most in 1965, because the state stopped breaking apart",
-      "Mobutu cut the provinces from twenty one to eight, renamed the capital Kinshasa and put down the Katangese revolt during 1967",
-      "His political policies achieved nothing worth recording, since a government that takes power in a coup can never be called effective"
+    expl:"<b>The four control facts back this point.</b> Bakajika and Zairianisation are real and correctly dated, which is what tempts you, but they are economic policy: they belong in the economy paragraph. Matching the fact to the exact point is the evidence skill.",
+    link:"So, judged only by whether the state held together, the policy worked.",
+    save:function(s){frame.b1ev=s.chosen; frame.b1link=s.link;}},
+
+  {type:'pick', tag:'Body 2 \u00b7 economic policies', prog:'Body 2 of 3 \u00b7 claim',
+    h2:'Body paragraph 2: the topic sentence',
+    intro:'Your second body paragraph turns to his economic policies. This is where the essay tests development, not just control. Pick the topic sentence that takes a clear position.',
+    correct:0,
+    opts:[
+      "His economic policies broke foreign control but handed the wealth to his friends.",
+      "Mobutu also brought in a number of economic policies during his time in power.",
+      "Mobutu's economic policies built new industry and made the Congo richer for everyone."
     ],
-    "correct": 0,
-    "explanation": "{opt0} grants what worked and gives a reason. That's what makes a concession count. {opt2} tempts because it sounds tough and principled. But refusing to grant anything reads as prejudice, and it throws away the balance the question needs."
-  },
-  {
-    "type": "question",
-    "level": "Argue",
-    "build": true,
-    "part": "That order was achieved by removing everything capable of questioning him, which is why it did not develop the country. Political parties were banned, and from 1970 the Mouvement Populaire de la Revolution was the only legal party, with every citizen a member from birth. He stood unopposed in the 1970 election and was awarded over ninety eight per cent of the vote. Mobutuism was taught in schools and broadcast every evening. A state whose only organising principle is loyalty to one man has no way of correcting him, and that is precisely the failure the following decade exposed.",
-    "q": "Decision 4. The second body point, on what the order was made of.",
-    "options": [
-      "The order held because opposition was removed rather than answered, so the state could not correct its own ruler",
-      "All political parties were banned, and the MPR became the only legal party with automatic membership for every citizen from birth",
-      "One party rule followed African tradition, so it suited Congolese conditions far better than multi party democracy would have done"
+    expl:"<b>The first takes a side:</b> he broke foreign control, but kept the wealth for his allies. The second only describes. The third takes the wrong line: the facts show wealth taken, not new industry built.",
+    save:function(s){frame.b2ts=s.opts[0];}},
+  {type:'evidence', tag:'Body 2 \u00b7 economic policies', prog:'Body 2 of 3 \u00b7 evidence',
+    h2:'Now choose the evidence',
+    ts:"His economic policies broke foreign control but handed the wealth to his friends.",
+    intro:'Same job again: tap Use it for the facts that prove this economic point. Leave out the ones that belong to another paragraph.',
+    items:[
+      {t:"The Bakajika Law (1966) returned land and minerals to the state", use:true},
+      {t:"In 1967 the Belgian mining company became the state firm Gecamines", use:true},
+      {t:"Zairianisation (1973) seized about 2,000 foreign businesses", use:true},
+      {t:"They were handed to his relatives, ministers and party officials", use:true},
+      {t:"Many were stripped and abandoned, and export farming fell", use:true},
+      {t:"The 1967 constitution put power in the president's hands", use:false, off:"political: that was the last paragraph"},
+      {t:"The Benguela railway closed in 1975", use:false, off:"an outside shock: that is the counter-argument"}
     ],
-    "correct": 0,
-    "explanation": "{opt0} turns the evidence into the mechanism of the failure, and it plants the idea Lesson 4 pays off. {opt2} tempts because it echoes Mobutu's own words. But repeating his justification as your conclusion hands the argument to the man you're judging."
-  },
-  {
-    "type": "question",
-    "level": "Evidence",
-    "build": true,
-    "part": "His economic policies began with a genuine assertion of national control. The Bakajika Law of 1966 returned ownership of land and minerals to the state, and on 1 January 1967 the Union Miniere du Haut Katanga, the Belgian company that had financed the Katangese secession, was nationalised and replaced by the state company Gecamines. Copper made up around forty per cent of export earnings, and for the first time those earnings answered to Kinshasa rather than to Brussels. Revenue from the copper boom was directed into a ten year industrialisation plan. In principle this was what independence had promised.",
-    "q": "Decision 5. The third body point, on nationalisation.",
-    "options": [
-      "Nationalising the company that had financed Katanga's secession answered the economic and the political problem in one act",
-      "The Bakajika Law was passed in 1966, and the Union Miniere du Haut Katanga was nationalised as Gecamines in January 1967",
-      "Nationalisation was a serious error, since the copper industry had been run efficiently by its Belgian owners until that point"
+    expl:"<b>The five economic facts build this point.</b> The 1967 constitution is political, and the railway closure is an outside shock you will use against the counter-argument. Keep each fact in the paragraph it actually proves.",
+    link:"Ownership changed hands, but nothing was built. That is not development.",
+    save:function(s){frame.b2ev=s.chosen; frame.b2link=s.link;}},
+
+  {type:'pick', tag:'Body 3 \u00b7 counter-argument', prog:'Body 3 of 3 \u00b7 claim',
+    h2:'Body paragraph 3: the other side',
+    intro:'The command word is critically discuss, so you have to put the other side before you decide. Pick the topic sentence that states the opposing case fairly.',
+    correct:0,
+    opts:[
+      "It can be argued that the collapse was not his fault.",
+      "There were a number of problems facing the Congo's economy in the 1970s.",
+      "The collapse was entirely Mobutu's fault, and outside events played no part at all."
     ],
-    "correct": 0,
-    "explanation": "{opt0} explains why the act mattered on two fronts at once. That's analysing a policy, not reporting it. {opt1} tempts because it's precise, with the law and the date. But it stops at the facts and never says why they matter."
-  },
-  {
-    "type": "question",
-    "level": "Argue",
-    "build": true,
-    "part": "What followed showed what the control was for. Under Zairianisation, announced on 30 November 1973, roughly two thousand foreign owned businesses, farms and plantations were seized without compensation and handed to Zairian nationals who were overwhelmingly his relatives, ministers and party officials. Many were stripped of stock and abandoned rather than run, and agricultural production for export fell. Copper revenue went into prestige projects such as the power line to the southern mines, and into private accounts abroad. By 1976 the government was inviting the former owners back. Ownership had changed hands without anything being built, which is not development.",
-    "q": "Decision 6. The fourth body point, on Zairianisation.",
-    "options": [
-      "Zairianisation moved assets to loyal individuals instead of into production, so a change of owner never became development",
-      "In November 1973 about two thousand foreign owned businesses, farms and plantations were seized and handed over to Zairian nationals",
-      "Zairianisation returned the commercial economy to Zairians and was the greatest economic achievement of the entire Mobutu period"
+    expl:"<b>The first states the other side fairly,</b> which is exactly what the counter-argument step needs. The second only describes problems. The third refuses to admit the other side at all, so there is nothing to weigh against.",
+    save:function(s){frame.c1ts=s.opts[0];}},
+  {type:'evidence', tag:'Body 3 \u00b7 counter-argument', prog:'Body 3 of 3 \u00b7 evidence',
+    h2:'The evidence for the other side',
+    ts:"It can be argued that the collapse was not his fault.",
+    intro:'Here you gather the strongest facts for the opposing case. Tap Use it for the outside shocks. Leave out the things that were his own doing: those cannot defend him.',
+    items:[
+      {t:"The world copper price fell by more than half after 1974", use:true},
+      {t:"Oil prices quadrupled", use:true},
+      {t:"The Benguela railway closed in 1975, cutting the cheapest route to the sea", use:true},
+      {t:"Zairianisation seized 2,000 businesses, 1973", use:false, off:"his own choice, not an outside shock"},
+      {t:"The MPR became the only legal party", use:false, off:"political, and his own doing"}
     ],
-    "correct": 0,
-    "explanation": "{opt0} names what the policy actually did, then draws the judgement from it. That line about a change of owner is the sharpest on this topic. {opt1} tempts because it's accurate. But it never says who received the assets, and that's the fact the whole judgement rests on."
-  },
-  {
-    "type": "content",
-    "tag": "The step most people skip",
-    "html": "<h2>Two decisions left</h2><p>Six paragraphs down. What you have is already a solid essay, and it is not yet a top band one, because you have not dealt with the strongest argument against you.</p><p class=\"pull\">Critically discuss puts marks on the counter argument. Skipping it costs you the top marks no matter how good the rest is.</p><p>So write the case against your own line as strongly as you can, and then show precisely what it cannot account for.</p>"
-  },
-  {
-    "type": "question",
-    "level": "Weigh",
-    "build": true,
-    "part": "It can be argued that the collapse was not his doing. The world copper price fell by more than half after April 1974, oil prices quadrupled, and the closure of the Benguela railway in 1975 cut the cheapest route from the southern mines to the sea. The economy he inherited had been built for Belgian profit rather than Congolese self sufficiency. These pressures were real and would have strained any government in Kinshasa. They do not, however, overturn the judgement. Zairianisation was announced in November 1973, months before the copper price broke, and it had to be reversed by 1976. External shocks explain why the fall was so steep. They cannot explain a state with almost no usable roads and a president whose personal fortune approached the size of the national debt.",
-    "q": "Decision 7. The counter argument.",
-    "options": [
-      "The shocks were real and severe, but they hit an economy his policies had already hollowed out, so they cannot carry the verdict",
-      "Copper prices halved after 1974, oil prices quadrupled and the Benguela railway closed in 1975, which badly damaged the economy of Zaire",
-      "The collapse was caused by world prices and by the colonial economy he inherited, so his own policies cannot fairly be blamed for any of it"
+    expl:"<b>These three outside shocks are the strongest case for the other side.</b> Zairianisation and the one-party state were his own choices, not things done to him, so they cannot defend him. Then you rebut: the shocks made the fall steeper, but they did not cause it.",
+    link:"But Zairianisation came before the copper price fell, and had to be reversed by 1976. The shocks made the fall steeper. They did not cause it.",
+    save:function(s){frame.c1ev=s.chosen; frame.c1link=s.link;}},
+
+  {type:'pick', tag:'Conclusion \u00b7 the verdict', prog:'Verdict',
+    h2:'Land your verdict',
+    intro:'A conclusion weighs both sides and still decides. Pick the verdict that does both. Avoid the absolute one and the one that sits on the fence.',
+    correct:0,
+    opts:[
+      "Effective at control, not at development: he held the Congo together and broke the foreign grip on its minerals, but he built a state that served him, so the wealth was taken rather than invested. He developed the ruler, not the Congo.",
+      "Mobutu's policies were a total failure that left the Congo worse off in every way.",
+      "Mobutu's policies had some good points and some bad points, so it is hard to say whether they worked."
     ],
-    "correct": 0,
-    "explanation": "{opt0} states the counter argument at full strength, then limits it with a reason. That's exactly what critically means. {opt1} tempts because it's a fair summary of the other side. But it raises the counter and never answers it, so you've argued yourself out of your own conclusion."
-  },
-  {
-    "type": "question",
-    "level": "Weigh",
-    "build": true,
-    "part": "Mobutu's policies must therefore be judged effective in a narrow sense and ineffective in the sense this question asks about. He held the Congo together when it was coming apart, and he broke the foreign grip on its minerals. But he built a state that existed to serve him, so the wealth he recovered was captured rather than invested, and by the 1980s the country was more dependent on foreign lenders than it had been at independence. His policies developed the ruler. They did not develop the Congo.",
-    "q": "Decision 8. The conclusion.",
-    "options": [
-      "Effective at holding the country and at taking back its minerals, ineffective at developing it, because the state existed to serve him",
-      "Mobutu therefore had both successes and failures in his political and economic policies over his long period in power in the Congo",
-      "Mobutu's policies failed completely in every respect, and left the Congo in a worse condition than it had been under Belgian rule"
-    ],
-    "correct": 0,
-    "explanation": "{opt0} judges both sides and gives the reason that ties it together, drawn from your own evidence. {opt1} tempts because it's true and sounds like a conclusion. But picking no side undoes the case. It's the sentence that ends thousands of essays and settles nothing."
-  },
-  {
-    "type": "runsum",
-    "tag": "Your essay skeleton",
-    "heading": "The whole skeleton, assembled"
-  },
-  {
-    "type": "content",
-    "tag": "What you have",
-    "html": "<h2>A skeleton, and how long it is</h2><p>You have built eight topic sentences with their evidence: a complete, defensible essay in outline. Read end to end, it runs to roughly <strong>five hundred words</strong>.</p><p>A fifty-mark answer wants closer to <strong>a thousand to twelve hundred</strong>. So this is genuinely the skeleton. In the exam you flesh each bone into a full paragraph, three or four sentences, evidence explained rather than just named. The thinking is done. The writing is what remains.</p>"
-  },
-  {
-    "type": "carousel",
-    "tag": "What the lessons hold that this essay left out",
-    "heading": "Still in your toolkit",
-    "cards": [
-      {
-        "lead": "The mutiny and the secessions",
-        "body": "The exact chain of 1960: the Force Publique, Katanga, Kasai, Lumumba's murder. Detail you can pull into the context paragraph."
-      },
-      {
-        "lead": "The 1970 election",
-        "body": "The 98 per cent result with one candidate, and the four ministers executed in 1966. Evidence for how the order was held."
-      },
-      {
-        "lead": "Source B and Source D",
-        "body": "Mobutu's own justification of one-party rule, and Ngugi on the colonialism of the mind. Quotable framing for the body points."
-      },
-      {
-        "lead": "The kleptocracy figures",
-        "body": "Mobutu's fortune approaching the national debt. The single sharpest fact for the conclusion."
-      }
-    ]
-  },
-  {
-    "type": "content",
-    "tag": "One more question",
-    "html": "<h2>Now try it cold</h2><div class=\"pull\">Explain whether Mobutu Sese Seko's policies actually developed the Congo. Support your answer with relevant evidence.</div><p>This is a second question on the same content, asked a different way. Do not build it here. Plan it on paper: your line of argument at the top, four body-point headings under it, one piece of evidence for each.</p><p>If you can plan that in five minutes, the topic is yours. That is the test that matters, not remembering one answer.</p>"
-  },
-  {
-    "type": "content",
-    "tag": "Beyond the exam",
-    "html": "<h2>Effective at what</h2><p>The most useful question in this whole series was three words long: effective at what. Almost nothing is simply effective or ineffective. Things are effective at something, for someone, measured against a standard that somebody chose.</p><p>Mobutu's policies worked extremely well. They were just working on a different problem from the one the country needed solved.</p><p class=\"pull\">When somebody tells you a policy, a plan or a system is working, ask what it is working at, and who decided that was the measure. You will use that question for the rest of your life, and it started as a fifty mark essay.</p>"
-  }
+    expl:"<b>The first verdict weighs and still decides.</b> It admits what worked, names what did not, and lands on a judgement the essay has earned. The second is absolute; the third sits on the fence. Listing good and bad without deciding throws away your conclusion.",
+    save:function(s){frame.verdict=s.opts[0];}},
+
+  {type:'frame'}
 ];
 
-// ---- identity of the five skill/tier labels ----
-const CHIP = {
-  Argue:{cls:"chip-argue"}, Evidence:{cls:"chip-evidence"}, Weigh:{cls:"chip-weigh"},
-  instinct:{cls:"chip-instinct"}
-};
-const SPINE = ["Argue","Evidence","Weigh"];
-
-const stage = document.getElementById("stage");
-const nav = document.getElementById("nav");
-const topBar = document.getElementById("top-bar");
-const nextBtn = document.getElementById("next-btn");
-const backBtn = document.getElementById("back-btn");
-
-const state = {
-  idx: -1,                 // -1 = cover
-  answers: {},             // qIdx -> chosen content index (mcq) or serialized (interactive)
-  revealed: {},            // qIdx -> bool
-  order: {},               // qIdx -> shuffled content-index array
-  carRead: {},             // stepIdx -> Set of read card indices
-  interState: {},          // qIdx -> working state for order/sort
-  poppedBuild: {},         // qIdx -> bool (running-summary popup already shown)
-};
-
-const buildIds = FLOW.map((f,i)=>f.build?i:null).filter(i=>i!==null);
-const assessedIds = FLOW.map((f,i)=>(f.type==="question"&&f.level)?i:null).filter(i=>i!==null);
-
-function esc(s){
-  return String(s).replace(/[&<>"]/g, (c, i, str) => {
-    if(c === "&"){
-      // leave a real HTML entity intact (e.g. &middot; &amp; &#8635;)
-      const rest = str.slice(i);
-      if(/^&(#\d+|#x[0-9a-fA-F]+|[a-zA-Z]+);/.test(rest)) return "&";
-    }
-    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];
-  });
-}
-
-// {optN} -> the letter option N carries after shuffle
-function resolveOpts(text, order){
-  if(!text) return text;
-  return text.replace(/\{opt(\d+)\}/g,(m,n)=>{
-    const p = order ? order.indexOf(parseInt(n,10)) : -1;
-    return p>=0 ? String.fromCharCode(65+p) : m;
-  });
-}
-
-// ============ COVER ============
-function renderCover(){
-  topBar.classList.add("hidden");
-  nav.classList.add("hidden");
-  const lines = (COVER.lines||[]).map(l=>`<span>${esc(l)} </span>`).join("");
-  stage.innerHTML = `
-    <div class="cover">
-      <div class="cover-eyebrow">${COVER.eyebrow||""}</div>
-      <h1 class="cover-title">${esc(COVER.title||"")}</h1>
-      <div class="flourish"></div>
-      <div class="cover-line" id="cover-line">${lines}</div>
-      <button class="btn-begin" id="begin-btn">${COVER.begin||"Begin"} <span class="sa">&rarr;</span></button>
-      ${COVER.time?`<div class="cover-time">${esc(COVER.time)}</div>`:""}
-      ${COVER.skip!==false?`<button class="skip-link" id="skip-btn">Skip the opening if you have done this lesson before</button>`:""}
-    </div>`;
-  const spans = [...document.querySelectorAll("#cover-line span")];
-  spans.forEach((s,i)=>setTimeout(()=>s.classList.add("vis"), 350*(i+1)));
-  document.getElementById("begin-btn").addEventListener("click",()=>{ state.idx=0; render(); });
-  const skip = document.getElementById("skip-btn");
-  if(skip) skip.addEventListener("click",()=>{ state.idx = firstContentIdx(); render(); });
-}
-function firstContentIdx(){
-  const i = FLOW.findIndex(f=>f.type==="content"||f.type==="carousel"||f.type==="stat");
-  return i<0?0:i;
-}
-
-// ============ STORY HOOK ============
-function renderStory(item){
-  const lines = item.lines.map((l,i)=>{
-    const last = i===item.lines.length-1 ? " last" : "";
-    return `<div class="story-line${last}">${esc(l)}</div>`;
-  }).join("");
-  stage.innerHTML = `
-    <div class="story">
-      <div class="story-num">${esc(item.marker)}</div>
-      <div class="story-unit">${esc(item.markerLabel||"")}</div>
-      <div class="story-rule"></div>
-      ${lines}
-    </div>`;
-  const els = [...stage.querySelectorAll(".story-line")];
-  nextBtn.disabled = true;
-  els.forEach((el,i)=>setTimeout(()=>{
-    el.classList.add("vis");
-    if(i===els.length-1) nextBtn.disabled = false;
-  }, 650*(i+1)));
-}
-
-// ============ STATIC CONTENT ============
-// Key-terms strip: label + one expandable chip per term.
-function ktStrip(terms){
-  if(!terms || !terms.length) return "";
-  const chips = terms.map(t=>`<details class="kt-term"><summary>${esc(t.term)}</summary><div class="kt-def">${esc(t.def)}</div></details>`).join("");
-  return `<div class="kt"><div class="kt-label">Key terms &middot; tap to open</div><div class="kt-row">${chips}</div></div>`;
-}
-function rememberBox(text){
-  if(!text) return "";
-  return `<details class="remember"><summary>Remember it like this</summary><div class="disc-body">${text}</div></details>`;
-}
-
-function renderContent(item){
-  stage.innerHTML = `<div class="card">${item.tag?`<div class="stage-tag">${esc(item.tag)}</div>`:""}${item.html}${rememberBox(item.remember)}${ktStrip(item.terms)}</div>`;
-  bindToggles();
-}
-
-// ============ CAROUSEL ============
-function renderCarousel(item){
-  const cards = item.cards;
-  if(!state.carRead[state.idx]) state.carRead[state.idx] = new Set([0]);
-  const read = state.carRead[state.idx];
-  const pos = state.interState[state.idx]?.pos || 0;
-  read.add(pos);
-  const c = cards[pos];
-  const body = typeof c==="string" ? c : `<span class="cc-lead">${esc(c.lead)}</span>${esc(c.body)}`;
-  const dots = cards.map((_,i)=>`<span class="car-dot ${read.has(i)?"read":""} ${i===pos?"here":""}"></span>`).join("");
-  const allRead = read.size===cards.length;
-  stage.innerHTML = `
-    <div class="card">
-      ${item.tag?`<div class="stage-tag">${esc(item.tag)}</div>`:""}
-      ${item.heading?`<h2>${esc(item.heading)}</h2>`:""}
-      <div class="car-wrap">
-        <div class="car-prompt" id="car-prompt">${allRead?`That is all ${cards.length}. Continue is unlocked.`:`Tap the arrows to read all ${cards.length}. Continue unlocks when you have.`}</div>
-        <div class="car-frame"><div class="car-card">${body}</div></div>
-        <div class="car-nav">
-          <div class="car-dots">${dots}</div>
-          <div class="car-count">${pos+1} / ${cards.length}</div>
-          <div class="car-btns">
-            <button class="car-btn" id="car-prev" ${pos===0?"disabled":""}>&larr;</button>
-            <button class="car-btn" id="car-next" ${pos===cards.length-1?"disabled":""}>&rarr;</button>
-          </div>
-        </div>
-      </div>
-      ${ktStrip(item.terms)}
-    </div>`;
-  nextBtn.disabled = !allRead;
-  const setPos=(p)=>{ state.interState[state.idx]={pos:p}; renderCarousel(item); };
-  const pv=document.getElementById("car-prev"), nx=document.getElementById("car-next");
-  if(pv) pv.addEventListener("click",()=>setPos(Math.max(0,pos-1)));
-  if(nx) nx.addEventListener("click",()=>setPos(Math.min(cards.length-1,pos+1)));
-}
-
-// ============ STAT STRIP ============
-function renderStat(item){
-  const stats = item.stats.map(s=>`<div class="stat"><div class="stat-num">${esc(s.num)}</div><div class="stat-label">${esc(s.label)}</div></div>`).join("");
-  stage.innerHTML = `
-    <div class="card">
-      ${item.tag?`<div class="stage-tag">${esc(item.tag)}</div>`:""}
-      ${item.heading?`<h2>${esc(item.heading)}</h2>`:""}
-      ${item.lead?`<p>${item.lead}</p>`:""}
-      <div class="stat-strip">${stats}</div>
-      ${ktStrip(item.terms)}
-    </div>`;
-}
-
-// ============ SOURCE ============
-function renderSource(item){
-  const s=item.source;
-  stage.innerHTML = `
-    <div class="card">
-      ${item.tag?`<div class="stage-tag">${esc(item.tag)}</div>`:""}
-      ${item.html||""}
-      <div class="source">
-        <div class="source-attr">${s.attr}</div>
-        <div class="source-body">${s.body}</div>
-        ${s.toggle?`<button class="toggle-btn" data-toggle>${s.toggleLabel||"What does this actually mean?"}</button><div class="toggle-body">${s.toggle}</div>`:""}
-      </div>
-      ${ktStrip(item.terms)}
-    </div>`;
-  bindToggles();
-}
-
-// ============ QUESTION (mcq / order / sort) ============
-function renderQuestion(item){
-  if(item.mode==="order") return renderOrder(item);
-  if(item.mode==="sort") return renderSort(item);
-  return renderMCQ(item);
-}
-
-function renderMCQ(item){
-  const answered = state.revealed[state.idx];
-  if(!state.order[state.idx]){
-    const a=item.options.map((_,i)=>i);
-    for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
-    state.order[state.idx]=a;
-  }
-  const order=state.order[state.idx];
-  const chip = item.level ? `<span class="chip ${CHIP[item.level].cls}">${item.level}</span>` : `<span class="chip chip-instinct">Instinct</span>`;
-  let opts="";
-  order.forEach((orig,pos)=>{
-    let cls="option", mark="";
-    if(answered){
-      if(orig===item.correct){ cls+=" correct"; mark=`<span class="opt-mark">&#10003;</span>`; }
-      else if(orig===state.answers[state.idx]){ cls+=" wrong"; mark=`<span class="opt-mark">&#10007;</span>`; }
-      else cls+=" dimmed";
-    } else if(state.answers[state.idx]===orig){ cls+=" selected"; }
-    opts+=`<button class="${cls}" data-orig="${orig}" ${answered?"disabled":""}><span class="opt-letter">${String.fromCharCode(65+pos)}</span><span class="opt-text">${item.options[orig]}</span>${mark}</button>`;
-  });
-  stage.innerHTML = `
-    <div class="card">
-      <div class="q-meta">${chip}</div>
-      <div class="q-text">${item.q}</div>
-      <div class="options">${opts}</div>
-      ${answered?`<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">${resolveOpts(item.explanation, order)}</div></div>`:""}
-    </div>`;
-  if(!answered){
-    stage.querySelectorAll(".option").forEach(b=>b.addEventListener("click",()=>{
-      state.answers[state.idx]=parseInt(b.dataset.orig,10);
-      state.revealed[state.idx]=true;
-      render();
-    }));
-  }
-  syncNav(true);
-}
-
-// order: tap to place into a numbered list, tap placed to remove; Check when all placed
-function renderOrder(item){
-  const answered = state.revealed[state.idx];
-  const st = state.interState[state.idx] || (state.interState[state.idx]={placed:[]});
-  const placed = st.placed;                       // array of content indices in chosen order
-  const remaining = item.items.map((_,i)=>i).filter(i=>!placed.includes(i));
-  let placedHtml = placed.map((ci,pos)=>{
-    let cls="inter-item inter-placed";
-    if(answered){ cls = "inter-item "+(ci===item.answer[pos]?"ok":"no"); }
-    return `<button class="${cls}" data-placed="${ci}" ${answered?"disabled":""}><span class="rank">${pos+1}</span><span>${esc(item.items[ci])}</span></button>`;
-  }).join("");
-  let poolHtml = remaining.map(ci=>`<button class="inter-item" data-pool="${ci}"><span class="rank">&bull;</span><span>${esc(item.items[ci])}</span></button>`).join("");
-  stage.innerHTML = `
-    <div class="card">
-      <div class="q-meta"><span class="chip ${item.level?CHIP[item.level].cls:"chip-instinct"}">${item.level||"Instinct"}</span></div>
-      <div class="q-text">${item.q}</div>
-      <div class="inter">
-        <div class="inter-pool" id="placed">${placedHtml||`<div style="color:var(--fade);font-size:0.9rem;padding:0.4rem 0;">Tap an event below to start putting them in order.</div>`}</div>
-        ${remaining.length?`<div style="height:1px;background:rgba(var(--ink-c),0.14);margin:0.9rem 0;"></div><div class="inter-pool" id="pool">${poolHtml}</div>`:""}
-      </div>
-      ${answered?`<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">${resolveOpts(item.explanation,null)}</div></div>`:""}
-    </div>`;
-  if(!answered){
-    stage.querySelectorAll("[data-pool]").forEach(b=>b.addEventListener("click",()=>{ placed.push(parseInt(b.dataset.pool,10)); renderOrder(item); }));
-    stage.querySelectorAll("[data-placed]").forEach(b=>b.addEventListener("click",()=>{ const ci=parseInt(b.dataset.placed,10); st.placed=placed.filter(x=>x!==ci); renderOrder(item); }));
-  }
-  const allPlaced = placed.length===item.items.length;
-  syncNavInteractive(allPlaced, answered, ()=>{
-    state.answers[state.idx]=placed.slice();
-    state.revealed[state.idx]=true; render();
-  });
-}
-
-// sort: two columns, tap an item's column button to place, tap placed to remove
-function renderSort(item){
-  const answered = state.revealed[state.idx];
-  const st = state.interState[state.idx] || (state.interState[state.idx]={col:{}});
-  const col = st.col;                              // content index -> 0/1
-  const unplaced = item.items.map((_,i)=>i).filter(i=>!(i in col));
-  const colCards = (which)=>item.items.map((it,ci)=>{
-    if(col[ci]!==which) return "";
-    let cls="inter-item inter-placed";
-    if(answered) cls="inter-item "+(item.answer[ci]===which?"ok":"no");
-    return `<button class="${cls}" data-un="${ci}" ${answered?"disabled":""}><span>${esc(it)}</span></button>`;
-  }).join("");
-  const pool = unplaced.map(ci=>`
-    <div class="inter-item" style="flex-direction:column;align-items:stretch;cursor:default;">
-      <span>${esc(item.items[ci])}</span>
-      <div class="sort-btns">
-        <button class="sort-place" data-place="${ci}" data-col="0">${esc(item.cols[0])}</button>
-        <button class="sort-place" data-place="${ci}" data-col="1">${esc(item.cols[1])}</button>
-      </div>
-    </div>`).join("");
-  stage.innerHTML = `
-    <div class="card">
-      <div class="q-meta"><span class="chip ${item.level?CHIP[item.level].cls:"chip-instinct"}">${item.level||"Instinct"}</span></div>
-      <div class="q-text">${item.q}</div>
-      <div class="inter">
-        <div class="sort-cols">
-          <div class="sort-col"><h4>${esc(item.cols[0])}</h4>${colCards(0)}</div>
-          <div class="sort-col"><h4>${esc(item.cols[1])}</h4>${colCards(1)}</div>
-        </div>
-        ${unplaced.length?`<div style="height:1px;background:rgba(var(--ink-c),0.14);margin:0.9rem 0;"></div><div class="inter-pool">${pool}</div>`:""}
-      </div>
-      ${answered?`<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">${resolveOpts(item.explanation,null)}</div></div>`:""}
-    </div>`;
-  if(!answered){
-    stage.querySelectorAll("[data-place]").forEach(b=>b.addEventListener("click",()=>{ col[parseInt(b.dataset.place,10)]=parseInt(b.dataset.col,10); renderSort(item); }));
-    stage.querySelectorAll("[data-un]").forEach(b=>b.addEventListener("click",()=>{ delete col[parseInt(b.dataset.un,10)]; renderSort(item); }));
-  }
-  const allPlaced = unplaced.length===0;
-  syncNavInteractive(allPlaced, answered, ()=>{
-    state.answers[state.idx]=Object.assign({},col);
-    state.revealed[state.idx]=true; render();
-  });
-}
-
-// ============ RUNNING SUMMARY (own screen) ============
-function renderRunsum(item){
-  const parts = buildIds.filter(i=>i<=state.idx && state.revealed[i]).map(i=>FLOW[i].part);
-  const freshIdx = parts.length-1;
-  const lis = parts.map((p,i)=>`<li class="${i===freshIdx?"fresh":""}">${esc(p)}</li>`).join("");
-  stage.innerHTML = `
-    <div class="card">
-      <div class="stage-tag">${esc(item.tag||"Your running summary")}</div>
-      ${item.heading?`<h2>${esc(item.heading)}</h2>`:""}
-      ${item.html?item.html:""}
-      <div class="runsum"><div class="runsum-label">Your running summary</div><ol>${lis}</ol></div>
-    </div>`;
-}
-
-// ============ POPUP after a build question ============
-function showBuildPop(part){
-  const back=document.createElement("div");
-  back.className="pop-back";
-  back.innerHTML=`<div class="pop"><div class="pop-label">Added</div><div class="pop-text">${esc(part)}</div><button class="pop-btn" id="pop-ok">Got it</button></div>`;
-  document.body.appendChild(back);
-  document.getElementById("pop-ok").addEventListener("click",()=>back.remove());
-}
-
-// ============ NAV ============
-function syncNav(isQuestion){
-  nav.classList.remove("hidden");
-  backBtn.disabled=false;
-  backBtn.innerHTML = state.idx===0 ? "&larr; Back to the start" : "&larr; Back";
-  nextBtn.style.display="";
-  nextBtn.disabled = isQuestion ? !state.revealed[state.idx] : false;
-  nextBtn.innerHTML = state.idx===FLOW.length-1 ? "See results &rarr;" : "Continue &rarr;";
-}
-// interactive items: replace Continue with a Check button until answered
-function syncNavInteractive(canCheck, answered, onCheck){
-  nav.classList.remove("hidden");
-  backBtn.disabled=false;
-  backBtn.innerHTML = state.idx===0 ? "&larr; Back to the start" : "&larr; Back";
-  if(answered){
-    nextBtn.style.display="";
-    nextBtn.disabled=false;
-    nextBtn.innerHTML = state.idx===FLOW.length-1 ? "See results &rarr;" : "Continue &rarr;";
-    nextBtn.onclick = defaultNext;
-  } else {
-    nextBtn.style.display="";
-    nextBtn.disabled=!canCheck;
-    nextBtn.innerHTML="Check &rarr;";
-    nextBtn.onclick = ()=>{ onCheck(); };
-  }
-}
-
-function defaultNext(){
-  // fire the running-summary popup when leaving a build question
-  const cur=FLOW[state.idx];
-  if(cur && cur.build && state.revealed[state.idx] && !state.poppedBuild[state.idx]){
-    state.poppedBuild[state.idx]=true;
-    showBuildPop(cur.part);
-  }
-  if(state.idx<FLOW.length-1){ state.idx++; render(); } else showResults();
-}
-
-nextBtn.onclick = defaultNext;
-backBtn.addEventListener("click",()=>{
-  if(state.idx<=0){ state.idx=-1; renderCover(); }
-  else { state.idx--; render(); }
-});
-
-// ============ RENDER DISPATCH ============
+var stage=document.getElementById('stage');
+function next(){ idx++; render(); window.scrollTo(0,0); }
 function render(){
-  window.scrollTo({top:0,behavior:"instant"});
-  if(state.idx===-1){ renderCover(); return; }
-  topBar.classList.remove("hidden");
-  document.getElementById("step-count").textContent=`Step ${state.idx+1} of ${FLOW.length}`;
-  document.getElementById("fill").style.width=((state.idx+1)/FLOW.length*100)+"%";
-  const item=FLOW[state.idx];
-  nextBtn.onclick = defaultNext;
-  switch(item.type){
-    case "story": renderStory(item); syncNav(false); break;
-    case "carousel": renderCarousel(item); /* nav handled inside */ syncNavCarousel(); break;
-    case "stat": renderStat(item); syncNav(false); break;
-    case "source": renderSource(item); syncNav(false); break;
-    case "question": renderQuestion(item); break;
-    case "runsum": renderRunsum(item); syncNav(false); break;
-    default: renderContent(item); syncNav(false);
+  var s=STEPS[idx];
+  if(s.type==='cover') return renderCover();
+  if(s.type==='pick') return renderPick(s);
+  if(s.type==='evidence') return renderEvidence(s);
+  if(s.type==='frame') return renderFrame();
+}
+function prog(s){ return s.prog?('<div class="cap-prog">Step '+idx+' of '+(STEPS.length-2)+' \u00b7 '+s.prog+'</div>'):''; }
+
+function renderCover(){
+  var lines=COVER.lines.map(function(l){return '<span>'+esc(l)+'</span>';}).join('<br>');
+  stage.innerHTML='<div class="cover"><div class="cover-eyebrow">'+COVER.eyebrow+'</div>'+
+    '<h1 class="cover-title">'+esc(COVER.title)+'</h1><div class="flourish"></div>'+
+    '<div class="cover-line" id="cover-line">'+lines+'</div>'+
+    '<button class="btn-begin" id="begin-btn">Begin <span class="sa">&rarr;</span></button></div>';
+  var sp=[].slice.call(document.querySelectorAll('#cover-line span'));
+  sp.forEach(function(x,i){setTimeout(function(){x.classList.add('vis');}, 300+i*450);});
+  document.getElementById('begin-btn').onclick=next;
+}
+
+function renderPick(s){
+  var chosen=null;
+  function draw(){
+    var opts=s.opts.map(function(o,i){
+      var cls='option', mark='';
+      if(chosen!==null){ cls+=' selected'; if(i===s.correct){cls+=' correct'; mark='<span class="opt-mark">&#10003;</span>';} else if(i===chosen){cls+=' wrong'; mark='<span class="opt-mark">&#10007;</span>';} else {cls+=' dimmed';} }
+      return '<button class="'+cls+'" data-i="'+i+'"'+(chosen!==null?' disabled':'')+'><span class="opt-letter">'+String.fromCharCode(65+i)+'</span><span class="opt-text">'+esc(o)+'</span>'+mark+'</button>';
+    }).join('');
+    var tail = chosen!==null ? '<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">'+s.expl+'</div></div><div class="cap-actions" style="margin-top:1.2rem"><button class="btn-primary" id="cont">Continue</button></div>' : '';
+    stage.innerHTML=prog(s)+'<div class="card"><div class="stage-tag">'+s.tag+'</div><h2>'+esc(s.h2)+'</h2><p class="cap-intro">'+s.intro+'</p><div class="options">'+opts+'</div>'+tail+'</div>';
+    if(chosen===null){ [].forEach.call(document.querySelectorAll('.option'),function(b){ b.onclick=function(){ chosen=+b.getAttribute('data-i'); draw(); }; }); }
+    else { document.getElementById('cont').onclick=function(){ s.save(s); next(); }; }
   }
-}
-function syncNavCarousel(){
-  nav.classList.remove("hidden");
-  backBtn.disabled=false;
-  backBtn.innerHTML = state.idx===0 ? "&larr; Back to the start" : "&larr; Back";
-  nextBtn.style.display="";
-  nextBtn.innerHTML = state.idx===FLOW.length-1 ? "See results &rarr;" : "Continue &rarr;";
-  // disabled state already set inside renderCarousel
+  draw();
 }
 
-function bindToggles(){
-  stage.querySelectorAll("[data-toggle]").forEach(b=>b.addEventListener("click",()=>{
-    b.nextElementSibling.classList.toggle("open");
-  }));
+function renderEvidence(s){
+  var done=false, state={};
+  function draw(){
+    var rows=s.items.map(function(it,i){
+      var cls='evrow', right='';
+      if(state[i]&&!done) cls+=' use';
+      if(done){ var u=!!state[i]; if(it.use&&u){cls+=' ok';right='<span class="evtag y">USE</span>';} else if(it.use&&!u){cls+=' miss';right='<span class="evtag y">USE</span>';} else if(!it.use&&u){cls+=' wrong';right='<span class="evtag n">LEAVE OUT</span>';} else {right='<span class="evtag n">LEAVE OUT</span>';} }
+      var off = (done&&it.off)?'<span class="off">'+esc(it.off)+'</span>':'';
+      var ctrl = done ? right : '<button class="evtoggle" data-i="'+i+'">'+(state[i]?'Using \u2713':'Use it')+'</button>';
+      return '<div class="'+cls+'"><span class="evtext">'+esc(it.t)+off+'</span>'+ctrl+'</div>';
+    }).join('');
+    var foot;
+    if(!done) foot='<div class="cap-actions"><button class="btn-primary" id="chk" disabled>Check my selection</button></div>';
+    else foot='<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">'+s.expl+'</div></div><div class="cap-actions" style="margin-top:1.2rem"><button class="btn-primary" id="cont">Continue</button></div>';
+    stage.innerHTML=prog(s)+'<div class="card"><div class="stage-tag">'+s.tag+'</div><h2>'+esc(s.h2)+'</h2>'+
+      '<div class="yourpoint"><b>Your point</b>'+esc(s.ts)+'</div><p class="cap-intro">'+s.intro+'</p><div class="evlist">'+rows+'</div>'+foot+'</div>';
+    if(!done){
+      [].forEach.call(document.querySelectorAll('.evtoggle'),function(b){ b.onclick=function(){ var i=+b.getAttribute('data-i'); state[i]=!state[i]; draw(); }; });
+      document.getElementById('chk').disabled=Object.keys(state).filter(function(k){return state[k];}).length===0;
+      document.getElementById('chk').onclick=function(){ done=true; draw(); };
+    } else {
+      s.chosen=s.items.filter(function(x,i){return state[i]&&x.use;}).map(function(x){return x.t;});
+      if(s.chosen.length===0) s.chosen=s.items.filter(function(x){return x.use;}).map(function(x){return x.t;});
+      document.getElementById('cont').onclick=function(){ s.save(s); next(); };
+    }
+  }
+  draw();
 }
 
-// ============ RESULTS ============
-function showResults(){
-  topBar.classList.add("hidden");
-  nav.classList.add("hidden");
-  let correct=0;
-  assessedIds.forEach(i=>{ if(isRight(i)) correct++; });
-  const total=assessedIds.length;
-  const pct = total?Math.round(correct/total*100):0;
-  let band="", desc="";
-  if(pct>=85){ band="Excellent"; desc=RESULTS.bands.excellent; }
-  else if(pct>=70){ band="Strong"; desc=RESULTS.bands.strong; }
-  else if(pct>=55){ band="Solid"; desc=RESULTS.bands.solid; }
-  else if(pct>=40){ band="Patchy"; desc=RESULTS.bands.patchy; }
-  else { band="Start again"; desc=RESULTS.bands.start; }
-  const rows=SPINE.map(sp=>{
-    const ids=assessedIds.filter(i=>FLOW[i].level===sp);
-    if(!ids.length) return "";
-    const g=ids.filter(i=>isRight(i)).length;
-    const p=Math.round(g/ids.length*100);
-    return `<div class="bd-row"><div class="bd-name">${sp}</div><div class="bd-bar"><div class="bd-fill" style="width:${p}%"></div></div><div class="bd-score">${g}/${ids.length}</div></div>`;
-  }).join("");
-  const parts=buildIds.filter(i=>state.revealed[i]).map(i=>FLOW[i].part);
-  const runsum = parts.length?`<div class="breakdown"><div class="breakdown-label">Your running summary</div><ol style="margin:0;padding-left:1.3rem;">${parts.map(p=>`<li style="font-size:0.98rem;line-height:1.62;margin-bottom:0.6rem;">${esc(p)}</li>`).join("")}</ol></div>`:"";
-  stage.innerHTML = `
-    <div class="results-head">
-      <div class="results-eyebrow">${RESULTS.eyebrow||"Lesson report"}</div>
-      <h1 class="results-title">${esc(RESULTS.title||"Where you stand")}</h1>
-    </div>
-    <div class="score-row">
-      <div class="score-block"><div class="score-num">${correct}<span class="score-den">/${total}</span></div><div class="score-label">Correct</div></div>
-      <div class="score-block"><div class="score-num">${pct}<span class="score-den">%</span></div><div class="score-label">Accuracy</div></div>
-      <div class="score-block"><div class="score-word">${band}</div><div class="score-label">Band</div></div>
-    </div>
-    <div class="grade-desc">${desc}</div>
-    <div class="breakdown"><div class="breakdown-label">By skill</div>${rows}</div>
-    ${runsum}
-    <div class="results-actions">
-      <button class="btn-secondary" id="restart-btn">Restart lesson</button>
-      <button class="btn-primary" id="finish-btn">Finish</button>
-    </div>`;
-  document.getElementById("restart-btn").addEventListener("click",()=>{
-    state.idx=-1; state.answers={}; state.revealed={}; state.order={}; state.carRead={}; state.interState={}; state.poppedBuild={};
-    renderCover();
-  });
-  document.getElementById("finish-btn").addEventListener("click",()=>{
-    const back=document.createElement("div");
-    back.className="pop-back";
-    back.innerHTML=`<div class="pop"><div class="pop-label">Lesson 5 complete</div><div class="pop-text">Tap Done to continue to the final knowledge check.</div><button class="pop-btn" id="fin-ok">Done</button></div>`;
-    document.body.appendChild(back);
-    document.getElementById("fin-ok").addEventListener("click",()=>back.remove());
-  });
+function renderFrame(){
+  function ul(a){return '<ul>'+(a||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';}
+  var f='<div class="fp"><div class="frole">Line of argument</div><div class="fts">'+esc(frame.arg)+'</div></div>'+
+    '<div class="fp"><div class="frole">Body 1 \u00b7 political policies</div><div class="fts">'+esc(frame.b1ts)+'</div><div class="flabel">Evidence</div>'+ul(frame.b1ev)+'<div class="flink">Link: '+esc(frame.b1link)+'</div></div>'+
+    '<div class="fp"><div class="frole">Body 2 \u00b7 economic policies</div><div class="fts">'+esc(frame.b2ts)+'</div><div class="flabel">Evidence</div>'+ul(frame.b2ev)+'<div class="flink">Link: '+esc(frame.b2link)+'</div></div>'+
+    '<div class="fp"><div class="frole">Body 3 \u00b7 counter-argument</div><div class="fts">'+esc(frame.c1ts)+'</div><div class="flabel">Evidence for the other side</div>'+ul(frame.c1ev)+'<div class="flink">Rebuttal: '+esc(frame.c1link)+'</div></div>'+
+    '<div class="fp"><div class="frole">Verdict</div><div class="fts">'+esc(frame.verdict)+'</div></div>';
+  stage.innerHTML='<div class="card"><div class="stage-tag">Your writing frame</div><h2>Take this away and write it up</h2>'+
+    '<p class="cap-intro">This is the shape of a top essay: a clear line, three paragraphs each with a claim and its evidence, and a verdict that decides. You built every choice in it.</p>'+
+    '<div class="frame">'+f+'</div>'+
+    '<div class="writeup"><b>Now write the essay in full, in your own words.</b><div class="wsub">The frame gives you the shape and the facts. Turning these notes into full sentences, in the exam, is the part only you can do.</div></div></div>';
 }
 
-function isRight(i){
-  const item=FLOW[i]; const ans=state.answers[i];
-  if(ans===undefined) return false;
-  if(item.mode==="order") return JSON.stringify(ans)===JSON.stringify(item.answer);
-  if(item.mode==="sort"){ return item.items.every((_,ci)=>ans[ci]===item.answer[ci]); }
-  return ans===item.correct;
-}
-
-renderCover();
+render();
 </script>
 </body>
 </html>
