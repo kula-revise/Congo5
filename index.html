@@ -251,10 +251,12 @@ body:not(.bright) .btn-primary .sa, body:not(.bright) #next-btn .sa, body:not(.b
 </style>
 </head>
 <body>
+<script>/* kula: LMS embed events. "completed" fires once, when the learner reaches the closing screen. "advance" fires from the final button. */
+(function(){var sentCompleted=false;window.kulaEmbed=function(ev){if(ev==="completed"){if(sentCompleted)return;sentCompleted=true;}try{window.parent.postMessage({type:"lms-embed-event",version:"1.0",payload:{event:ev}},"*");}catch(e){}};})();</script>
 <button id="kula-mode-toggle" type="button" onclick="kulaToggle()" aria-label="Switch light or dark mode"><span id="kmt-icon"></span><span id="kmt-label"></span></button>
 <div class="container"><div id="stage"></div></div>
 <script>
-var K="kula-theme";var SUN="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4.2'/><path d='M12 1.6v2M12 20.4v2M3.6 12h-2M22.4 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4'/></svg>";var MOON="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z'/></svg>";function paint(){var d=!document.body.classList.contains("bright");var ic=document.getElementById("kmt-icon"),la=document.getElementById("kmt-label");if(ic)ic.innerHTML=d?SUN:MOON;if(la)la.textContent=d?"Light mode":"Dark mode";}window.kulaToggle=function(){document.body.classList.toggle("bright");try{localStorage.setItem(K,document.body.classList.contains("bright")?"bright":"dark")}catch(e){}paint();};try{if(localStorage.getItem(K)==="bright")document.body.classList.add("bright")}catch(e){}paint();
+var K="kula-mode";var SUN="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4.2'/><path d='M12 1.6v2M12 20.4v2M3.6 12h-2M22.4 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4'/></svg>";var MOON="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z'/></svg>";function paint(){var d=!document.body.classList.contains("bright");var ic=document.getElementById("kmt-icon"),la=document.getElementById("kmt-label");if(ic)ic.innerHTML=d?SUN:MOON;if(la)la.textContent=d?"Light mode":"Dark mode";}window.kulaToggle=function(){document.body.classList.toggle("bright");try{localStorage.setItem(K,document.body.classList.contains("bright")?"light":"dark")}catch(e){}paint();};try{if(localStorage.getItem(K)==="light")document.body.classList.add("bright")}catch(e){}paint();
 var esc=function(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;};
 var frame={}, idx=0;
 
@@ -269,26 +271,28 @@ var STEPS=[
   {type:'pick', tag:'Introduction \u00b7 your line of argument', prog:'Line of argument',
     h2:'Choose your line of argument',
     intro:'Every mark in this essay hangs off one sentence: the line you argue. The question asks how effective Mobutu\u2019s policies were, so your line has to take a side on that. Pick the sentence that argues, not the one that only describes.',
-    correct:0,
+    correct:2,
     opts:[
-      "Mobutu's policies were effective at keeping control but ineffective at developing the Congo, because each one was built to protect his power, not to grow the country.",
-      "Mobutu ruled the Congo from 1965 and brought in many political and economic policies over his years in power.",
-      "Mobutu's policies developed the Congo well, until the fall in world copper prices destroyed everything he had built."
+      "Mobutu ruled the Congo from 1965 and brought in many political and economic policies over his years.",
+      "Mobutu's policies developed the Congo well, until the fall in world copper prices destroyed all that he built.",
+      "Mobutu's policies kept control but did not develop the Congo, because each was built to protect his power."
+    
     ],
-    expl:"<b>The first sentence argues.</b> It takes a side (effective at one thing, not another) and says why, so the whole essay has a line to follow. The second only describes: a marker sees you telling the story, not making a case, and that caps you at middle marks. The third takes the wrong line, and the facts in this topic will go against it.",
-    save:function(s){frame.arg=s.opts[0];}},
+    expl:"<b>The last sentence argues.</b> It takes a side, effective at one thing and not another, and says why. The whole essay then has a line to follow. The first only describes: a marker sees you telling the story, not making a case, and that caps you at middle marks. The middle one takes the wrong line, and the facts in this topic go against it.",
+    save:function(s){frame.arg=s.opts[s.correct];}},
 
   {type:'pick', tag:'Body 1 \u00b7 political policies', prog:'Body 1 of 3 \u00b7 claim',
     h2:'Body paragraph 1: the topic sentence',
     intro:'Your first body paragraph is about his political policies. Every paragraph opens with a claim that pushes your line forward. Pick the topic sentence that takes a clear position.',
-    correct:0,
+    correct:1,
     opts:[
-      "On the test of control, Mobutu's political policies worked.",
-      "Mobutu made a number of political changes after taking power in 1965.",
-      "Mobutu's political policies gave ordinary people a real say in how the country was run."
+      "Mobutu made a number of political changes after he took power in 1965.",
+      "On the test of control, Mobutu's political policies worked well enough.",
+      "Mobutu's political policies gave ordinary people a real say in the country."
+    
     ],
-    expl:"<b>The first takes a side you can defend.</b> The second only describes that changes happened. The third takes the wrong line: the facts show control, not a real say, so you would be arguing against your own evidence.",
-    save:function(s){frame.b1ts=s.opts[0];}},
+    expl:"<b>The middle one takes a side you can defend.</b> The first only says changes happened. The last takes the wrong line, because the facts show control rather than a real say, so you would be arguing against your own evidence.",
+    save:function(s){frame.b1ts=s.opts[s.correct];}},
   {type:'evidence', tag:'Body 1 \u00b7 political policies', prog:'Body 1 of 3 \u00b7 evidence',
     h2:'Now choose the evidence',
     ts:"On the test of control, Mobutu's political policies worked.",
@@ -301,21 +305,22 @@ var STEPS=[
       {t:"The Bakajika Law (1966) returned minerals to the state", use:false, off:"economic: this belongs in the next paragraph"},
       {t:"Zairianisation seized 2,000 businesses, 1973", use:false, off:"economic, and it fails rather than works"}
     ],
-    expl:"<b>The four control facts back this point.</b> Bakajika and Zairianisation are real and correctly dated, which is what tempts you, but they are economic policy: they belong in the economy paragraph. Matching the fact to the exact point is the evidence skill.",
+    expl:"<b>The four control facts back this point.</b> Bakajika and Zairianisation are real and correctly dated. That is what tempts you. Both are economic policy, so they belong in the economy paragraph. Match each fact to the exact point it proves. That is the evidence skill.",
     link:"So, judged only by whether the state held together, the policy worked.",
     save:function(s){frame.b1ev=s.chosen; frame.b1link=s.link;}},
 
   {type:'pick', tag:'Body 2 \u00b7 economic policies', prog:'Body 2 of 3 \u00b7 claim',
     h2:'Body paragraph 2: the topic sentence',
     intro:'Your second body paragraph turns to his economic policies. This is where the essay tests development, not just control. Pick the topic sentence that takes a clear position.',
-    correct:0,
+    correct:2,
     opts:[
-      "His economic policies broke foreign control but handed the wealth to his friends.",
       "Mobutu also brought in a number of economic policies during his time in power.",
-      "Mobutu's economic policies built new industry and made the Congo richer for everyone."
+      "Mobutu's economic policies built new industry and made the Congo richer for everyone.",
+      "His economic policies broke foreign control but handed the wealth to his own friends."
+    
     ],
-    expl:"<b>The first takes a side:</b> he broke foreign control, but kept the wealth for his allies. The second only describes. The third takes the wrong line: the facts show wealth taken, not new industry built.",
-    save:function(s){frame.b2ts=s.opts[0];}},
+    expl:"<b>The last one takes a side.</b> He broke foreign control, then kept the wealth for his allies. The first only describes. The middle one takes the wrong line, because the facts show wealth taken rather than new industry built.",
+    save:function(s){frame.b2ts=s.opts[s.correct];}},
   {type:'evidence', tag:'Body 2 \u00b7 economic policies', prog:'Body 2 of 3 \u00b7 evidence',
     h2:'Now choose the evidence',
     ts:"His economic policies broke foreign control but handed the wealth to his friends.",
@@ -329,7 +334,7 @@ var STEPS=[
       {t:"The 1967 constitution put power in the president's hands", use:false, off:"political: that was the last paragraph"},
       {t:"The Benguela railway closed in 1975", use:false, off:"an outside shock: that is the counter-argument"}
     ],
-    expl:"<b>The five economic facts build this point.</b> The 1967 constitution is political, and the railway closure is an outside shock you will use against the counter-argument. Keep each fact in the paragraph it actually proves.",
+    expl:"<b>The five economic facts build this point.</b> The 1967 constitution is political. The railway closure is an outside shock, and you will use it against the counter-argument. Keep each fact in the paragraph it actually proves.",
     link:"Ownership changed hands, but nothing was built. That is not development.",
     save:function(s){frame.b2ev=s.chosen; frame.b2link=s.link;}},
 
@@ -338,12 +343,13 @@ var STEPS=[
     intro:'The command word is critically discuss, so you have to put the other side before you decide. Pick the topic sentence that states the opposing case fairly.',
     correct:0,
     opts:[
-      "It can be argued that the collapse was not his fault.",
+      "It can be argued that the collapse was not entirely his own fault.",
       "There were a number of problems facing the Congo's economy in the 1970s.",
-      "The collapse was entirely Mobutu's fault, and outside events played no part at all."
+      "The collapse was entirely Mobutu's fault, and outside events played no part."
+    
     ],
-    expl:"<b>The first states the other side fairly,</b> which is exactly what the counter-argument step needs. The second only describes problems. The third refuses to admit the other side at all, so there is nothing to weigh against.",
-    save:function(s){frame.c1ts=s.opts[0];}},
+    expl:"<b>The first states the other side fairly.</b> That is exactly what the counter-argument step needs. The middle one only describes problems. The last refuses to admit the other side at all, so there is nothing left to weigh against.",
+    save:function(s){frame.c1ts=s.opts[s.correct];}},
   {type:'evidence', tag:'Body 3 \u00b7 counter-argument', prog:'Body 3 of 3 \u00b7 evidence',
     h2:'The evidence for the other side',
     ts:"It can be argued that the collapse was not his fault.",
@@ -355,21 +361,22 @@ var STEPS=[
       {t:"Zairianisation seized 2,000 businesses, 1973", use:false, off:"his own choice, not an outside shock"},
       {t:"The MPR became the only legal party", use:false, off:"political, and his own doing"}
     ],
-    expl:"<b>These three outside shocks are the strongest case for the other side.</b> Zairianisation and the one-party state were his own choices, not things done to him, so they cannot defend him. Then you rebut: the shocks made the fall steeper, but they did not cause it.",
+    expl:"<b>These three outside shocks are the strongest case for the other side.</b> Zairianisation and the one-party state were his own choices, not things done to him. They cannot defend him. Then you rebut. The shocks made the fall steeper. They did not cause it.",
     link:"But Zairianisation came before the copper price fell, and had to be reversed by 1976. The shocks made the fall steeper. They did not cause it.",
     save:function(s){frame.c1ev=s.chosen; frame.c1link=s.link;}},
 
   {type:'pick', tag:'Conclusion \u00b7 the verdict', prog:'Verdict',
     h2:'Land your verdict',
     intro:'A conclusion weighs both sides and still decides. Pick the verdict that does both. Avoid the absolute one and the one that sits on the fence.',
-    correct:0,
+    correct:2,
     opts:[
-      "Effective at control, not at development: he held the Congo together and broke the foreign grip on its minerals, but he built a state that served him, so the wealth was taken rather than invested. He developed the ruler, not the Congo.",
-      "Mobutu's policies were a total failure that left the Congo worse off in every way.",
-      "Mobutu's policies had some good points and some bad points, so it is hard to say whether they worked."
+      "Mobutu's policies were a total failure that left the Congo far worse off in every single way imaginable.",
+      "Mobutu's policies had some good points and some bad points, so it is really quite hard to say if they worked.",
+      "Effective at control, not development. He held the Congo together and broke the foreign grip, but built a state serving himself."
+    
     ],
-    expl:"<b>The first verdict weighs and still decides.</b> It admits what worked, names what did not, and lands on a judgement the essay has earned. The second is absolute; the third sits on the fence. Listing good and bad without deciding throws away your conclusion.",
-    save:function(s){frame.verdict=s.opts[0];}},
+    expl:"<b>The last verdict weighs and still decides.</b> It admits what worked, names what did not, and lands on a judgement the essay has earned. The first is absolute. The middle one sits on the fence, and listing good and bad without deciding throws away your conclusion.",
+    save:function(s){frame.verdict=s.opts[s.correct];}},
 
   {type:'frame'}
 ];
@@ -451,7 +458,9 @@ function renderFrame(){
   stage.innerHTML='<div class="card"><div class="stage-tag">Your writing frame</div><h2>Take this away and write it up</h2>'+
     '<p class="cap-intro">This is the shape of a top essay: a clear line, three paragraphs each with a claim and its evidence, and a verdict that decides. You built every choice in it.</p>'+
     '<div class="frame">'+f+'</div>'+
-    '<div class="writeup"><b>Now write the essay in full, in your own words.</b><div class="wsub">The frame gives you the shape and the facts. Turning these notes into full sentences, in the exam, is the part only you can do.</div></div></div>';
+    '<div class="writeup"><b>Now write the essay in full, in your own words.</b><div class="wsub">The frame gives you the shape and the facts. Turning these notes into full sentences, in the exam, is the part only you can do.</div></div><div class="cap-actions" style="margin-top:1.4rem"><button class="btn-primary" id="cap-advance">Continue to What Stuck&nbsp;&rarr;</button></div></div>';
+  document.getElementById('cap-advance').onclick=function(){ kulaEmbed('advance'); };
+  kulaEmbed('completed');
 }
 
 render();
