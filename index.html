@@ -284,7 +284,7 @@ var STEPS=[
       "Mobutu ruled the Congo from 1965 and brought in many political and economic policies over his years in power.",
       "Mobutu's policies developed the Congo well, until the fall in world copper prices destroyed everything he had built."
     ],
-    expl:"<b>The first sentence argues.</b> It takes a side (effective at one thing, not another) and says why, so the whole essay has a line to follow. The second only describes: a marker sees you telling the story, not making a case, and that caps you at middle marks. The third takes the wrong line, and the facts in this topic will go against it.",
+    expl:"<b>The first sentence argues.</b> It takes a side (effective at one thing, not another) and says why, so the whole essay has a line to follow. The second only describes. A marker reads that as the story retold rather than a case built, and it holds you at middle marks. The third argues against the facts you have just assembled.",
     save:function(s){frame.arg=s.opts[0];}},
 
   {type:'pick', tag:'Body 1 \u00b7 political policies', prog:'Body 1 of 3 \u00b7 claim',
@@ -296,7 +296,7 @@ var STEPS=[
       "Mobutu made a number of political changes after taking power in 1965.",
       "Mobutu's political policies gave ordinary people a real say in how the country was run."
     ],
-    expl:"<b>The first takes a side you can defend.</b> The second only describes that changes happened. The third takes the wrong line: the facts show control, not a real say, so you would be arguing against your own evidence.",
+    expl:"<b>The first commits to a line the evidence will carry.</b> The second only describes that changes happened. The third takes the wrong line: the facts show control, not a real say, so you would be arguing against your own evidence.",
     save:function(s){frame.b1ts=s.opts[0];}},
   {type:'evidence', tag:'Body 1 \u00b7 political policies', prog:'Body 1 of 3 \u00b7 evidence',
     h2:'Now choose the evidence',
@@ -338,7 +338,7 @@ var STEPS=[
       {t:"The 1967 constitution put power in the president's hands", use:false, off:"political: that was the last paragraph"},
       {t:"The Benguela railway closed in 1975", use:false, off:"an outside shock: that is the counter-argument"}
     ],
-    expl:"<b>The five economic facts build this point.</b> The 1967 constitution is political, and the railway closure is an outside shock you will use against the counter-argument. Keep each fact in the paragraph it actually proves.",
+    expl:"<b>The five economic facts build this point.</b> The 1967 constitution is political, and the railway closure is an outside shock you will use against the counter-argument. Put each fact where it does its work, and nowhere else.",
     link:"Ownership changed hands, but nothing was built. That is not development.",
     save:function(s){frame.b2ev=s.chosen; frame.b2link=s.link;}},
 
@@ -351,7 +351,7 @@ var STEPS=[
       "There were a number of problems facing the Congo's economy in the 1970s.",
       "The collapse was entirely Mobutu's fault, and outside events played no part at all."
     ],
-    expl:"<b>The first states the other side fairly,</b> which is exactly what the counter-argument step needs. The second only describes problems. The third refuses to admit the other side at all, so there is nothing to weigh against.",
+    expl:"<b>The first states the other side fairly,</b> which is exactly what the counter-argument step needs. The second sets out problems and stops there. The third never concedes anything, so you are left with nothing to weigh.",
     save:function(s){frame.c1ts=s.opts[0];}},
   {type:'evidence', tag:'Body 3 \u00b7 counter-argument', prog:'Body 3 of 3 \u00b7 evidence',
     h2:'The evidence for the other side',
@@ -377,7 +377,7 @@ var STEPS=[
       "Mobutu's policies were a total failure that left the Congo worse off in every way.",
       "Mobutu's policies had some good points and some bad points, so it is hard to say whether they worked."
     ],
-    expl:"<b>The first verdict weighs and still decides.</b> It admits what worked, names what did not, and lands on a judgement the essay has earned. The second is absolute; the third sits on the fence. Listing good and bad without deciding throws away your conclusion.",
+    expl:"<b>The first grants the other side and still comes down somewhere.</b> It grants the successes, states the failures, and reaches a verdict your evidence supports. The second claims too much. The third will not commit at all. List the good and the bad, never decide, and your conclusion earns nothing.",
     save:function(s){frame.verdict=s.opts[0];}},
 
   {type:'frame'}
