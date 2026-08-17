@@ -10,8 +10,8 @@
      Accent one (copper): navigation, progress, emphasis, option letters, primary button, story date.
      Accent two (malachite): anything the learner earned. correct answers, running summary,
      breakdown bars, Weigh and Apply chips, key facts, the last story line. */
-  :root{--sand:#0C0E10;--paper:#14181C;--cut:#1B2026;--ink:#EAEEF2;--a1:#5B9BD9;--a2:#3E7CB8;--a2-hover:#356FA6;--clay:#5B9BD9;--fade:#8A93A0;--ink-c:234,238,242;--a1-c:91,155,217;--a2-c:62,124,184;--fade-c:138,147,160;--opt-correct-bg:#16303F;--opt-wrong-bg:#221F1E;--chip-argue-bg:#1C2228;--chip-argue-fg:#7FB4E4;--on-ink:#0C0E10;--mute1:#9AA3AE;--mute2:#939CA7;--ink-hover:#DDE3E9;--serif:Georgia, 'Times New Roman', serif;--sans:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;--chip-instinct-bg:#1A1F24;--sort-bg:rgba(255,255,255,0.05);}
-  body.bright{--sand:#F2F5F8;--paper:#FCFDFE;--cut:#FFFFFF;--ink:#17212B;--a1:#2E6FB2;--a2:#255E90;--a2-hover:#1E4B73;--clay:#2E6FB2;--fade:#6C7681;--ink-c:23,33,43;--a1-c:46,111,178;--a2-c:37,94,144;--fade-c:108,118,129;--opt-correct-bg:#DCEAF7;--opt-wrong-bg:#ECEEF0;--chip-argue-bg:#DEE8F3;--chip-argue-fg:#235C93;--on-ink:#FFFFFF;--mute1:#4A5560;--mute2:#545E68;--ink-hover:#0E1620;--chip-instinct-bg:#EEF2F6;--sort-bg:rgba(0,0,0,0.04);}
+  :root{--sand:#0B0C0F;--paper:#16181D;--cut:#1F2229;--ink:#EDEFF3;--a1:#FF6ECF;--a2:#3DDCF2;--a2-hover:#7BE8F7;--clay:#9DA2AB;--fade:#8E939C;--ink-c:237,239,243;--a1-c:255,110,207;--a2-c:61,220,242;--fade-c:142,147,156;--opt-correct-bg:#16352A;--opt-wrong-bg:#331A2A;--chip-argue-bg:#2C1725;--chip-argue-fg:#FFA8DF;--on-ink:#0B0C0F;--mute1:#A6ABB4;--mute2:#9DA2AB;--ink-hover:#FFFFFF;--serif:Georgia, 'Times New Roman', serif;--sans:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;--chip-instinct-bg:#1A1D22;--sort-bg:rgba(255,255,255,0.05);}
+  body.bright{--sand:#ECEDEF;--paper:#FFFFFF;--cut:#DEE0E4;--ink:#14151A;--a1:#B00070;--a2:#0C6E86;--a2-hover:#085366;--clay:#4E5157;--fade:#5B5F66;--ink-c:20,21,26;--a1-c:176,0,112;--a2-c:12,110,134;--fade-c:91,95,102;--opt-correct-bg:#E2EDE4;--opt-wrong-bg:#FBE6F1;--chip-argue-bg:#FBE6F1;--chip-argue-fg:#8E005A;--on-ink:#FFFFFF;--mute1:#4E5157;--mute2:#5B5F66;--ink-hover:#0B0C0F;--chip-instinct-bg:#E7E9EC;--sort-bg:rgba(0,0,0,0.04);}
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     min-height: 100vh;
@@ -145,7 +145,7 @@
   .chip { display: inline-block; font-family: var(--sans); padding: 0.22rem 0.65rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
   .chip-argue { background: var(--chip-argue-bg); color: var(--chip-argue-fg); }
   .chip-evidence { background: var(--chip-argue-bg); color: var(--chip-argue-fg); }
-  .chip-weigh { background: var(--a2); color: #F0E3CF; }
+  .chip-weigh { background: var(--a2); color: #0B0C0F; }
   .chip-instinct { background: var(--chip-instinct-bg); color: var(--clay); }
   .q-meta { margin-bottom: 0.9rem; }
 
@@ -177,13 +177,13 @@
   .pop { background: var(--paper); border-top: 5px solid var(--a2); padding: 1.6rem 1.5rem; max-width: 30rem; width: 100%; box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
   .pop-label { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--a2); font-weight: 700; margin-bottom: 0.8rem; }
   .pop-text { font-size: 1.1rem; line-height: 1.6; font-weight: 600; color: var(--ink); margin-bottom: 1.3rem; }
-  .pop-btn { font-family: var(--sans); width: 100%; padding: 0.9rem; background: var(--a2); border: none; color: #F7F1E4; font-size: 0.98rem; font-weight: 700; cursor: pointer; }
+  .pop-btn { font-family: var(--sans); width: 100%; padding: 0.9rem; background: var(--a2); border: none; color: #0B0C0F; font-size: 0.98rem; font-weight: 700; cursor: pointer; }
 
   /* Nav */
   .nav { display: flex; justify-content: space-between; gap: 0.8rem; margin-top: 1rem; }
   .btn-secondary { font-family: var(--sans); padding: 0.8rem 1.2rem; background: transparent; border: 1px solid rgba(var(--ink-c),0.28); color: var(--ink); font-size: 0.9rem; font-weight: 600; cursor: pointer; }
   .btn-secondary:hover:not(:disabled) { background: var(--paper); }
-  .btn-primary { font-family: var(--sans); padding: 0.85rem 1.5rem; background: var(--a2); border: none; color: #F7F1E4; font-size: 0.95rem; cursor: pointer; font-weight: 700; }
+  .btn-primary { font-family: var(--sans); padding: 0.85rem 1.5rem; background: var(--a2); border: none; color: #0B0C0F; font-size: 0.95rem; cursor: pointer; font-weight: 700; }
   .btn-primary:hover:not(:disabled) { background: var(--a2-hover); }
   .btn-primary:disabled { opacity: 0.34; cursor: not-allowed; }
 
@@ -213,7 +213,7 @@ body { padding-bottom: 5.25rem !important; } #kula-mode-toggle, .mode-toggle { m
 #next-btn, #begin-btn, #kdone-btn, #kretake-btn { min-height: 44px !important; }
 /* cg-cta */
 body:not(.bright) .btn-primary, body:not(.bright) #next-btn { color: #ffffff !important; }
-body:not(.bright) .btn-primary .sa, body:not(.bright) #next-btn .sa, body:not(.bright) .btn-primary svg, body:not(.bright) #next-btn svg { color: #0c0e10 !important; fill: #0c0e10 !important; }
+body:not(.bright) .btn-primary .sa, body:not(.bright) #next-btn .sa, body:not(.bright) .btn-primary svg, body:not(.bright) #next-btn svg { color: #0b0c0f !important; fill: #0b0c0f !important; }
 
 .container{max-width:720px;margin:0 auto;padding:1.2rem 1.1rem 3rem;}
 .cap-intro{font-size:1.04rem;line-height:1.74;margin-bottom:1.1rem;}
@@ -225,7 +225,7 @@ body:not(.bright) .btn-primary .sa, body:not(.bright) #next-btn .sa, body:not(.b
 .evrow .evtext .off{display:block;font-family:var(--sans);font-size:0.78rem;color:var(--mute2);margin-top:0.2rem;}
 .evtoggle{font-family:var(--sans);font-size:0.78rem;font-weight:700;border:1px solid var(--a2);color:var(--a2);background:transparent;padding:0.4rem 0.85rem;cursor:pointer;min-height:38px;white-space:nowrap;}
 .evrow.use{border-color:var(--a1);border-width:2px;background:var(--cut);}
-.evrow.use .evtoggle{background:var(--a2);color:#F7F1E4;border-color:var(--a2);}
+.evrow.use .evtoggle{background:var(--a2);color:#0B0C0F;border-color:var(--a2);}
 .evrow.ok{border-color:var(--a2);border-width:2px;background:var(--opt-correct-bg);}
 .evrow.miss{border-color:var(--clay);border-style:dashed;border-width:2px;}
 .evrow.wrong{border-color:var(--clay);border-width:2px;background:var(--opt-wrong-bg);}
@@ -250,11 +250,11 @@ body:not(.bright) .btn-primary .sa, body:not(.bright) #next-btn .sa, body:not(.b
 #kula-mode-toggle #kmt-icon svg{width:1rem;height:1rem;display:block;}
 </style>
 <style>/* kula: contrast corrections. Measured on the painted result in both modes, on every surface the control appears on. Colour only. */
-body:not(.bright) #cap-advance { background-color: #3973AA !important; }
-body:not(.bright) #chk { background-color: #3973AA !important; }
-body:not(.bright) #cont { background-color: #3973AA !important; }
-body:not(.bright) .evrow.use .evtoggle { background-color: #366DA1 !important; }
-body:not(.bright) .evtoggle { color: #4785C1 !important; }
+body:not(.bright) #cap-advance { background-color: #FF6ECF !important; }
+body:not(.bright) #chk { background-color: #FF6ECF !important; }
+body:not(.bright) #cont { background-color: #FF6ECF !important; }
+body:not(.bright) .evrow.use .evtoggle { background-color: #FF6ECF !important; }
+body:not(.bright) .evtoggle { color: #FFA8DF !important; }
 </style>
 </head>
 <body class="bright">
