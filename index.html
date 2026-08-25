@@ -280,27 +280,27 @@ var STEPS=[
     intro:'Every mark in this essay hangs off one sentence: the line you argue. The question asks how effective Mobutu\u2019s policies were, so your line has to take a side on that. Pick the sentence that argues, not the one that only describes.',
     correct:0,
     opts:[
-      "Mobutu's policies were effective at keeping control but ineffective at developing the Congo, because each one was built to protect his power, not to grow the country.",
-      "Mobutu ruled the Congo from 1965 and brought in many political and economic policies over his years in power.",
-      "Mobutu's policies developed the Congo well, until the fall in world copper prices destroyed everything he had built."
+      "Mobutu's policies were effective at keeping control but ineffective at developing the Congo, because each was built to protect his power.",
+      "Mobutu ruled the Congo from 1965 and brought in a great many political and economic policies over his years in power.",
+      "Mobutu's policies developed the Congo well, until the fall in world copper prices destroyed everything that he had built."
     ],
-    expl:"<b>The first sentence argues.</b> It takes a side (effective at one thing, not another) and says why, so the whole essay has a line to follow. The second only describes. A marker reads that as the story retold rather than a case built, and it holds you at middle marks. The third argues against the facts you have just assembled.",
-    save:function(s){frame.arg=s.opts[0];}},
+    expl:"<b>Option {opt0} argues.</b> It takes a side, effective at one thing and not another, and says why. That gives the whole essay a line to follow. Option {opt1} only describes. A marker reads it as the story retold rather than a case built, and it holds you at middle marks. Option {opt2} argues against the facts you have just assembled.",
+    save:function(s){frame.arg=s.opts[s.correct];}},
 
   {type:'pick', tag:'Body 1 \u00b7 political policies', prog:'Body 1 of 3 \u00b7 claim',
     h2:'Body paragraph 1: the topic sentence',
     intro:'Your first body paragraph is about his political policies. Every paragraph opens with a claim that pushes your line forward. Pick the topic sentence that takes a clear position.',
     correct:0,
     opts:[
-      "On the test of control, Mobutu's political policies worked.",
-      "Mobutu made a number of political changes after taking power in 1965.",
-      "Mobutu's political policies gave ordinary people a real say in how the country was run."
+      "On the test of control, Mobutu's political policies worked very well indeed.",
+      "Mobutu made a number of political changes after he took power in 1965.",
+      "Mobutu's political policies gave ordinary people a say in how the Congo was run."
     ],
-    expl:"<b>The first commits to a line the evidence will carry.</b> The second only describes that changes happened. The third takes the wrong line: the facts show control, not a real say, so you would be arguing against your own evidence.",
-    save:function(s){frame.b1ts=s.opts[0];}},
+    expl:"<b>Option {opt0} commits to a line your evidence will carry.</b> It names the test the paragraph is going to apply. Option {opt1} only says changes happened, and a fact on its own is not a claim. Option {opt2} takes the wrong line, because your evidence shows control rather than a real say. Pick it and you argue against yourself.",
+    save:function(s){frame.b1ts=s.opts[s.correct];}},
   {type:'evidence', tag:'Body 1 \u00b7 political policies', prog:'Body 1 of 3 \u00b7 evidence',
     h2:'Now choose the evidence',
-    ts:"On the test of control, Mobutu's political policies worked.",
+    ts:"On the test of control, Mobutu's political policies worked very well indeed.",
     intro:'A claim is only worth the evidence under it. Tap Use it for the facts that back this exact point. Leave out the real facts that belong to a different paragraph.',
     items:[
       {t:"Ended the crisis of the First Republic", use:true},
@@ -323,8 +323,8 @@ var STEPS=[
       "Mobutu also brought in a number of economic policies during his time in power.",
       "Mobutu's economic policies built new industry and made the Congo richer for everyone."
     ],
-    expl:"<b>The first takes a side:</b> he broke foreign control, but kept the wealth for his allies. The second only describes. The third takes the wrong line: the facts show wealth taken, not new industry built.",
-    save:function(s){frame.b2ts=s.opts[0];}},
+    expl:"<b>Option {opt0} takes a side.</b> He broke foreign control and kept the wealth for his allies, which is the point this paragraph exists to make. Option {opt1} only describes, so a marker finds no claim to reward. Option {opt2} takes the wrong line, because your evidence shows wealth taken rather than new industry built.",
+    save:function(s){frame.b2ts=s.opts[s.correct];}},
   {type:'evidence', tag:'Body 2 \u00b7 economic policies', prog:'Body 2 of 3 \u00b7 evidence',
     h2:'Now choose the evidence',
     ts:"His economic policies broke foreign control but handed the wealth to his friends.",
@@ -347,15 +347,15 @@ var STEPS=[
     intro:'The command word is critically discuss, so you have to put the other side before you decide. Pick the topic sentence that states the opposing case fairly.',
     correct:0,
     opts:[
-      "It can be argued that the collapse was not his fault.",
-      "There were a number of problems facing the Congo's economy in the 1970s.",
-      "The collapse was entirely Mobutu's fault, and outside events played no part at all."
+      "It can be argued that the collapse was not really his own fault.",
+      "There were a number of problems facing the Congo's economy during the 1970s.",
+      "The collapse was entirely Mobutu's fault, and outside events played no part."
     ],
-    expl:"<b>The first states the other side fairly,</b> which is exactly what the counter-argument step needs. The second sets out problems and stops there. The third never concedes anything, so you are left with nothing to weigh.",
-    save:function(s){frame.c1ts=s.opts[0];}},
+    expl:"<b>Option {opt0} states the other side fairly.</b> That is what the counter-argument step needs, because you can only weigh a case that has been put properly. Option {opt1} sets out problems and stops there, so your verdict has nothing to push against. Option {opt2} concedes nothing at all, and a marker reading it finds no counter-argument.",
+    save:function(s){frame.c1ts=s.opts[s.correct];}},
   {type:'evidence', tag:'Body 3 \u00b7 counter-argument', prog:'Body 3 of 3 \u00b7 evidence',
     h2:'The evidence for the other side',
-    ts:"It can be argued that the collapse was not his fault.",
+    ts:"It can be argued that the collapse was not really his own fault.",
     intro:'Here you gather the strongest facts for the opposing case. Tap Use it for the outside shocks. Leave out the things that were his own doing: those cannot defend him.',
     items:[
       {t:"The world copper price fell by more than half after 1974", use:true},
@@ -373,12 +373,12 @@ var STEPS=[
     intro:'A conclusion weighs both sides and still decides. Pick the verdict that does both. Avoid the absolute one and the one that sits on the fence.',
     correct:0,
     opts:[
-      "Effective at control, not at development: he held the Congo together and broke the foreign grip on its minerals, but he built a state that served him, so the wealth was taken rather than invested. He developed the ruler, not the Congo.",
-      "Mobutu's policies were a total failure that left the Congo worse off in every way.",
-      "Mobutu's policies had some good points and some bad points, so it is hard to say whether they worked."
+      "Effective at control and not at development, because he built a state that served him rather than the country.",
+      "Mobutu's policies were a total failure of a kind that left the Congo far worse off in every way.",
+      "Mobutu's policies had good points and bad points, so nobody can say whether they really worked."
     ],
-    expl:"<b>The first grants the other side and still comes down somewhere.</b> It grants the successes, states the failures, and reaches a verdict your evidence supports. The second claims too much. The third will not commit at all. List the good and the bad, never decide, and your conclusion earns nothing.",
-    save:function(s){frame.verdict=s.opts[0];}},
+    expl:"<b>Option {opt0} grants the other side and still decides.</b> It names the success and the failure and reaches a verdict your evidence supports. Option {opt1} claims too much, and your own body paragraphs contradict it. Option {opt2} lists the good and the bad without deciding. A marker reading a conclusion that will not commit gives you nothing for it.",
+    save:function(s){frame.verdict=s.opts[s.correct];}},
 
   {type:'frame'}
 ];
@@ -405,15 +405,32 @@ function renderCover(){
   document.getElementById('begin-btn').onclick=next;
 }
 
+function shuffleOrder(s){
+  if(!s._order){
+    var o=s.opts.map(function(_,i){return i;});
+    for(var i=o.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=o[i]; o[i]=o[j]; o[j]=t; }
+    s._order=o;
+  }
+  return s._order;
+}
+function resolveOpts(text,s){
+  if(!s||!s._order) return text;
+  return String(text).replace(/\{opt(\d+)\}/g,function(m,d){
+    var disp=s._order.indexOf(+d);
+    return disp<0?m:String.fromCharCode(65+disp);
+  });
+}
 function renderPick(s){
   var chosen=null;
   function draw(){
-    var opts=s.opts.map(function(o,i){
+    var order=shuffleOrder(s);
+    var opts=order.map(function(orig,i){
+      var o=s.opts[orig];
       var cls='option', mark='';
-      if(chosen!==null){ cls+=' selected'; if(i===s.correct){cls+=' correct'; mark='<span class="opt-mark">&#10003;</span>';} else if(i===chosen){cls+=' wrong'; mark='<span class="opt-mark">&#10007;</span>';} else {cls+=' dimmed';} }
-      return '<button class="'+cls+'" data-i="'+i+'"'+(chosen!==null?' disabled':'')+'><span class="opt-letter">'+String.fromCharCode(65+i)+'</span><span class="opt-text">'+esc(o)+'</span>'+mark+'</button>';
+      if(chosen!==null){ cls+=' selected'; if(orig===s.correct){cls+=' correct'; mark='<span class="opt-mark">&#10003;</span>';} else if(orig===chosen){cls+=' wrong'; mark='<span class="opt-mark">&#10007;</span>';} else {cls+=' dimmed';} }
+      return '<button class="'+cls+'" data-i="'+orig+'"'+(chosen!==null?' disabled':'')+'><span class="opt-letter">'+String.fromCharCode(65+i)+'</span><span class="opt-text">'+esc(o)+'</span>'+mark+'</button>';
     }).join('');
-    var tail = chosen!==null ? '<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">'+s.expl+'</div></div><div class="cap-actions" style="margin-top:1.2rem"><button class="btn-primary" id="cont">Continue</button></div>' : '';
+    var tail = chosen!==null ? '<div class="explanation"><div class="expl-label">Why</div><div class="expl-text">'+resolveOpts(s.expl,s)+'</div></div><div class="cap-actions" style="margin-top:1.2rem"><button class="btn-primary" id="cont">Continue</button></div>' : '';
     stage.innerHTML=prog(s)+'<div class="card"><div class="stage-tag">'+s.tag+'</div><h2>'+esc(s.h2)+'</h2><p class="cap-intro">'+s.intro+'</p><div class="options">'+opts+'</div>'+tail+'</div>';
     if(chosen===null){ [].forEach.call(document.querySelectorAll('.option'),function(b){ b.onclick=function(){ chosen=+b.getAttribute('data-i'); draw(); }; }); }
     else { document.getElementById('cont').onclick=function(){ s.save(s); next(); }; }
